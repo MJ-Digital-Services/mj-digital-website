@@ -61,7 +61,7 @@ export default function Navbar() {
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -87,172 +87,175 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`navbar${scrolled ? " scrolled" : ""}`}>
-        <div className="navbar-inner">
+      <div className={`navbar-wrapper${scrolled ? " scrolled" : ""}`}>
+        <div className="navbar">
+          <div className="navbar-inner">
 
-          {/* ── Logo ── */}
-          <Link href="/" className="navbar-logo">
-            <div className="navbar-logo-icon">MJ</div>
-            <span className="navbar-logo-text">
-              MJ Digital<span> Services</span>
-            </span>
-          </Link>
+            {/* ── Logo ── */}
+            <Link href="/" className="navbar-logo">
+              <div className="navbar-logo-icon">MJ</div>
+              <span className="navbar-logo-text">
+                MJ Digital<span> Services</span>
+              </span>
+            </Link>
 
-          {/* ── Right Side: Nav + CTA ── */}
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            {/* ── Desktop Nav Pill ── */}
-            <nav className="navbar-pill">
+            {/* ── Right side: Nav + Divider + CTA ── */}
+            <div className="navbar-right">
+
+              {/* Desktop Nav */}
+              <nav className="navbar-nav">
 
                 {/* Products */}
                 <div
-                className="nav-dropdown"
-                onMouseEnter={() => open("products")}
-                onMouseLeave={close}
+                  className="nav-dropdown"
+                  onMouseEnter={() => open("products")}
+                  onMouseLeave={close}
                 >
-                <button className={`nav-pill-link${activeDropdown === "products" ? " active" : ""}`}>
+                  <button className={`nav-link${activeDropdown === "products" ? " active" : ""}`}>
                     Products
                     <ChevronDown size={13} className={`nav-chevron${activeDropdown === "products" ? " open" : ""}`} />
-                </button>
+                  </button>
 
-                {activeDropdown === "products" && (
+                  {activeDropdown === "products" && (
                     <div
-                    className="dropdown-simple"
-                    onMouseEnter={() => keep("products")}
-                    onMouseLeave={close}
+                      className="dropdown-simple"
+                      onMouseEnter={() => keep("products")}
+                      onMouseLeave={close}
                     >
-                    {products.map((item) => (
+                      {products.map((item) => (
                         <Link key={item.name} href={item.href} className="dropdown-simple-item" onClick={() => setActiveDropdown(null)}>
-                        <div className="dropdown-simple-icon">
-                            <item.icon size={15} />
-                        </div>
-                        <div>
+                          <div className="dropdown-simple-icon">
+                            <item.icon size={17} />
+                          </div>
+                          <div>
                             <div className="dropdown-simple-name">{item.name}</div>
                             <div className="dropdown-simple-desc">{item.description}</div>
-                        </div>
+                          </div>
                         </Link>
-                    ))}
+                      ))}
                     </div>
-                )}
+                  )}
                 </div>
 
                 {/* Services — mega menu */}
                 <div
-                className="nav-dropdown"
-                onMouseEnter={() => open("services")}
-                onMouseLeave={close}
+                  className="nav-dropdown"
+                  onMouseEnter={() => open("services")}
+                  onMouseLeave={close}
                 >
-                <button className={`nav-pill-link${activeDropdown === "services" ? " active" : ""}`}>
+                  <button className={`nav-link${activeDropdown === "services" ? " active" : ""}`}>
                     Services
                     <ChevronDown size={13} className={`nav-chevron${activeDropdown === "services" ? " open" : ""}`} />
-                </button>
+                  </button>
 
-                {activeDropdown === "services" && (
+                  {activeDropdown === "services" && (
                     <div
-                    className="dropdown-mega"
-                    onMouseEnter={() => keep("services")}
-                    onMouseLeave={close}
+                      className="dropdown-mega"
+                      onMouseEnter={() => keep("services")}
+                      onMouseLeave={close}
                     >
-                    {serviceGroups.map((group) => (
+                      {serviceGroups.map((group) => (
                         <div key={group.label} className="mega-group">
-                        <div className="mega-group-label">{group.label}</div>
-                        {group.items.map((item) => (
+                          <div className="mega-group-label">{group.label}</div>
+                          {group.items.map((item) => (
                             <Link key={item.name} href={item.href} className="mega-item" onClick={() => setActiveDropdown(null)}>
-                            <div className="mega-item-icon">
-                                <item.icon size={14} />
-                            </div>
-                            <div>
+                              <div className="mega-item-icon">
+                                <item.icon size={16} />
+                              </div>
+                              <div>
                                 <div className="mega-item-name">{item.name}</div>
                                 <div className="mega-item-desc">{item.description}</div>
-                            </div>
+                              </div>
                             </Link>
-                        ))}
+                          ))}
                         </div>
-                    ))}
+                      ))}
                     </div>
-                )}
+                  )}
                 </div>
 
                 {/* Static links */}
                 {staticLinks.map((link) => (
-                <Link key={link.name} href={link.href} className="nav-pill-link">
+                  <Link key={link.name} href={link.href} className="nav-link">
                     {link.name}
-                </Link>
+                  </Link>
                 ))}
-            </nav>
+              </nav>
 
-            {/* ── CTA ── */}
-            <Link href="/contact" className="navbar-cta">
+              {/* Divider */}
+              <div className="navbar-divider" />
+
+              {/* CTA */}
+              <Link href="/contact" className="navbar-cta">
                 Let&apos;s Talk <ArrowRight size={14} />
-            </Link>
+              </Link>
+            </div>
+
+            {/* Mobile Toggle */}
+            <button
+              className="navbar-mobile-toggle"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
 
-          {/* ── Mobile Toggle ── */}
-          <button
-            className="navbar-mobile-toggle"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
+          {/* Mobile Menu */}
+          <div className={`navbar-mobile-menu${mobileOpen ? " open" : ""}`}>
 
-        {/* ── Mobile Menu ── */}
-        <div className={`navbar-mobile-menu${mobileOpen ? " open" : ""}`}>
-
-          {/* Products */}
-          <button
-            className="mobile-nav-link"
-            onClick={() => setMobileExpanded(mobileExpanded === "products" ? null : "products")}
-          >
-            Products
-            <ChevronDown size={16} style={{ color: "var(--text-muted)", transform: mobileExpanded === "products" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }} />
-          </button>
-          {mobileExpanded === "products" && (
-            <div className="mobile-dropdown-items">
-              {products.map((item) => (
-                <Link key={item.name} href={item.href} className="mobile-dropdown-item" onClick={() => setMobileOpen(false)}>
-                  <item.icon size={14} style={{ color: "var(--primary)", flexShrink: 0 }} />
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          )}
-
-          {/* Services */}
-          <button
-            className="mobile-nav-link"
-            onClick={() => setMobileExpanded(mobileExpanded === "services" ? null : "services")}
-          >
-            Services
-            <ChevronDown size={16} style={{ color: "var(--text-muted)", transform: mobileExpanded === "services" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }} />
-          </button>
-          {mobileExpanded === "services" && (
-            <div className="mobile-dropdown-items">
-              {serviceGroups.map((group) =>
-                group.items.map((item) => (
+            <button
+              className="mobile-nav-link"
+              onClick={() => setMobileExpanded(mobileExpanded === "products" ? null : "products")}
+            >
+              Products
+              <ChevronDown size={16} style={{ color: "var(--text-muted)", transform: mobileExpanded === "products" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }} />
+            </button>
+            {mobileExpanded === "products" && (
+              <div className="mobile-dropdown-items">
+                {products.map((item) => (
                   <Link key={item.name} href={item.href} className="mobile-dropdown-item" onClick={() => setMobileOpen(false)}>
                     <item.icon size={14} style={{ color: "var(--primary)", flexShrink: 0 }} />
                     {item.name}
                   </Link>
-                ))
-              )}
+                ))}
+              </div>
+            )}
+
+            <button
+              className="mobile-nav-link"
+              onClick={() => setMobileExpanded(mobileExpanded === "services" ? null : "services")}
+            >
+              Services
+              <ChevronDown size={16} style={{ color: "var(--text-muted)", transform: mobileExpanded === "services" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }} />
+            </button>
+            {mobileExpanded === "services" && (
+              <div className="mobile-dropdown-items">
+                {serviceGroups.map((group) =>
+                  group.items.map((item) => (
+                    <Link key={item.name} href={item.href} className="mobile-dropdown-item" onClick={() => setMobileOpen(false)}>
+                      <item.icon size={14} style={{ color: "var(--primary)", flexShrink: 0 }} />
+                      {item.name}
+                    </Link>
+                  ))
+                )}
+              </div>
+            )}
+
+            {staticLinks.map((link) => (
+              <Link key={link.name} href={link.href} className="mobile-nav-link" onClick={() => setMobileOpen(false)}>
+                {link.name}
+              </Link>
+            ))}
+
+            <div className="mobile-cta-wrap">
+              <Link href="/contact" className="mobile-cta" onClick={() => setMobileOpen(false)}>
+                Let&apos;s Talk <ArrowRight size={16} />
+              </Link>
             </div>
-          )}
-
-          {/* Static links */}
-          {staticLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="mobile-nav-link" onClick={() => setMobileOpen(false)}>
-              {link.name}
-            </Link>
-          ))}
-
-          <div className="mobile-cta-wrap">
-            <Link href="/contact" className="mobile-cta" onClick={() => setMobileOpen(false)}>
-              Let&apos;s Talk <ArrowRight size={16} />
-            </Link>
           </div>
         </div>
-      </header>
+      </div>
 
       <div className="navbar-spacer" />
     </>
