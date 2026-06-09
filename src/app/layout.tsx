@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Syne } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,9 +8,9 @@ const inter = Inter({
   display: "swap",
 });
 
-const syne = Syne({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-syne",
+  variable: "--font-syne",   // keep same variable name so nothing else breaks
   weight: ["600", "700", "800"],
   display: "swap",
 });
@@ -80,7 +80,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${syne.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${poppins.variable}`}>
       <body>{children}</body>
     </html>
   );
