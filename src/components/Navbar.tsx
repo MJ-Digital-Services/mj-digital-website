@@ -108,7 +108,7 @@ export default function Navbar() {
         <motion.div
           animate={{
             marginTop: scrolled ? 12 : 0,
-            width: scrolled ? "55vw" : "100vw",
+            width: scrolled ? "auto" : "100vw",
             borderRadius: scrolled ? 16 : 0,
             boxShadow: scrolled
               ? "0 4px 30px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.06)"
@@ -121,7 +121,8 @@ export default function Navbar() {
             WebkitBackdropFilter: "blur(16px)",
             overflow: "visible",
             pointerEvents: "auto",
-            minWidth: scrolled ? 700 : "unset",
+            minWidth: scrolled ? "unset" : "unset",   // remove minWidth entirely
+            maxWidth: "95vw",                          // ADD this — never wider than viewport
           }}
         >
           {/* Inner row — height animates separately for smoothness */}
@@ -132,7 +133,7 @@ export default function Navbar() {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              padding: "0 64px",
+              padding: scrolled ? "0 28px" : "0 64px",
               gap: 24,
             }}
           >
