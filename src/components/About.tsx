@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { MessageSquare, Building2 } from "lucide-react";
@@ -13,18 +15,24 @@ const products = [
     logo: "/ezeepay-logo.png",
     name: "EzeePay",
     desc: "Fintech & AEPS Platform",
+    accent: "#f97316",
+    tags: ["AEPS", "Money Transfer", "BBPS", "KYC"],
     href: "/products/ezeepay",
   },
   {
     logo: null,
     name: "Zoki",
     desc: "WhatsApp & CPaaS Platform",
+    accent: "#22c55e",
+    tags: ["WhatsApp API", "SMS", "Marketing", "Automation"],
     href: "/products/zoki",
   },
   {
     logo: "/mobilocker-logo.png",
     name: "Mobilocker",
     desc: "Digital Storage & Security",
+    accent: "#3b82f6",
+    tags: ["Document Storage", "Verification", "Data Security"],
     href: "/products/mobilocker",
   },
 ];
@@ -57,27 +65,34 @@ export default function About() {
           </div>
         </div>
 
-        {/* Right — dark card */}
+        {/* Right — light cards */}
         <div className="about-card">
           <div className="about-card-label">Our Flagship Products</div>
 
-          {products.map((product, i) => (
-            <div key={product.name}>
-              <Link href={product.href} className="about-product-row">
-                <div className="about-product-icon" style={{backgroundColor: 'white'}}>
-                  {product.logo ? (
-                    <Image src={product.logo} alt={product.name} width={28} height={28} style={{ objectFit: "contain", backgroundColor: 'white' }} />
-                  ) : (
-                    <MessageSquare size={18} />
-                  )}
+          {products.map((product) => (
+            <Link
+              key={product.name}
+              href={product.href}
+              className="about-product-row"
+              style={{ "--accent-color": product.accent } as React.CSSProperties}
+            >
+              <div className="about-product-icon">
+                {product.logo ? (
+                  <Image src={product.logo} alt={product.name} width={36} height={36} style={{ objectFit: "contain" }} />
+                ) : (
+                  <MessageSquare size={20} color={product.accent} />
+                )}
+              </div>
+              <div style={{ flex: 1 }}>
+                <div className="about-product-name">{product.name}</div>
+                <div className="about-product-desc">{product.desc}</div>
+                <div className="about-product-tags">
+                  {product.tags.map((tag) => (
+                    <span key={tag} className="about-product-tag">{tag}</span>
+                  ))}
                 </div>
-                <div>
-                  <div className="about-product-name">{product.name}</div>
-                  <div className="about-product-desc">{product.desc}</div>
-                </div>
-              </Link>
-              {i < products.length - 1 && <div className="about-card-divider" />}
-            </div>
+              </div>
+            </Link>
           ))}
 
           <div className="about-card-footer">
