@@ -6,6 +6,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Products from "@/components/Products";
 import Industries from "@/components/Industries";
 import About from "@/components/About";
+import TechStack from "@/components/TechStack";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Products />
       <WhyChooseUs />
       <Industries />
+      <TechStack />
       <CTABanner />
     </main>
   );
