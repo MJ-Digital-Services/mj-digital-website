@@ -386,8 +386,8 @@ img { max-width: 100%; display: block; }
 
 /* ── Mega Menu (Services) ── */
 .dropdown-mega {
-  position: fixed;
-  top: 78px;
+  position: absolute;
+  top: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
   background: #ffffff;

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import {
   ChevronDown, Menu, X, Zap, MessageSquare,
   Lock, Code2, Globe, Smartphone, Bot,
@@ -55,31 +56,28 @@ const staticLinks = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setScrolled(latest > 60);
+  });
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    setMounted(true);
   }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
 
   const open = (name: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setActiveDropdown(name);
   };
-
   const close = () => {
     closeTimer.current = setTimeout(() => setActiveDropdown(null), 150);
   };
-
   const keep = (name: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setActiveDropdown(name);
@@ -87,11 +85,58 @@ export default function Navbar() {
 
   return (
     <>
-      <div className={`navbar-wrapper${scrolled ? " scrolled" : ""}`}>
-        <div className="navbar">
-          <div className="navbar-inner">
-
-            {/* ── Logo ── */}
+      {/* Fixed full-width container — transparent, just for positioning */}
+      <div style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1000,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        pointerEvents: "none",
+        backgroundColor: scrolled ? "transparent" : "var(--navbar-bg)",
+        opacity: mounted ? 1 : 0,
+        transition: "opacity 0.15s ease",
+      }}>
+        {/* 
+          This is the only animated element.
+          It sits centered, and we animate its width + top margin.
+          Content layout never changes — no reflow, no flying elements.
+        */}
+        <motion.div
+          animate={{
+            marginTop: scrolled ? 12 : 0,
+            width: scrolled ? "55vw" : "100vw",
+            borderRadius: scrolled ? 16 : 0,
+            boxShadow: scrolled
+              ? "0 4px 30px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.06)"
+              : "0 1px 0 0 rgba(0,0,0,0.07)",
+          }}
+          transition={{ type: "spring", stiffness: 160, damping: 36 }}
+          style={{
+            backgroundColor: "var(--navbar-bg)",
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
+            overflow: "visible",
+            pointerEvents: "auto",
+            minWidth: scrolled ? 700 : "unset",
+          }}
+        >
+          {/* Inner row — height animates separately for smoothness */}
+          <motion.div
+            animate={{ height: scrolled ? 56 : 72 }}
+            transition={{ type: "spring", stiffness: 160, damping: 36 }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "0 64px",
+              gap: 24,
+            }}
+          >
+            {/* Logo */}
             <Link href="/" className="navbar-logo">
               <div className="navbar-logo-icon">MJ</div>
               <span className="navbar-logo-text">
@@ -99,34 +144,21 @@ export default function Navbar() {
               </span>
             </Link>
 
-            {/* ── Right side: Nav + Divider + CTA ── */}
+            {/* Right side */}
             <div className="navbar-right">
-
-              {/* Desktop Nav */}
               <nav className="navbar-nav">
 
                 {/* Products */}
-                <div
-                  className="nav-dropdown"
-                  onMouseEnter={() => open("products")}
-                  onMouseLeave={close}
-                >
+                <div className="nav-dropdown" onMouseEnter={() => open("products")} onMouseLeave={close}>
                   <button className={`nav-link${activeDropdown === "products" ? " active" : ""}`}>
                     Products
                     <ChevronDown size={13} className={`nav-chevron${activeDropdown === "products" ? " open" : ""}`} />
                   </button>
-
                   {activeDropdown === "products" && (
-                    <div
-                      className="dropdown-simple"
-                      onMouseEnter={() => keep("products")}
-                      onMouseLeave={close}
-                    >
+                    <div className="dropdown-simple" onMouseEnter={() => keep("products")} onMouseLeave={close}>
                       {products.map((item) => (
                         <Link key={item.name} href={item.href} className="dropdown-simple-item" onClick={() => setActiveDropdown(null)}>
-                          <div className="dropdown-simple-icon">
-                            <item.icon size={17} />
-                          </div>
+                          <div className="dropdown-simple-icon"><item.icon size={17} /></div>
                           <div>
                             <div className="dropdown-simple-name">{item.name}</div>
                             <div className="dropdown-simple-desc">{item.description}</div>
@@ -137,31 +169,20 @@ export default function Navbar() {
                   )}
                 </div>
 
-                {/* Services — mega menu */}
-                <div
-                  className="nav-dropdown"
-                  onMouseEnter={() => open("services")}
-                  onMouseLeave={close}
-                >
+                {/* Services */}
+                <div className="nav-dropdown" onMouseEnter={() => open("services")} onMouseLeave={close}>
                   <button className={`nav-link${activeDropdown === "services" ? " active" : ""}`}>
                     Services
                     <ChevronDown size={13} className={`nav-chevron${activeDropdown === "services" ? " open" : ""}`} />
                   </button>
-
                   {activeDropdown === "services" && (
-                    <div
-                      className="dropdown-mega"
-                      onMouseEnter={() => keep("services")}
-                      onMouseLeave={close}
-                    >
+                    <div className="dropdown-mega" onMouseEnter={() => keep("services")} onMouseLeave={close}>
                       {serviceGroups.map((group) => (
                         <div key={group.label} className="mega-group">
                           <div className="mega-group-label">{group.label}</div>
                           {group.items.map((item) => (
                             <Link key={item.name} href={item.href} className="mega-item" onClick={() => setActiveDropdown(null)}>
-                              <div className="mega-item-icon">
-                                <item.icon size={16} />
-                              </div>
+                              <div className="mega-item-icon"><item.icon size={16} /></div>
                               <div>
                                 <div className="mega-item-name">{item.name}</div>
                                 <div className="mega-item-desc">{item.description}</div>
@@ -174,40 +195,27 @@ export default function Navbar() {
                   )}
                 </div>
 
-                {/* Static links */}
                 {staticLinks.map((link) => (
-                  <Link key={link.name} href={link.href} className="nav-link">
-                    {link.name}
-                  </Link>
+                  <Link key={link.name} href={link.href} className="nav-link">{link.name}</Link>
                 ))}
               </nav>
 
-              {/* Divider */}
               <div className="navbar-divider" />
 
-              {/* CTA */}
               <Link href="/contact" className="navbar-cta">
                 Let&apos;s Talk <ArrowRight size={14} />
               </Link>
             </div>
 
-            {/* Mobile Toggle */}
-            <button
-              className="navbar-mobile-toggle"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle menu"
-            >
+            {/* Mobile toggle */}
+            <button className="navbar-mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
-          </div>
+          </motion.div>
 
-          {/* Mobile Menu */}
+          {/* Mobile menu */}
           <div className={`navbar-mobile-menu${mobileOpen ? " open" : ""}`}>
-
-            <button
-              className="mobile-nav-link"
-              onClick={() => setMobileExpanded(mobileExpanded === "products" ? null : "products")}
-            >
+            <button className="mobile-nav-link" onClick={() => setMobileExpanded(mobileExpanded === "products" ? null : "products")}>
               Products
               <ChevronDown size={16} style={{ color: "var(--text-muted)", transform: mobileExpanded === "products" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }} />
             </button>
@@ -215,46 +223,34 @@ export default function Navbar() {
               <div className="mobile-dropdown-items">
                 {products.map((item) => (
                   <Link key={item.name} href={item.href} className="mobile-dropdown-item" onClick={() => setMobileOpen(false)}>
-                    <item.icon size={14} style={{ color: "var(--primary)", flexShrink: 0 }} />
-                    {item.name}
+                    <item.icon size={14} style={{ color: "var(--primary)", flexShrink: 0 }} />{item.name}
                   </Link>
                 ))}
               </div>
             )}
-
-            <button
-              className="mobile-nav-link"
-              onClick={() => setMobileExpanded(mobileExpanded === "services" ? null : "services")}
-            >
+            <button className="mobile-nav-link" onClick={() => setMobileExpanded(mobileExpanded === "services" ? null : "services")}>
               Services
               <ChevronDown size={16} style={{ color: "var(--text-muted)", transform: mobileExpanded === "services" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }} />
             </button>
             {mobileExpanded === "services" && (
               <div className="mobile-dropdown-items">
-                {serviceGroups.map((group) =>
-                  group.items.map((item) => (
-                    <Link key={item.name} href={item.href} className="mobile-dropdown-item" onClick={() => setMobileOpen(false)}>
-                      <item.icon size={14} style={{ color: "var(--primary)", flexShrink: 0 }} />
-                      {item.name}
-                    </Link>
-                  ))
-                )}
+                {serviceGroups.map((group) => group.items.map((item) => (
+                  <Link key={item.name} href={item.href} className="mobile-dropdown-item" onClick={() => setMobileOpen(false)}>
+                    <item.icon size={14} style={{ color: "var(--primary)", flexShrink: 0 }} />{item.name}
+                  </Link>
+                )))}
               </div>
             )}
-
             {staticLinks.map((link) => (
-              <Link key={link.name} href={link.href} className="mobile-nav-link" onClick={() => setMobileOpen(false)}>
-                {link.name}
-              </Link>
+              <Link key={link.name} href={link.href} className="mobile-nav-link" onClick={() => setMobileOpen(false)}>{link.name}</Link>
             ))}
-
             <div className="mobile-cta-wrap">
               <Link href="/contact" className="mobile-cta" onClick={() => setMobileOpen(false)}>
                 Let&apos;s Talk <ArrowRight size={16} />
               </Link>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <div className="navbar-spacer" />
