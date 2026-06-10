@@ -891,3 +891,79 @@ img { max-width: 100%; display: block; }
   .hero-ctas { flex-direction: column; width: 100%; }
   .hero-btn-primary, .hero-btn-outline { width: 100%; justify-content: center; }
 }
+
+/* ============================================================
+   TRUSTED BY / MARQUEE
+   ============================================================ */
+
+.trustedby-section {
+  background: var(--background);
+  padding: 48px 0 52px;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.trustedby-label {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+.trustedby-track-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.trustedby-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.trustedby-fade-left {
+  left: 0;
+  background: linear-gradient(to right, var(--background), transparent);
+}
+
+.trustedby-fade-right {
+  right: 0;
+  background: linear-gradient(to left, var(--background), transparent);
+}
+
+.trustedby-track {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  width: max-content;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+.trustedby-track:hover {
+  animation-play-state: paused;
+}
+
+.trustedby-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.trustedby-logo:hover img {
+  opacity: 1 !important;
+  filter: grayscale(0) !important;
+}
+
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
