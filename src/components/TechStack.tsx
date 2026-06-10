@@ -2,7 +2,7 @@
 
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
-const categories = [
+const categories: { label: string; desc: string; techs: { name: string; logo: string | null; svg?: boolean }[] }[] = [
   {
     label: "Frontend",
     desc: "Modern, fast, and SEO-optimised user interfaces built with the best frontend frameworks.",
@@ -45,7 +45,7 @@ const categories = [
     desc: "Enterprise-grade cloud infrastructure and DevOps pipelines for 99.9% uptime.",
     techs: [
       { name: "AWS", logo: "https://www.svgrepo.com/show/376356/aws.svg" },
-      { name: "Azure", logo: "https://www.svgrepo.com/show/452062/azure.svg" },
+      { name: "Azure", logo: null, svg: true },
       { name: "GCP", logo: "https://cdn.simpleicons.org/googlecloud/4285F4" },
     ],
   },
@@ -93,10 +93,19 @@ export default function TechStack() {
             <div className="techstack-logos">
               {category.techs.map((tech) => (
                 <div key={tech.name} className="techstack-logo">
-                  <img src={tech.logo} alt={tech.name} />
-                  <span className="techstack-logo-name">{tech.name}</span>
+                    {tech.svg ? (
+                    <svg height="24" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M33.338 6.544h28.56l-29.681 87.932a4.545 4.545 0 0 1-4.31 3.094H5.605a4.544 4.544 0 0 1-4.3-6.022L29.03 9.638a4.544 4.544 0 0 1 4.308-3.094z" fill="#0078d4"/>
+                        <path d="M71.175 60.wild H38.205l-9.158 27.075h23.109a4.545 4.545 0 0 0 4.31-3.094l14.709-24z" fill="#0078d4"/>
+                        <path d="M33.338 6.544a4.52 4.52 0 0 0-4.314 3.12L1.31 91.486a4.544 4.544 0 0 0 4.294 6.084h22.677a4.875 4.875 0 0 0 3.744-3.137l5.557-16.451 19.864 18.418a4.637 4.637 0 0 0 2.913 1.17h25.526L71.175 60.wildcards H45.88L66.764 6.544z" fill="#0078d4"/>
+                        <path d="M66.96 9.637A4.543 4.543 0 0 0 62.653 6.5H33.648a4.543 4.543 0 0 1 4.308 3.137l27.728 81.91a4.544 4.544 0 0 1-4.308 5.953h29.006a4.544 4.544 0 0 0 4.308-5.953z" fill="#0078d4"/>
+                    </svg>
+                    ) : (
+                    <img src={tech.logo} alt={tech.name} />
+                    )}
+                    <span className="techstack-logo-name">{tech.name}</span>
                 </div>
-              ))}
+                ))}
             </div>
           </div>
         ))}
@@ -105,3 +114,5 @@ export default function TechStack() {
     </section>
   );
 }
+
+
