@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Zap, MessageSquare, Lock, Building2 } from "lucide-react";
+import Image from "next/image";
+import { MessageSquare, Building2 } from "lucide-react";
 
 const stats = [
   { number: "50+", label: "Projects Delivered" },
@@ -9,19 +10,19 @@ const stats = [
 
 const products = [
   {
-    icon: Zap,
+    logo: "/ezeepay-logo.png",
     name: "EzeePay",
     desc: "Fintech & AEPS Platform",
     href: "/products/ezeepay",
   },
   {
-    icon: MessageSquare,
+    logo: null,
     name: "Zoki",
     desc: "WhatsApp & CPaaS Platform",
     href: "/products/zoki",
   },
   {
-    icon: Lock,
+    logo: "/mobilocker-logo.png",
     name: "Mobilocker",
     desc: "Digital Storage & Security",
     href: "/products/mobilocker",
@@ -63,8 +64,12 @@ export default function About() {
           {products.map((product, i) => (
             <div key={product.name}>
               <Link href={product.href} className="about-product-row">
-                <div className="about-product-icon">
-                  <product.icon size={18} />
+                <div className="about-product-icon" style={{backgroundColor: 'white'}}>
+                  {product.logo ? (
+                    <Image src={product.logo} alt={product.name} width={28} height={28} style={{ objectFit: "contain", backgroundColor: 'white' }} />
+                  ) : (
+                    <MessageSquare size={18} />
+                  )}
                 </div>
                 <div>
                   <div className="about-product-name">{product.name}</div>
