@@ -19,6 +19,7 @@ const services = [
     features: ["AEPS Cash Withdrawal", "Domestic Money Transfer", "BBPS Bill Payments", "PAN & Aadhaar KYC", "Bank Account Verification"],
     href: "/services/api-solutions",
     visual: "api",
+    image: "/api-solution.webp",
   },
   {
     id: "cpaas",
@@ -29,6 +30,7 @@ const services = [
     features: ["WhatsApp Business API", "Bulk SMS Gateway", "RCS Messaging", "IVR & Voice Calls", "Campaign Analytics"],
     href: "/services/cpaas",
     visual: "cpaas",
+    image: "/cpass-solution.webp"
   },
   {
     id: "web-dev",
@@ -39,6 +41,7 @@ const services = [
     features: ["Next.js & React", "Fintech Portals", "Ecommerce Platforms", "Admin Dashboards", "SEO Optimised"],
     href: "/services/web-development",
     visual: "web",
+    image: "web-development.webp"
   },
   {
     id: "mobile-apps",
@@ -49,6 +52,7 @@ const services = [
     features: ["Flutter & React Native", "iOS & Android", "Fintech Mobile Apps", "Offline Support", "Push Notifications"],
     href: "/services/mobile-apps",
     visual: "mobile",
+    image: "mobile-app-development.webp"
   },
   {
     id: "white-label",
@@ -59,6 +63,7 @@ const services = [
     features: ["Merchant Portal", "Digital Wallet", "Payment Aggregation", "Custom Branding", "Multi-tenant Architecture"],
     href: "/services/white-label-fintech",
     visual: "fintech",
+    image: "white-label-fintech.webp"
   },
   {
     id: "ai",
@@ -69,6 +74,7 @@ const services = [
     features: ["NLP Chatbots", "WhatsApp AI Agent", "Lead Qualification", "Workflow Automation", "Custom LLM Integration"],
     href: "/services/ai-solutions",
     visual: "ai",
+    image: "ai-chatbot-automation.webp"
   },
   {
     id: "crm-erp",
@@ -79,6 +85,7 @@ const services = [
     features: ["Custom CRM", "Inventory Management", "Billing & Invoicing", "HR Management", "Role-based Access"],
     href: "/services/crm-erp",
     visual: "crm",
+    image: "crm-platform.webp"
   },
   {
     id: "cloud",
@@ -89,6 +96,7 @@ const services = [
     features: ["AWS & Azure", "CI/CD Pipelines", "Docker & Kubernetes", "24/7 Monitoring", "Auto Scaling"],
     href: "/services/cloud-devops",
     visual: "cloud",
+    image: "cloud-devops.webp"
   },
 ];
 
@@ -394,12 +402,16 @@ function ServiceRow({ service }: { service: typeof services[0] }) {
         Learn More <ArrowRight size={13} />
       </Link>
 
-      {/* Placeholder image */}
-      <div style={{ width: "100%", aspectRatio: "16/9", borderRadius: 16, background: "var(--surface)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, opacity: 0.3 }}>
-          <service.icon size={40} color="var(--text-muted)" />
-          <span style={{ fontSize: 13, color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}>{service.title} — Screenshot coming soon</span>
-        </div>
+      {/* Image */}
+      <div style={{ width: "100%", aspectRatio: "16/9", borderRadius: 16, overflow: "hidden", background: "var(--surface)" }}>
+        {service.image ? (
+          <img src={service.image} alt={service.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        ) : (
+          <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10, opacity: 0.3 }}>
+            <service.icon size={40} color="var(--text-muted)" />
+            <span style={{ fontSize: 13, color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}>{service.title} — Screenshot coming soon</span>
+          </div>
+        )}
       </div>
     </div>
   );
