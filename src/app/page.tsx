@@ -5,12 +5,14 @@ import CTABanner from "@/components/CTABanner";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Products from "@/components/Products";
 import Industries from "@/components/Industries";
+import About from "@/components/About";
 
 export default function Home() {
   return (
     <main>
       <Hero />
       <TrustedBy />
+      <About />
       <Services />
       <Products />
       <WhyChooseUs />
