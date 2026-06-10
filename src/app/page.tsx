@@ -4,6 +4,7 @@ import Services from "@/components/Services";
 import CTABanner from "@/components/CTABanner";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Products from "@/components/Products";
+import Industries from "@/components/Industries";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Services />
       <Products />
       <WhyChooseUs />
+      <Industries />
       <CTABanner />
     </main>
   );
