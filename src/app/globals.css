@@ -237,6 +237,12 @@ img { max-width: 100%; display: block; }
 }
 .navbar-logo-text span { color: var(--primary); }
 
+@media (max-width: 374px) {
+  .navbar-logo-text {
+    display: none;
+  }
+}
+
 /* ── Right side wrapper ── */
 .navbar-right {
   display: flex;
