@@ -1243,3 +1243,142 @@ img { max-width: 100%; display: block; }
   color: #ffffff;
   transform: translateY(-2px);
 }
+
+/* ============================================================
+   WHY CHOOSE US — BENTO
+   ============================================================ */
+
+.why-section {
+  background: var(--surface);
+  padding: 100px 24px;
+}
+
+.why-header {
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto 64px;
+}
+
+.why-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-family: var(--font-sans);
+}
+
+.why-headline {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.why-subtext {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+/* Bento grid */
+.why-bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 16px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Card base */
+.why-card {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  overflow: hidden;
+  position: relative;
+}
+
+.why-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 8px 32px var(--primary-glow);
+  transform: translateY(-3px);
+}
+
+/* Span variants */
+.why-card-wide { grid-column: span 2; }
+.why-card-tall { grid-row: span 2; }
+
+/* Visual area at top of card */
+.why-card-visual {
+  width: 100%;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 140px;
+}
+
+.why-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--primary-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.why-card-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.why-card-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+  .why-bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .why-card-wide { grid-column: span 2; }
+  .why-card-tall { grid-row: span 1; }
+}
+
+@media (max-width: 640px) {
+  .why-bento {
+    grid-template-columns: 1fr;
+  }
+  .why-card-wide { grid-column: span 1; }
+  .why-section { padding: 64px 20px; }
+}
