@@ -143,40 +143,76 @@ function SeoVisual() {
 }
 
 /* ── Card 5: chip + circuit beams ── */
+const TRACES_TOP = [
+  "M241.461 -19.625V7.85497L301.26 68.5597V123.375",
+  "M284.045 123.375V77.6201L221.528 15.1033V-19.625",
+  "M109.641 -20.625L152.669 26.8818H210.656L265.924 83.0563V123.375",
+  "M247.803 122.875V91.2107L200.689 44.0966H79.2799L15.1406 -21.125",
+  "M0.640625 -5.625L69.3134 62.2174H192.535L229.683 98.459V123.375",
+];
+const TRACES_LEFT = [
+  "M12.427 165.594V126.58L32.3598 103.929H200.148",
+  "M200.148 85.8084H27.8296L0.648438 113.896",
+  "M0.648438 70.4057H200.148",
+  "M200.148 50.4728H22.3934L0.648438 30.54",
+  "M0.648438 0.640625L32.3598 32.352H200.148",
+];
+const TRACES_RIGHT = [
+  "M118.875 0V64.2816L169.613 115.926V142",
+  "M99.8516 0V76.966L144.664 121V142",
+  "M82.6391 0V83.3087L30.1641 142.5M63.6122 0V74.2483L0.664062 142.5",
+  "M136.094 0V51.5975L178.678 96.8995H296.463",
+];
+
+function TraceGroup({
+  paths, viewBox, gradId, className,
+}: { paths: string[]; viewBox: string; gradId: string; className: string }) {
+  return (
+    <svg className={`wcu-traces ${className}`} viewBox={viewBox} fill="none">
+      <defs>
+        <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="var(--primary)" stopOpacity="0" />
+          <stop offset="50%" stopColor="var(--primary)" stopOpacity="1" />
+          <stop offset="100%" stopColor="#ff6b6b" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      {paths.map((d, i) => (
+        <path key={`base-${i}`} className="wcu-trace2" d={d} />
+      ))}
+      {paths.map((d, i) => (
+        <path
+          key={`beam-${i}`}
+          className="wcu-beam2"
+          d={d}
+          pathLength={1}
+          stroke={`url(#${gradId})`}
+          style={{ animationDelay: `${i * 0.55}s` }}
+        />
+      ))}
+    </svg>
+  );
+}
+
+const PINS = [0, 1, 2, 3, 4];
+
 function ComponentsVisual() {
   return (
-    <div className="wcu-circuit">
-      <svg viewBox="0 0 360 220" fill="none" preserveAspectRatio="xMidYMid meet">
-        <defs>
-          <linearGradient id="wcuBeam" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="var(--primary)" stopOpacity="0" />
-            <stop offset="0.5" stopColor="var(--primary)" />
-            <stop offset="1" stopColor="#ff6b6b" />
-          </linearGradient>
-          <linearGradient id="wcuChip" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#ff6b6b" />
-            <stop offset="1" stopColor="var(--primary-dark)" />
-          </linearGradient>
-        </defs>
+    <div className="wcu-chipscene">
+      <TraceGroup paths={TRACES_TOP} viewBox="0 0 303 124" gradId="wcuGradT" className="wcu-traces-top" />
+      <TraceGroup paths={TRACES_LEFT} viewBox="0 0 201 166" gradId="wcuGradL" className="wcu-traces-left" />
+      <TraceGroup paths={TRACES_RIGHT} viewBox="0 0 167 142" gradId="wcuGradR" className="wcu-traces-right" />
 
-        {/* base traces */}
-        <path className="wcu-trace" d="M0 40 H140 L175 75 H235" />
-        <path className="wcu-trace" d="M0 110 H235" />
-        <path className="wcu-trace" d="M0 180 H140 L175 145 H235" />
-
-        {/* animated beams */}
-        <path className="wcu-beam" pathLength={1} d="M0 40 H140 L175 75 H235" />
-        <path className="wcu-beam wcu-beam-2" pathLength={1} d="M0 110 H235" />
-        <path className="wcu-beam wcu-beam-3" pathLength={1} d="M0 180 H140 L175 145 H235" />
-
-        {/* chip pins */}
-        {[75, 110, 145].map((y) => (
-          <rect key={y} x={228} y={y - 2} width={14} height={4} rx={2} fill="var(--border)" />
-        ))}
-        {/* chip */}
-        <rect x={240} y={55} width={100} height={110} rx={22} fill="url(#wcuChip)" className="wcu-chip" />
-        <rect x={262} y={77} width={56} height={66} rx={12} fill="rgba(255,255,255,0.18)" />
-      </svg>
+      <div className="wcu-chip2">
+        <div className="wcu-pins wcu-pins-l">{PINS.map((i) => <span key={i} />)}</div>
+        <div className="wcu-pins wcu-pins-r">{PINS.map((i) => <span key={i} />)}</div>
+        <div className="wcu-pins wcu-pins-t">{PINS.map((i) => <span key={i} />)}</div>
+        <div className="wcu-pins wcu-pins-b">{PINS.map((i) => <span key={i} />)}</div>
+        <div className="wcu-chip2-body">
+          <span className="wcu-chip2-sheen wcu-chip2-sheen-1" />
+          <span className="wcu-chip2-sheen wcu-chip2-sheen-2" />
+          <span className="wcu-chip2-sheen wcu-chip2-sheen-3" />
+        </div>
+      </div>
     </div>
   );
 }
