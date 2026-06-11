@@ -74,20 +74,37 @@ export default function Hero() {
         <div className="hero-chips">
           {/* <span className="hero-chips-label">Our Products:</span> */}
           {products.map((p, i) => (
-            <LinkPreview
-              key={p.name}
-              url={p.url}
-              {...(p.isStatic ? { isStatic: true, imageSrc: p.logo } : {})}
-              width={200}
-              height={120}
-              className="hero-chip"
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 7, animationDelay: `${0.6 + i * 0.1}s` }}>
-                <img src={p.logo} alt={p.name} style={{ width: 20, height: 20, borderRadius: "4px", objectFit: "contain", flexShrink: 0, backgroundColor: "white" }} />
-                <span>{p.name}</span>
-                <span className="hero-chip-desc">{p.desc}</span>
-              </div>
-            </LinkPreview>
+            p.isStatic ? (
+              <LinkPreview
+                key={p.name}
+                url={p.url}
+                isStatic
+                imageSrc={p.logo}
+                width={200}
+                height={120}
+                className="hero-chip"
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 7, animationDelay: `${0.6 + i * 0.1}s` }}>
+                  <img src={p.logo} alt={p.name} style={{ width: 20, height: 20, borderRadius: "4px", objectFit: "contain", flexShrink: 0, backgroundColor: "white" }} />
+                  <span>{p.name}</span>
+                  <span className="hero-chip-desc">{p.desc}</span>
+                </div>
+              </LinkPreview>
+            ) : (
+              <LinkPreview
+                key={p.name}
+                url={p.url}
+                width={200}
+                height={120}
+                className="hero-chip"
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 7, animationDelay: `${0.6 + i * 0.1}s` }}>
+                  <img src={p.logo} alt={p.name} style={{ width: 20, height: 20, borderRadius: "4px", objectFit: "contain", flexShrink: 0, backgroundColor: "white" }} />
+                  <span>{p.name}</span>
+                  <span className="hero-chip-desc">{p.desc}</span>
+                </div>
+              </LinkPreview>
+            )
           ))}
         </div>
       </div>
