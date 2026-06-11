@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowRight, Server, Search, Mic } from "lucide-react";
+import { ArrowRight, Server, Search, Mic, Code2 } from "lucide-react";
 import { WorldMap } from "@/components/ui/world-map";
 import { Terminal } from "@/components/ui/terminal";
+import AnimatedButton from "./AnimatedButton";
 
 /* ── Card 2: cycling progress notifications ── */
 const updates = [
@@ -256,9 +257,9 @@ export default function WhyChooseUs() {
               From idea to launch — design, development, QA and DevOps under one roof,
               built to perform and scale with your business.
             </p>
-            <Link href="/services" className="wcu-card-btn">
+            <AnimatedButton icon={<Code2 size={16} />} href="/services" className="wcu-card-btn">
               Explore Services <ArrowRight size={14} />
-            </Link>
+            </AnimatedButton>
           </div>
         </div>
 
