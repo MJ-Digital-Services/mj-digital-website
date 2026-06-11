@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Boxes } from "@/components/ui/background-boxes";
+import { LinkPreview } from "@/components/ui/link-preview";
 
 const stats = [
   { number: "200+", label: "Businesses Served" },
@@ -13,9 +14,9 @@ const stats = [
 ];
 
 const products = [
-  { name: "EzeePay", logo: "/ezeepay-logo.png", desc: "Fintech Platform" },
-  { name: "Zoki", logo: "/zoki-logo.png", desc: "CPaaS Solution" },
-  { name: "Mobilocker", logo: "/mobilocker-logo.png", desc: "Secure Storage" },
+  { name: "EzeePay", logo: "/ezeepay-logo.png", desc: "Fintech Platform", url: "https://ezeepay.app", isStatic: false },
+  { name: "Zoki", logo: "/zoki-logo.png", desc: "CPaaS Solution", url: "https://mjdigitalservices.com/products/zoki", isStatic: true },
+  { name: "Mobilocker", logo: "/mobilocker-logo.png", desc: "Secure Storage", url: "https://mobilocker.app", isStatic: false },
 ];
 
 export default function Hero() {
@@ -68,12 +69,21 @@ export default function Hero() {
         <div className="hero-chips">
           {/* <span className="hero-chips-label">Our Products:</span> */}
           {products.map((p, i) => (
-            <div key={p.name} className="hero-chip" style={{ animationDelay: `${0.6 + i * 0.1}s` }}>
-                <img src={p.logo} alt={p.name} style={{ width: 20, height: 20, borderRadius: "4px", objectFit: "contain", flexShrink: 0, backgroundColor: 'white' }} />
+            <LinkPreview
+              key={p.name}
+              url={p.url}
+              {...(p.isStatic ? { isStatic: true, imageSrc: p.logo } : {})}
+              width={200}
+              height={120}
+              className="hero-chip"
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: 7, animationDelay: `${0.6 + i * 0.1}s` }}>
+                <img src={p.logo} alt={p.name} style={{ width: 20, height: 20, borderRadius: "4px", objectFit: "contain", flexShrink: 0, backgroundColor: "white" }} />
                 <span>{p.name}</span>
                 <span className="hero-chip-desc">{p.desc}</span>
-            </div>
-            ))}
+              </div>
+            </LinkPreview>
+          ))}
         </div>
       </div>
 
