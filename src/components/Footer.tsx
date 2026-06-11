@@ -61,33 +61,35 @@ const companyLinks = [
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footer-top">
+      <div className="footer-glowline" />
 
+      <div className="footer-top">
         {/* Brand column */}
         <div>
           <Link href="/" className="navbar-logo" style={{ color: "#ffffff" }}>
             <div className="navbar-logo-icon">MJ</div>
             <span className="navbar-logo-text" style={{ color: "#ffffff" }}>
-            MJ Digital<span style={{ color: "var(--primary)" }}> Services</span>
+              MJ Digital<span style={{ color: "var(--primary)" }}> Services</span>
             </span>
           </Link>
-          <p style={{ fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.55)", marginTop: 14, fontFamily: "var(--font-sans)", lineHeight: 1.6, letterSpacing: "0.01em" }}>
+          <p className="footer-brand-motto">
             Building Digital Products · Powering Businesses · Enabling Innovation
-            </p>
-
-            <p className="footer-brand-tagline">
-            MJ Digital Services is a technology and innovation company delivering software solutions, fintech infrastructure, APIs, mobile applications, and digital transformation services for startups, enterprises, and government-focused organizations.
-            </p>
+          </p>
+          <p className="footer-brand-tagline">
+            Technology and innovation company delivering software solutions, fintech
+            infrastructure, APIs, mobile applications, and digital transformation for
+            startups, enterprises, and government-focused organizations.
+          </p>
           <div className="footer-socials">
             {socials.map((s) => (
-                <a key={s.label} href={s.href} className="footer-social-btn" aria-label={s.label} target="_blank" rel="noopener noreferrer">
-                    {s.svg}
-                </a>
+              <a key={s.label} href={s.href} className="footer-social-btn" aria-label={s.label} target="_blank" rel="noopener noreferrer">
+                {s.svg}
+              </a>
             ))}
           </div>
         </div>
 
-        {/* Company column */}
+        {/* Company */}
         <div>
           <div className="footer-col-title">Company</div>
           <div className="footer-links">
@@ -97,7 +99,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Products column */}
+        {/* Products */}
         <div>
           <div className="footer-col-title">Products</div>
           <div className="footer-links">
@@ -105,7 +107,11 @@ export default function Footer() {
               <Link key={l.name} href={l.href} className="footer-link">{l.name}</Link>
             ))}
           </div>
-          <div className="footer-col-title" style={{ marginTop: 28 }}>Services</div>
+        </div>
+
+        {/* Services */}
+        <div>
+          <div className="footer-col-title">Services</div>
           <div className="footer-links">
             {serviceLinks.map((l) => (
               <Link key={l.name} href={l.href} className="footer-link">{l.name}</Link>
@@ -113,15 +119,21 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Contact column */}
+        {/* Contact */}
         <div>
           <div className="footer-col-title">Contact</div>
           <a href="mailto:business@mjdigitalservices.com" className="footer-contact-item">
             <Mail size={14} style={{ flexShrink: 0, color: "var(--primary)" }} />
             business@mjdigitalservices.com
           </a>
+          <Link href="/contact" className="footer-start-link">
+            Start a project <span>→</span>
+          </Link>
+          <div className="footer-status">
+            <span className="footer-status-dot" />
+            All systems operational
+          </div>
         </div>
-
       </div>
 
       <hr className="footer-divider" />
@@ -133,8 +145,11 @@ export default function Footer() {
         <div className="footer-bottom-links">
           <Link href="/privacy-policy" className="footer-bottom-link">Privacy Policy</Link>
           <Link href="/terms-of-service" className="footer-bottom-link">Terms of Service</Link>
+          <a href="#" className="footer-bottom-link footer-totop">Back to top ↑</a>
         </div>
       </div>
+
+      <div className="footer-watermark" aria-hidden="true">MJ DIGITAL</div>
     </footer>
   );
 }
