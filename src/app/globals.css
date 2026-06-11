@@ -1,3 +1,6 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
 /* ============================================================
    MJ DIGITAL SERVICES — Global Styles (Pure CSS, no Tailwind)
    ============================================================ */
@@ -1301,6 +1304,9 @@ img { max-width: 100%; display: block; }
   line-height: 1.75;
 }
 
+.no-visible-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-visible-scrollbar::-webkit-scrollbar { display: none; }
+
 /* ============================================================
    WHY CHOOSE US — BENTO (v2, Aceternity-style)
    Keeps .why-section / .why-header / .why-badge / .why-headline /
@@ -1396,53 +1402,6 @@ img { max-width: 100%; display: block; }
   background: var(--primary-dark);
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(229, 24, 42, 0.35);
-}
-
-/* ============================================================
-   CARD 1 — Browser mockup
-   ============================================================ */
-
-.wcu-browser {
-  background: #ffffff;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-}
-
-.wcu-browser-bar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 12px;
-  border-bottom: 1px solid #ececf0;
-}
-.wcu-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-.wcu-browser-url {
-  flex: 1;
-  height: 10px;
-  margin: 0 24px;
-  border-radius: 5px;
-  background: #f0f0f3;
-}
-
-.wcu-browser-body {
-  padding: 22px 20px 26px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.wcu-skel { border-radius: 5px; background: #ececf0; }
-.wcu-skel-lg { height: 12px; width: 70%; }
-.wcu-skel-md { height: 10px; width: 45%; }
-.wcu-skel-row { display: flex; gap: 8px; margin-top: 2px; }
-.wcu-skel-pill { width: 34px; height: 12px; border-radius: 100px; background: #ececf0; }
-.wcu-skel-block {
-  height: 130px;
-  border-radius: 10px;
-  background: #f4f4f6;
-  border: 1px dashed #e0e0e5;
-  margin-top: 6px;
 }
 
 /* ============================================================

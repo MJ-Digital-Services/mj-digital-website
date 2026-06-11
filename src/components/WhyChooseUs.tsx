@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, Server, Search, Mic } from "lucide-react";
 import { WorldMap } from "@/components/ui/world-map";
+import { Terminal } from "@/components/ui/terminal";
 
 /* ── Card 2: cycling progress notifications ── */
 const updates = [
@@ -180,28 +181,6 @@ function ComponentsVisual() {
   );
 }
 
-/* ── Card 1: browser mockup ── */
-function DevVisual() {
-  return (
-    <div className="wcu-browser">
-      <div className="wcu-browser-bar">
-        <span className="wcu-dot" style={{ background: "#ff5f57" }} />
-        <span className="wcu-dot" style={{ background: "#febc2e" }} />
-        <span className="wcu-dot" style={{ background: "#28c840" }} />
-        <div className="wcu-browser-url" />
-      </div>
-      <div className="wcu-browser-body">
-        <div className="wcu-skel wcu-skel-lg" />
-        <div className="wcu-skel wcu-skel-md" />
-        <div className="wcu-skel-row">
-          <span className="wcu-skel-pill" /><span className="wcu-skel-pill" /><span className="wcu-skel-pill" />
-        </div>
-        <div className="wcu-skel-block" />
-      </div>
-    </div>
-  );
-}
-
 export default function WhyChooseUs() {
   return (
     <section className="why-section">
@@ -216,7 +195,25 @@ export default function WhyChooseUs() {
       <div className="wcu-bento">
         {/* 1 — tall dark */}
         <div className="wcu-card wcu-card-dark wcu-card-tall">
-          <DevVisual />
+          <Terminal
+            className="max-w-none px-0"
+            username="mj-digital"
+            enableSound={false}
+            typingSpeed={40}
+            delayBetweenCommands={900}
+            commands={[
+              "git clone mj-digital/client-app",
+              "npm install",
+              "npm run build",
+              "vercel deploy --prod",
+            ]}
+            outputs={{
+              0: ["Cloning into 'client-app'...", "✔ Done."],
+              1: ["added 412 packages in 8s"],
+              2: ["✔ Compiled successfully", "✔ Generating static pages (24/24)"],
+              3: ["✔ Production: https://client-app.mjdigital.in"],
+            }}
+          />
           <div className="wcu-card-content">
             <h3 className="wcu-title wcu-title-light">Design &amp; Development</h3>
             <p className="wcu-desc wcu-desc-light">
