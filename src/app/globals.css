@@ -2004,60 +2004,221 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================================
-   INDUSTRIES
+   INDUSTRIES — ORBITAL HUB (v2)
    ============================================================ */
 
-.industries-section {
-  background: var(--surface);
-  padding: 100px 24px;
+.ind2-section {
+  position: relative;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 18px 18px,
+    #09090B;
+  padding: 100px 24px 90px;
+  overflow: hidden;
+}
+.ind2-section::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 700px;
+  background: radial-gradient(ellipse, rgba(229, 24, 42, 0.10) 0%, transparent 65%);
+  pointer-events: none;
 }
 
-.industries-header {
+.ind2-header {
+  position: relative;
   text-align: center;
   max-width: 580px;
-  margin: 0 auto 56px;
+  margin: 0 auto;
 }
-
-.industries-badge {
+.ind2-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 5px 14px;
   border-radius: 100px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(229, 24, 42, 0.3);
+  background: rgba(229, 24, 42, 0.08);
   font-size: 11px;
   font-weight: 600;
-  color: var(--text-muted);
+  color: var(--primary);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 16px;
   font-family: var(--font-sans);
 }
-
-.industries-headline {
+.ind2-headline {
   font-family: var(--font-display);
   font-size: clamp(30px, 3.5vw, 46px);
   font-weight: 700;
-  color: var(--text-primary);
+  color: #ffffff;
   letter-spacing: -0.02em;
   line-height: 1.15;
   margin-bottom: 16px;
 }
-
-.industries-subtext {
+.ind2-subtext {
   font-size: 16px;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.45);
   line-height: 1.75;
 }
 
-.industries-grid {
+/* ── Orbit stage ── */
+.orbit-stage {
+  position: relative;
+  width: 640px;
+  height: 640px;
+  margin: 8px auto 0;
+}
+
+/* Radar sweep */
+.orbit-sweep {
+  position: absolute;
+  inset: 40px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(229, 24, 42, 0.20), transparent 70deg);
+  animation: orbitSpin 7s linear infinite;
+}
+
+/* Rings */
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(255, 255, 255, 0.13);
+}
+.orbit-ring-outer {
+  inset: 40px;                /* 560px diameter */
+  --radius: 280px;
+  animation: orbitSpin 55s linear infinite;
+}
+.orbit-ring-inner {
+  inset: 155px;               /* 330px diameter */
+  --radius: 165px;
+  animation: orbitSpin 40s linear infinite reverse;
+}
+
+@keyframes orbitSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes orbitSpinRev {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+/* Chip placement on the circle */
+.orbit-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--angle))
+    translateX(var(--radius))
+    rotate(calc(var(--angle) * -1));
+}
+
+/* Counter-rotation keeps chips upright (must match ring durations) */
+.orbit-chip-rev { animation: orbitSpinRev 55s linear infinite; }
+.orbit-chip-fwd { animation: orbitSpin 40s linear infinite; }
+
+/* Chip look */
+.orbit-chip {
   display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 16px 7px 8px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  transition: border-color 0.25s, background 0.25s;
+}
+.orbit-chip:hover {
+  border-color: rgba(229, 24, 42, 0.6);
+  background: rgba(229, 24, 42, 0.12);
+}
+.orbit-chip-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(229, 24, 42, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+/* Hub */
+.orbit-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.orbit-hub-core {
+  width: 92px;
+  height: 92px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, #ff5a5a 0%, var(--primary) 55%, var(--primary-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 26px;
+  animation: hubPulse 3s ease-in-out infinite;
+}
+@keyframes hubPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(229, 24, 42, 0.35), 0 16px 48px rgba(229, 24, 42, 0.45); }
+  50%      { box-shadow: 0 0 0 22px rgba(229, 24, 42, 0), 0 16px 64px rgba(229, 24, 42, 0.6); }
+}
+
+/* Pill fallback — hidden on desktop */
+.ind2-pills {
+  display: none;
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
-  max-width: 860px;
-  margin: 0 auto;
+  max-width: 760px;
+  margin: 40px auto 0;
+  position: relative;
 }
+.ind2-pill-dark {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.13);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .orbit-stage { transform: scale(0.82); margin: -40px auto -50px; }
+}
+@media (max-width: 768px) {
+  .orbit-stage { display: none; }
+  .ind2-pills { display: flex; }
+  .ind2-section { padding: 64px 20px; }
+}
+
+/* ── Reduced motion: freeze orbits, hide sweep ── */
+@media (prefers-reduced-motion: reduce) {
+  .orbit-ring, .orbit-chip-rev, .orbit-chip-fwd, .orbit-hub-core { animation: none; }
+  .orbit-sweep { display: none; }
+}
+
+/* ============================================================
+   INDUSTRIES
+   ============================================================ */
 
 .industry-pill {
   display: inline-flex;
@@ -2089,7 +2250,6 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 640px) {
-  .industries-section { padding: 64px 20px; }
   .industry-pill { padding: 12px 18px; font-size: 13px; }
 }
 
