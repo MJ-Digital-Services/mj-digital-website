@@ -62,6 +62,37 @@ export default function Navbar() {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { scrollY } = useScroll();
+  // const [expandedPad, setExpandedPad] = useState(64);
+  const logoRef = useRef<HTMLAnchorElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  const [vw, setVw] = useState(0);
+  const [shrunkWidth, setShrunkWidth] = useState<number | null>(null);
+
+  useEffect(() => {
+    const update = () => {
+      setVw(window.innerWidth);
+      const content =
+        (logoRef.current?.offsetWidth ?? 0) +
+        (rightRef.current?.offsetWidth ?? 0) +
+        (toggleRef.current?.offsetWidth ?? 0);
+      setShrunkWidth(content + 24 /* row gap */ + 56 /* 2 × 28px scrolled padding */);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const expandedPad = Math.min(150, Math.max(24, vw * 0.104));
+
+  // useEffect(() => {
+  //   const update = () =>
+  //     setExpandedPad(Math.min(150, Math.max(24, window.innerWidth * 0.104)));
+  //   update();
+  //   window.addEventListener("resize", update);
+  //   return () => window.removeEventListener("resize", update);
+  // }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 60);
@@ -108,7 +139,7 @@ export default function Navbar() {
         <motion.div
           animate={{
             marginTop: scrolled ? 12 : 0,
-            width: scrolled ? "auto" : "100vw",
+            width: scrolled ? (shrunkWidth ?? "auto") : vw || "100vw",
             borderRadius: scrolled ? 16 : 0,
             boxShadow: scrolled
               ? "0 4px 30px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.06)"
@@ -127,18 +158,21 @@ export default function Navbar() {
         >
           {/* Inner row — height animates separately for smoothness */}
           <motion.div
-            animate={{ height: scrolled ? 56 : 72 }}
+            animate={{
+              height: scrolled ? 56 : 72,
+              paddingLeft: scrolled ? 28 : expandedPad,
+              paddingRight: scrolled ? 28 : expandedPad,
+            }}
             transition={{ type: "spring", stiffness: 160, damping: 36 }}
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              padding: scrolled ? "0 28px" : "0 64px",
               gap: 24,
             }}
           >
             {/* Logo */}
-            <Link href="/" className="navbar-logo">
+            <Link href="/" className="navbar-logo" ref={logoRef}>
               <div className="navbar-logo-icon">MJ</div>
               <span className="navbar-logo-text">
                 MJ Digital<span> Services</span>
@@ -146,7 +180,7 @@ export default function Navbar() {
             </Link>
 
             {/* Right side */}
-            <div className="navbar-right">
+            <div className="navbar-right" ref={rightRef}>
               <nav className="navbar-nav">
 
                 {/* Products */}
@@ -209,7 +243,7 @@ export default function Navbar() {
             </div>
 
             {/* Mobile toggle */}
-            <button className="navbar-mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
+            <button ref={toggleRef} className="navbar-mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </motion.div>
