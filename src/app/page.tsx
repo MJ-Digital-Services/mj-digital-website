@@ -8,15 +8,17 @@ import Industries from "@/components/Industries";
 import About from "@/components/About";
 import TechStack from "@/components/TechStack";
 import Testimonials from "@/components/Testimonials";
+import ProductShowcase from "@/components/ProductShowcase";
 
 export default function Home() {
   return (
     <main>
       <Hero />
       <TrustedBy />
-      <About />
+      <ProductShowcase />
+      {/* <About /> */}
       <Services />
-      <Products />
+      {/* <Products /> */}
       <WhyChooseUs />
       <Testimonials />
       <Industries />
