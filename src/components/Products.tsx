@@ -9,6 +9,7 @@ const products = [
     description: "A comprehensive fintech platform offering AEPS, money transfer, utility bill payments, recharge services, and Aadhaar-based services for merchants and distributors.",
     features: ["AEPS Cash Withdrawal", "Domestic Money Transfer", "Utility Bill Payments", "Recharge Services", "Aadhaar Services"],
     href: "/products/ezeepay",
+    image: "/products/ezeepay-screenshot.png",
   },
   {
     icon: MessageSquare,
@@ -17,6 +18,7 @@ const products = [
     description: "A powerful WhatsApp engagement and marketing automation platform. Reach, engage, and convert customers through intelligent communication workflows.",
     features: ["WhatsApp Engagement", "Marketing Automation", "Customer Communication", "Lead Management", "Campaign Analytics"],
     href: "/products/zoki",
+    image: "/products/zoki-screenshot.png",
   },
   {
     icon: Lock,
@@ -25,6 +27,7 @@ const products = [
     description: "A secure digital storage and document management platform. Store, verify, and manage important documents with enterprise-grade security.",
     features: ["Digital Storage", "Secure Verification", "Document Management", "Data Security", "Easy Retrieval"],
     href: "/products/mobilocker",
+    image: "/products/mobilocker-screenshot.png",
   },
 ];
 
@@ -48,10 +51,14 @@ export default function Products() {
 
             {/* Placeholder image */}
             <div className="product-card-image">
-              <div className="product-card-image-placeholder">
-                <product.icon size={32} color="rgba(255,255,255,0.4)" />
-                <span>{product.title} — Screenshot coming soon</span>
-              </div>
+              {product.image ? (
+                <img src={product.image} alt={product.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              ) : (
+                <div className="product-card-image-placeholder">
+                  <product.icon size={32} color="rgba(255,255,255,0.4)" />
+                  <span>{product.title} — Screenshot coming soon</span>
+                </div>
+              )}
             </div>
 
             <div className="product-card-body">
