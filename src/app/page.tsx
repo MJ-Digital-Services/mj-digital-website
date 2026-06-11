@@ -9,6 +9,7 @@ import About from "@/components/About";
 import TechStack from "@/components/TechStack";
 import Testimonials from "@/components/Testimonials";
 import ProductShowcase from "@/components/ProductShowcase";
+import FAQs from "@/components/FAQs";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <Testimonials />
       <Industries />
       <TechStack />
+      <FAQs />
       <CTABanner />
     </main>
   );
