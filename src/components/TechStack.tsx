@@ -101,7 +101,7 @@ export default function TechStack() {
                         <path d="M66.96 9.637A4.543 4.543 0 0 0 62.653 6.5H33.648a4.543 4.543 0 0 1 4.308 3.137l27.728 81.91a4.544 4.544 0 0 1-4.308 5.953h29.006a4.544 4.544 0 0 0 4.308-5.953z" fill="#0078d4"/>
                     </svg>
                     ) : (
-                    <img src={tech.logo} alt={tech.name} />
+                    <img src={tech.logo ?? undefined} alt={tech.name} />
                     )}
                     <span className="techstack-logo-name">{tech.name}</span>
                 </div>
