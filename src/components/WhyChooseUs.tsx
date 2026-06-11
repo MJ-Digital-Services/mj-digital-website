@@ -25,8 +25,36 @@ function UpdatesVisual() {
 
   return (
     <div className="wcu-updates-visual">
-      <div className="wcu-donut">
-        <div className="wcu-donut-hole" />
+      <div className="wcu-donut2">
+        <svg viewBox="0 0 120 120">
+          <circle className="wcu-donut2-track" cx="60" cy="60" r="48" />
+          <motion.circle
+            className="wcu-donut2-seg-main"
+            cx="60" cy="60" r="48"
+            initial={{ pathLength: 0 }}
+            whileInView={{ pathLength: 0.58 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 1.1, ease: "easeOut", delay: 0.2 }}
+          />
+          <motion.circle
+            className="wcu-donut2-seg-alt"
+            cx="60" cy="60" r="48"
+            initial={{ pathLength: 0, pathOffset: 0.58 }}
+            whileInView={{ pathLength: 0.2, pathOffset: 0.58 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.9 }}
+          />
+        </svg>
+        <motion.div
+          className="wcu-donut2-center"
+          initial={{ opacity: 0, scale: 0.85 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 1.1 }}
+        >
+          <span className="wcu-donut2-pct">78%</span>
+          <span className="wcu-donut2-label">on track</span>
+        </motion.div>
       </div>
       <div className="wcu-stack">
         <div className="wcu-stack-ghost wcu-stack-ghost-2" />
