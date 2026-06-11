@@ -1244,6 +1244,16 @@ img { max-width: 100%; display: block; }
   transform: translateY(-2px);
 }
 
+@media (max-width: 768px) {
+  .cta-map-col {
+    display: none;
+  }
+
+  .cta-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* ============================================================
    WHY CHOOSE US — BENTO
    ============================================================ */

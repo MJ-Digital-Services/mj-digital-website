@@ -25,7 +25,7 @@ export default function CTABanner() {
         zIndex: 1,
       }} />
 
-      <div style={{
+      <div className="cta-grid" style={{
         maxWidth: 1280,
         margin: "0 auto",
         display: "grid",
@@ -95,7 +95,7 @@ export default function CTABanner() {
         </div>
 
         {/* Right — world map */}
-        <div style={{ position: "relative", height: "100%", minHeight: 420 }}>
+        <div className="cta-map-col" style={{ position: "relative", height: "100%", minHeight: 420 }}>
           <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center" }}>
             <WorldMap
               lineColor="#e5182a"
