@@ -447,6 +447,7 @@ export function Terminal({
         {/* Terminal Content */}
         <div
           ref={contentRef}
+          style={{paddingLeft: 15, paddingTop: 8}}
           className="no-visible-scrollbar h-80 overflow-y-auto p-4 font-mono"
         >
           {lines.map((line, i) => (
