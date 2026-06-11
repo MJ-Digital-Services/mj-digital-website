@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { WorldMap } from "@/components/ui/world-map";
+import AnimatedButton from "@/components/AnimatedButton";
 
 export default function CTABanner() {
   return (
@@ -79,10 +80,14 @@ export default function CTABanner() {
           </p>
 
           <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-            <Link href="/contact" className="cta-btn-primary">
+            <AnimatedButton
+              href="/contact"
+              className="cta-btn-primary"
+              icon={<MessageCircle size={15} />}
+            >
               <MessageCircle size={15} />
               Let's Talk
-            </Link>
+            </AnimatedButton>
             <Link href="/services" className="cta-btn-outline">
               View Services <ArrowRight size={14} />
             </Link>

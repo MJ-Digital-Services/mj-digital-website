@@ -2,9 +2,10 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Rocket } from "lucide-react";
 import { Boxes } from "@/components/ui/background-boxes";
 import { LinkPreview } from "@/components/ui/link-preview";
+import AnimatedButton from "@/components/AnimatedButton";
 
 const stats = [
   { number: "200+", label: "Businesses Served" },
@@ -57,9 +58,13 @@ export default function Hero() {
 
         {/* CTAs */}
         <div className="hero-ctas">
-          <Link href="/services" className="hero-btn-primary">
+          <AnimatedButton
+            href="/services"
+            className="hero-btn-primary"
+            icon={<Rocket size={16} />}
+          >
             Explore Services <ArrowRight size={16} />
-          </Link>
+          </AnimatedButton>
           <Link href="/products/ezeepay" className="hero-btn-outline">
             View Products
           </Link>

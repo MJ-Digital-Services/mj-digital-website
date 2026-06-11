@@ -2161,3 +2161,45 @@ img { max-width: 100%; display: block; }
   }
   .testimonials-section { padding: 64px 20px; }
 }
+
+/* ============================================================
+   ANIMATED BUTTON
+   ============================================================ */
+
+.animated-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.animated-btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+
+.animated-btn-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  opacity: 0;
+}
+
+.animated-btn:hover .animated-btn-text {
+  transform: translateX(150%);
+  opacity: 0;
+}
+
+.animated-btn:hover .animated-btn-icon {
+  transform: translateX(0);
+  opacity: 1;
+}
