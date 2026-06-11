@@ -1301,96 +1301,462 @@ img { max-width: 100%; display: block; }
   line-height: 1.75;
 }
 
-/* Bento grid */
-.why-bento {
+/* ============================================================
+   WHY CHOOSE US — BENTO (v2, Aceternity-style)
+   Keeps .why-section / .why-header / .why-badge / .why-headline /
+   .why-subtext from before. Everything below replaces the old
+   .why-bento / .why-card styles.
+   ============================================================ */
+
+.wcu-bento {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
-  gap: 16px;
+  grid-template-columns: 1.05fr 1fr 1.15fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
   max-width: 1280px;
   margin: 0 auto;
 }
 
-/* Card base */
-.why-card {
+/* ── Card base ── */
+.wcu-card {
   background: var(--background);
   border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 32px 28px;
+  border-radius: 24px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-  overflow: hidden;
-  position: relative;
+  gap: 18px;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
 }
-
-.why-card:hover {
+.wcu-card:hover {
   border-color: var(--primary);
-  box-shadow: 0 8px 32px var(--primary-glow);
+  box-shadow: 0 12px 40px var(--primary-glow);
   transform: translateY(-3px);
 }
 
-/* Span variants */
-.why-card-wide { grid-column: span 2; }
-.why-card-tall { grid-row: span 2; }
-
-/* Visual area at top of card */
-.why-card-visual {
-  width: 100%;
-  border-radius: 12px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  min-height: 140px;
+.wcu-card-dark {
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px) 0 0 / 16px 16px,
+    #0a0a0b;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.wcu-card-dark:hover {
+  border-color: rgba(229, 24, 42, 0.55);
 }
 
-.why-card-icon {
-  width: 44px;
-  height: 44px;
+.wcu-card-tall {
+  grid-row: 1 / 3;
+  justify-content: space-between;
+}
+
+/* ── Titles / copy ── */
+.wcu-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+.wcu-title-light { color: #ffffff; }
+.wcu-title-top { margin-bottom: 2px; }
+
+.wcu-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.wcu-desc-light { color: rgba(255, 255, 255, 0.5); }
+
+.wcu-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wcu-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-top: 8px;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.wcu-card-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(229, 24, 42, 0.35);
+}
+
+/* ============================================================
+   CARD 1 — Browser mockup
+   ============================================================ */
+
+.wcu-browser {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.wcu-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #ececf0;
+}
+.wcu-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.wcu-browser-url {
+  flex: 1;
+  height: 10px;
+  margin: 0 24px;
+  border-radius: 5px;
+  background: #f0f0f3;
+}
+
+.wcu-browser-body {
+  padding: 22px 20px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.wcu-skel { border-radius: 5px; background: #ececf0; }
+.wcu-skel-lg { height: 12px; width: 70%; }
+.wcu-skel-md { height: 10px; width: 45%; }
+.wcu-skel-row { display: flex; gap: 8px; margin-top: 2px; }
+.wcu-skel-pill { width: 34px; height: 12px; border-radius: 100px; background: #ececf0; }
+.wcu-skel-block {
+  height: 130px;
+  border-radius: 10px;
+  background: #f4f4f6;
+  border: 1px dashed #e0e0e5;
+  margin-top: 6px;
+}
+
+/* ============================================================
+   CARD 2 — Updates (donut + cycling notifications)
+   ============================================================ */
+
+.wcu-updates-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.wcu-donut {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--primary) 0 62%,
+    #f3dfc4 62% 84%,
+    var(--surface-2) 84% 100%
+  );
+  position: relative;
+  flex-shrink: 0;
+}
+.wcu-donut-hole {
+  position: absolute;
+  inset: 26px;
+  border-radius: 50%;
+  background: var(--background);
+}
+
+/* Stack of swapping cards */
+.wcu-stack {
+  position: relative;
+  width: 100%;
+  height: 86px;
+  margin-top: 10px;
+}
+
+.wcu-stack-ghost {
+  position: absolute;
+  left: 50%;
   border-radius: 12px;
-  background: var(--primary-glow);
+  background: var(--background);
+  border: 1px solid var(--border);
+  height: 64px;
+}
+.wcu-stack-ghost-1 { width: 92%; transform: translateX(-50%); top: -8px; opacity: 0.7; }
+.wcu-stack-ghost-2 { width: 84%; transform: translateX(-50%); top: -16px; opacity: 0.4; }
+
+.wcu-notif {
+  position: absolute;
+  inset: 0 0 auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.wcu-notif-tag {
+  font-size: 11px;
+  font-family: monospace;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+.wcu-notif-text {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 3px;
+}
+.wcu-notif-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary);
-  margin-bottom: 16px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+}
+
+/* ============================================================
+   CARD 3 — Hosting map + avatar pins
+   ============================================================ */
+
+.wcu-map {
+  position: relative;
+  flex: 1;
+  min-height: 190px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(229, 24, 42, 0.07), transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, black 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, black 60%, transparent 100%);
+}
+
+.wcu-map-world {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.wcu-map-world > div {
+  width: 112%;   /* slight overscan so map edges crop instead of floating */
   flex-shrink: 0;
 }
 
-.why-card-title {
-  font-family: var(--font-display);
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 10px;
-  letter-spacing: -0.01em;
+.wcu-map-server {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
 }
 
-.why-card-desc {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.7;
+.wcu-map-avatar {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 700;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  font-family: var(--font-sans);
 }
+
+.wcu-map-ping {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  animation: wcuPing 2.4s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes wcuPing {
+  0%   { transform: scale(1); opacity: 0.7; }
+  70%  { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* ============================================================
+   CARD 4 — Google / SEO
+   ============================================================ */
+
+.wcu-seo-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.wcu-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: var(--background);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+.wcu-google-g {
+  font-size: 16px;
+  font-weight: 800;
+  color: #4285f4;
+  font-family: var(--font-sans);
+  flex-shrink: 0;
+}
+.wcu-search-text {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wcu-search-mic { color: var(--primary); flex-shrink: 0; }
+
+.wcu-stack-seo { height: 118px; margin-top: 16px; }
+.wcu-stack-seo .wcu-stack-ghost { height: 96px; }
+
+.wcu-result {
+  position: absolute;
+  inset: 0 0 auto 0;
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.wcu-result-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--primary-glow);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.wcu-result-body { min-width: 0; flex: 1; }
+.wcu-result-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.wcu-result-url {
+  font-size: 11.5px;
+  color: #1a7f37;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wcu-result-line {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wcu-result-skeleton {
+  height: 8px;
+  width: 60%;
+  border-radius: 4px;
+  background: var(--surface-2);
+  margin-top: 8px;
+}
+
+/* ============================================================
+   CARD 5 — Chip + circuit beams
+   ============================================================ */
+
+.wcu-circuit {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-height: 190px;
+}
+.wcu-circuit svg { width: 100%; height: 100%; }
+
+.wcu-trace {
+  stroke: var(--border);
+  stroke-width: 1.5;
+}
+
+.wcu-beam {
+  stroke: url(#wcuBeam);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 0.22 0.78;
+  stroke-dashoffset: 1;
+  animation: wcuBeamMove 2.8s linear infinite;
+}
+.wcu-beam-2 { animation-delay: 0.9s; }
+.wcu-beam-3 { animation-delay: 1.7s; }
+
+@keyframes wcuBeamMove {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.wcu-chip {
+  filter: drop-shadow(0 10px 28px rgba(229, 24, 42, 0.45));
+}
+
+/* ============================================================
+   Responsive + reduced motion
+   ============================================================ */
 
 @media (max-width: 1024px) {
-  .why-bento {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .why-card-wide { grid-column: span 2; }
-  .why-card-tall { grid-row: span 1; }
+  .wcu-bento { grid-template-columns: 1fr 1fr; }
+  .wcu-card-tall { grid-row: auto; grid-column: 1 / -1; }
 }
 
 @media (max-width: 640px) {
-  .why-bento {
-    grid-template-columns: 1fr;
-  }
-  .why-card-wide { grid-column: span 1; }
-  .why-section { padding: 64px 20px; }
+  .wcu-bento { grid-template-columns: 1fr; gap: 14px; }
+  .wcu-card { padding: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wcu-beam, .wcu-map-ping { animation: none; }
 }
 
 /* ============================================================
