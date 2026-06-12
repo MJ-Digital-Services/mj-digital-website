@@ -1,13 +1,13 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "motion/react";
 import {
   Code2, MessageSquare, Globe, Smartphone,
   LayoutDashboard, Bot, Database, Cloud,
   ArrowRight, CheckCircle2,
 } from "lucide-react";
-import { TracingBeam } from "@/components/ui/tracing-beam";
 
 const services = [
   {
@@ -418,26 +418,98 @@ function ServiceRow({ service }: { service: typeof services[0] }) {
 }
 
 export default function Services() {
+  const [active, setActive] = useState(0);
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            setActive(Number((e.target as HTMLElement).dataset.index));
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+    );
+    stepRefs.current.forEach((el) => el && io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <section style={{ background: "var(--background)", padding: "100px 0" }}>
-      <div style={{ textAlign: "center", marginBottom: 60, padding: "0 24px" }}>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "5px 14px", borderRadius: 100, border: "1px solid var(--border)", fontSize: 11, fontWeight: 600, color: "var(--text-muted)", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 16 }}>
-          What We Build
-        </div>
-        <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 16 }}>
-          Services That Drive Growth
-        </h2>
-        <p style={{ fontSize: 17, color: "var(--text-muted)", maxWidth: 520, margin: "0 auto", lineHeight: 1.7 }}>
-          From fintech APIs to AI solutions — everything your business needs to scale in the digital economy.
+    <section className="svc-section">
+      <div className="svc-header">
+        <div className="svc-badge">What We Build</div>
+        <h2 className="svc-headline">Services That Drive Growth</h2>
+        <p className="svc-subtext">
+          From fintech APIs to AI solutions — everything your business needs to
+          scale in the digital economy.
         </p>
       </div>
 
-      <div style={{ maxWidth: 1000, margin: "0 auto", padding: "0 24px 0 80px" }}>
-        <TracingBeam>
-          {services.map((service) => (
-            <ServiceRow key={service.id} service={service} />
+      <div className="svc-layout">
+        {/* Left — scrolling text steps */}
+        <div className="svc-steps">
+          {services.map((s, i) => (
+            <div
+              key={s.id}
+              ref={(el) => { stepRefs.current[i] = el; }}
+              data-index={i}
+              className={`svc-step${active === i ? " active" : ""}`}
+            >
+              <div className="svc-step-badge">
+                <s.icon size={13} />
+                {s.label}
+              </div>
+              <h3 className="svc-step-title">{s.title}</h3>
+              <p className="svc-step-desc">{s.description}</p>
+              <div className="svc-step-features">
+                {s.features.map((f) => (
+                  <div key={f} className="svc-step-feature">
+                    <CheckCircle2 size={12} />
+                    {f}
+                  </div>
+                ))}
+              </div>
+              <Link href={s.href} className="svc-step-link">
+                Learn More <ArrowRight size={13} />
+              </Link>
+
+              {/* Mobile-only inline visual */}
+              <div className="svc-step-visual">
+                <ServiceVisual type={s.visual} />
+              </div>
+            </div>
           ))}
-        </TracingBeam>
+        </div>
+
+        {/* Right — sticky swapping panel */}
+        <div className="svc-sticky">
+          <div className="svc-panel">
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.div
+                key={active}
+                className="svc-panel-inner"
+                initial={{ opacity: 0, y: 28, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -28, scale: 0.98 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+              >
+                <ServiceVisual type={services[active].visual} />
+              </motion.div>
+            </AnimatePresence>
+            <div className="svc-panel-meta">
+              <span className="svc-panel-count">
+                {String(active + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}
+              </span>
+              <div className="svc-panel-dots">
+                {services.map((s, i) => (
+                  <span key={s.id} className={`svc-dot${active === i ? " active" : ""}`} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
