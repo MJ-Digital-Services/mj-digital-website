@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, Server, Search, Mic, Code2 } from "lucide-react";
 import { WorldMap } from "@/components/ui/world-map";
 import { Terminal } from "@/components/ui/terminal";
-import AnimatedButton from "./AnimatedButton";
+import AnimatedButton from "@/components/ui/AnimatedButton";
 
 /* ── Card 2: cycling progress notifications ── */
 const updates = [

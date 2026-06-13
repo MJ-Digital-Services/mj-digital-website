@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Rocket } from "lucide-react";
 import { Boxes } from "@/components/ui/background-boxes";
 import { LinkPreview } from "@/components/ui/link-preview";
-import AnimatedButton from "@/components/AnimatedButton";
+import AnimatedButton from "@/components/ui/AnimatedButton";
 
 const stats = [
   { number: "200+", label: "Businesses Served" },

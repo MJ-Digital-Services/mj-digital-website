@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { WorldMap } from "@/components/ui/world-map";
-import AnimatedButton from "@/components/AnimatedButton";
+import AnimatedButton from "@/components/ui/AnimatedButton";
 
 export default function CTABanner() {
   return (

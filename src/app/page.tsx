@@ -1,15 +1,13 @@
-import Hero from "@/components/Hero";
-import TrustedBy from "@/components/TrustedBy";
-import Services from "@/components/Services";
-import CTABanner from "@/components/CTABanner";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import Products from "@/components/Products";
-import Industries from "@/components/Industries";
-import About from "@/components/About";
-import TechStack from "@/components/TechStack";
-import Testimonials from "@/components/Testimonials";
-import ProductShowcase from "@/components/ProductShowcase";
-import FAQs from "@/components/FAQs";
+import Hero from "@/components/home/Hero";
+import TrustedBy from "@/components/home/TrustedBy";
+import Services from "@/components/home/Services";
+import WhyChooseUs from "@/components/home/WhyChooseUs";
+import Industries from "@/components/home/Industries";
+import TechStack from "@/components/home/TechStack";
+import Testimonials from "@/components/home/Testimonials";
+import FAQs from "@/components/home/FAQs";
+import CTABanner from "@/components/home/CTABanner";
+import ProductShowcase from "@/components/home/ProductShowcase";
 
 export default function Home() {
   return (
