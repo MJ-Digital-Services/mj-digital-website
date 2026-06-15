@@ -1,10 +1,10 @@
 import type { NextConfig } from "next";
-
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    domains: ["api.microlink.io"],
+    domains: [
+      "api.microlink.io",
+      "pub-19ac7a5a7cd44a2eb419ad8517068e68.r2.dev",
+    ],
   },
 };
-
 export default nextConfig;
