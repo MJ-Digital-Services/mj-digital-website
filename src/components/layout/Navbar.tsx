@@ -186,7 +186,7 @@ export default function Navbar() {
                 {/* Products */}
                 <div className="nav-dropdown" onMouseEnter={() => open("products")} onMouseLeave={close}>
                   <button className={`nav-link${activeDropdown === "products" ? " active" : ""}`}>
-                    Products
+                    Our Products
                     <ChevronDown size={13} className={`nav-chevron${activeDropdown === "products" ? " open" : ""}`} />
                   </button>
                   {activeDropdown === "products" && (
