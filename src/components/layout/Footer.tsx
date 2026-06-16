@@ -131,7 +131,7 @@ export default function Footer() {
           </Link>
           <div className="footer-status">
             <span className="footer-status-dot" />
-            All systems operational
+            All systems operational.
           </div>
         </div>
       </div>
