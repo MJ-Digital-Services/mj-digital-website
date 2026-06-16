@@ -64,9 +64,6 @@ export default async function BlogPage() {
             <h1 className="blog-hero-headline">
               MJ Digital <span>Blog</span>
             </h1>
-            <p className="blog-hero-subtext">
-              Insights on fintech, digital payments, and technology from the MJ Digital team.
-            </p>
           </div>
         </div>
       </section>

@@ -4278,14 +4278,14 @@ img { max-width: 100%; display: block; }
 
 .blog-hero {
   background: var(--background);
-  padding: 104px 0 56px;
+  padding: 84px 0 32px;
 }
 
 .blog-hero-card {
   position: relative;
   overflow: hidden;
-  border-radius: 28px;
-  padding: 64px 56px;
+  border-radius: 24px;     /* was 28px */
+  padding: 40px 48px;      /* was 64px 56px */
   background: linear-gradient(140deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: #fff;
   box-shadow: 0 24px 60px rgba(229, 24, 42, 0.22);
@@ -4336,14 +4336,15 @@ img { max-width: 100%; display: block; }
 .blog-hero-headline {
   position: relative;
   max-width: 700px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;     /* was 16px */
   font-family: var(--font-display);
-  font-size: clamp(36px, 5vw, 58px);
+  font-size: clamp(28px, 4vw, 44px);   /* was clamp(36px, 5vw, 58px) */
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  color: rgba(255, 255, 255, 0.80);   /* "MJ Digital" — slightly dimmed */
+  color: rgba(255, 255, 255, 0.80);
 }
+
 .blog-hero-headline span {
   color: #fff;                         /* "Blog" — brightest, keeps the emphasis */
 }
@@ -4351,17 +4352,17 @@ img { max-width: 100%; display: block; }
 .blog-hero-subtext {
   position: relative;
   max-width: 520px;
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 15px;          /* was 17px */
+  line-height: 1.65;
   color: rgba(255, 255, 255, 0.82);
 }
 
 @media (max-width: 640px) {
   .blog-hero-card {
-    padding: 44px 26px;
-    border-radius: 22px;
+    padding: 32px 22px;
+    border-radius: 18px;
   }
   .blog-hero-subtext {
-    font-size: 15.5px;
+    font-size: 14px;
   }
 }
