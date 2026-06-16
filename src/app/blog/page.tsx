@@ -53,16 +53,16 @@ export default async function BlogPage() {
 
   return (
     <>
-      {/* Hero */}
+      {/* Hero — gradient card */}
       <section className="blog-hero">
         <div className="container">
-          <div className="blog-hero-inner">
-            <div className="why-badge">
+          <div className="blog-hero-card">
+            <span className="blog-hero-eyebrow">
               <span className="hero-badge-dot" />
-              Insights & Updates
-            </div>
+              Insights &amp; Updates
+            </span>
             <h1 className="blog-hero-headline">
-              MJ Digital <span className="text-gradient">Blog</span>
+              MJ Digital <span>Blog</span>
             </h1>
             <p className="blog-hero-subtext">
               Insights on fintech, digital payments, and technology from the MJ Digital team.

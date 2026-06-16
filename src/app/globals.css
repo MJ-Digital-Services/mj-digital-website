@@ -3478,33 +3478,6 @@ img { max-width: 100%; display: block; }
    BLOG PAGES
    ============================================================ */
 
-/* ── Blog Hero ── */
-.blog-hero {
-  background: var(--surface);
-  padding: 120px 0 64px;
-}
-
-.blog-hero-inner {
-  max-width: 680px;
-}
-
-.blog-hero-headline {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 5vw, 58px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  color: var(--text-primary);
-  margin: 16px 0 16px;
-}
-
-.blog-hero-subtext {
-  font-size: 17px;
-  color: var(--text-muted);
-  line-height: 1.75;
-  max-width: 520px;
-}
-
 /* ── Blog Listing ── */
 .blog-listing-section {
   background: var(--background);
@@ -3999,11 +3972,12 @@ img { max-width: 100%; display: block; }
 }
 
 .blog-post-faq-answer {
-  padding: 0 0 22px;
-  font-size: 14.5px;
-  color: var(--text-muted);
-  line-height: 1.8;
+  max-width: 100%;
+  padding: 18px 0 22px;
   font-family: var(--font-sans);
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--text-muted);
 }
 
 .blog-post-faq-open {
@@ -4048,6 +4022,11 @@ img { max-width: 100%; display: block; }
   border-color: var(--primary);
   color: #ffffff;
   transform: rotate(45deg);
+}
+
+/* Divider line between question and answer when open */
+.blog-post-faq-open .blog-post-faq-trigger {
+  border-bottom: 1px solid var(--border);
 }
 
 .blog-post-faq-answer-wrapper {
@@ -4287,5 +4266,102 @@ img { max-width: 100%; display: block; }
 @media (max-width: 640px) {
   .blog-post-layout {
     gap: 32px;
+  }
+}
+
+/* ============================================================
+   BLOG HERO — GRADIENT CARD
+   Replace the existing "── Blog Hero ──" block in globals.css
+   with this. (Leave the .blog-hero rule inside your existing
+   @media (max-width: 640px) query as-is — it still applies.)
+   ============================================================ */
+
+.blog-hero {
+  background: var(--background);
+  padding: 104px 0 56px;
+}
+
+.blog-hero-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  padding: 64px 56px;
+  background: linear-gradient(140deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  box-shadow: 0 24px 60px rgba(229, 24, 42, 0.22);
+}
+
+/* Soft decorative circles — same accent as the sidebar CTA, scaled up */
+.blog-hero-card::before {
+  content: "";
+  position: absolute;
+  top: -130px;
+  right: -70px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.10);
+  pointer-events: none;
+}
+.blog-hero-card::after {
+  content: "";
+  position: absolute;
+  bottom: -150px;
+  right: 130px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}
+
+.blog-hero-eyebrow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+}
+/* The dot is red by default — make it white so it shows on the red card */
+.blog-hero-eyebrow .hero-badge-dot {
+  background: #fff;
+}
+
+.blog-hero-headline {
+  position: relative;
+  max-width: 700px;
+  margin-bottom: 16px;
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.80);   /* "MJ Digital" — slightly dimmed */
+}
+.blog-hero-headline span {
+  color: #fff;                         /* "Blog" — brightest, keeps the emphasis */
+}
+
+.blog-hero-subtext {
+  position: relative;
+  max-width: 520px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+@media (max-width: 640px) {
+  .blog-hero-card {
+    padding: 44px 26px;
+    border-radius: 22px;
+  }
+  .blog-hero-subtext {
+    font-size: 15.5px;
   }
 }
