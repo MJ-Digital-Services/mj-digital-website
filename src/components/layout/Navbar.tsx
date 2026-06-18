@@ -6,7 +6,7 @@ import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import {
   ChevronDown, Menu, X, MessageSquare,
   Code2, Globe, Smartphone, Bot,
-  LayoutDashboard, ArrowRight, Database, Cpu,
+  LayoutDashboard, ArrowRight, Cpu,
 } from "lucide-react";
 
 const products = [
@@ -21,14 +21,12 @@ const serviceGroups = [
     items: [
       { name: "API Solutions", description: "AEPS, DMT, BBPS, KYC APIs", href: "/services/api-solutions", icon: Code2 },
       { name: "White Label Fintech", description: "Merchant & Wallet Platforms", href: "/services/white-label-fintech", icon: LayoutDashboard },
-      { name: "Fixed Deposit API", description: "FD booking & interest rates", href: "/developers/fd-api", icon: Database },
     ],
   },
   {
     label: "COMMUNICATION",
     items: [
       { name: "CPaaS Solutions", description: "WhatsApp, SMS, RCS & Voice", href: "/services/cpaas", icon: MessageSquare },
-      { name: "WhatsApp Business API", description: "Engage customers at scale", href: "/services/cpaas/whatsapp", icon: MessageSquare },
     ],
   },
   {
@@ -49,7 +47,7 @@ const serviceGroups = [
 ];
 
 const staticLinks = [
-  { name: "Developers", href: "/developers" },
+  { name: "Developers", href: "/services/api-solutions" },
   { name: "About", href: "/about" },
   { name: "Blog", href: "/blog" },
 ];
