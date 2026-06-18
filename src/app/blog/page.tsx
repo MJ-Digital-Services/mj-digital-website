@@ -4,8 +4,35 @@ import { Calendar, Clock } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog | MJ Digital Services',
-  description: 'Insights on fintech, digital payments, and technology from the MJ Digital team.',
+  title: "Blog | MJ Digital Services",
+  description:
+    "Insights on fintech, digital payments, APIs, and technology from the MJ Digital Services team.",
+  alternates: {
+    canonical: "https://mjdigitalservices.com/blog",
+  },
+  openGraph: {
+    title: "Blog | MJ Digital Services",
+    description:
+      "Insights on fintech, digital payments, APIs, and technology from the MJ Digital Services team.",
+    url: "https://mjdigitalservices.com/blog",
+    siteName: "MJ Digital Services",
+    type: "website",
+    images: [
+      {
+        url: "https://mjdigitalservices.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "MJ Digital Services Blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | MJ Digital Services",
+    description:
+      "Insights on fintech, digital payments, APIs, and technology from the MJ Digital Services team.",
+    images: ["https://mjdigitalservices.com/og-image.png"],
+  },
 };
 
 function BlogCard({ blog }: { blog: any }) {

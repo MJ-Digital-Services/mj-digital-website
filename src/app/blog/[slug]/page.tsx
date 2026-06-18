@@ -6,6 +6,16 @@ import { User, Calendar, Clock, ChevronRight, ArrowLeft, ArrowRight } from 'luci
 import type { Metadata } from 'next';
 import BlogFAQs from '@/components/blog/BlogFAQs';
 
+export async function generateStaticParams() {
+  try {
+    const data = await getBlogs({ limit: "1000" });
+    const blogs = data?.blogs ?? data ?? [];
+    return blogs.map((blog: { slug: string }) => ({ slug: blog.slug }));
+  } catch {
+    return [];
+  }
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -16,13 +26,38 @@ export async function generateMetadata({
     const blog = await getBlogBySlug(slug);
     const title = blog.metaTitle || `${blog.title} | MJ Digital Services`;
     const description = blog.metaDescription || blog.excerpt;
+    const canonical = `https://mjdigitalservices.com/blog/${slug}`;
+    const ogImage = blog.coverImage
+      ? blog.coverImage
+      : "https://mjdigitalservices.com/og-image.png";
+
     return {
       title,
       description,
+      alternates: {
+        canonical,
+      },
       openGraph: {
         title,
         description,
-        images: blog.coverImage ? [blog.coverImage] : [],
+        url: canonical,
+        siteName: "MJ Digital Services",
+        type: "article",
+        publishedTime: blog.publishedAt ?? undefined,
+        images: [
+          {
+            url: ogImage,
+            width: 1200,
+            height: 630,
+            alt: blog.title,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: [ogImage],
       },
     };
   } catch {
