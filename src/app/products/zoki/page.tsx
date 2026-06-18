@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
-import ZokiPage from "@/components/products/ZokiPage";
+import ZokiHero from "@/components/products/zoki/ZokiHero";
+import ZokiServices from "@/components/products/zoki/ZokiServices";
+import ZokiRewards from "@/components/products/zoki/ZokiRewards";
+import ZokiCTA from "@/components/products/zoki/ZokiCTA";
 
 export const metadata: Metadata = {
   title: "Zoki — India's Smart Rewards & Financial Services App | MJ Digital Services",
@@ -52,7 +55,10 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
-      <ZokiPage />
+      <ZokiHero />
+      <ZokiServices />
+      <ZokiRewards />
+      <ZokiCTA />
     </>
   );
 }

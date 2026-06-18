@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import EzeepayPage from "@/components/products/EzeepayPage";
+import EzeepayHero from "@/components/products/ezeepay/EzeepayHero";
+import EzeepayServices from "@/components/products/ezeepay/EzeepayServices";
+import EzeepayBenefits from "@/components/products/ezeepay/EzeepayBenefits";
+import EzeepayTiers from "@/components/products/ezeepay/EzeepayTiers";
+import EzeepayPartners from "@/components/products/ezeepay/EzeepayPartners";
+import EzeepayPageCTA from "@/components/products/ezeepay/EzeepayPageCTA";
 
 export const metadata: Metadata = {
   title: "EzeePay — India's Largest Agent Banking Network | MJ Digital Services",
@@ -52,7 +57,12 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
-      <EzeepayPage />
+      <EzeepayHero />
+      <EzeepayServices />
+      <EzeepayBenefits />
+      <EzeepayTiers />
+      <EzeepayPartners />
+      <EzeepayPageCTA />
     </>
   );
 }

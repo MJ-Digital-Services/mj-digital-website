@@ -6,82 +6,32 @@ import {
   Banknote, Receipt, Plane, Tv, Smartphone, MoreHorizontal,
   Shield, TrendingUp, Award, Wallet,
   Building2, MapPin, Users, Network,
-  CheckCircle2, Sparkles,
+  CheckCircle2, Sparkles, ArrowUpRight,
 } from "lucide-react";
 
-// ─── Live stats from EzeePay ─────────────────────────────────────────────────
 const heroStats = [
   { value: "5L+",   label: "Active Agents",       icon: Users },
-  { value: "8.3K+", label: "Distributors",        icon: Network },
-  { value: "100+",  label: "District Franchises", icon: MapPin },
-  { value: "60+",   label: "Digital Services",    icon: Sparkles },
+  { value: "8.3K+", label: "Distributors",         icon: Network },
+  { value: "100+",  label: "District Franchises",  icon: MapPin },
+  { value: "60+",   label: "Digital Services",     icon: Sparkles },
 ];
 
-// ─── Service categories ──────────────────────────────────────────────────────
 const services = [
-  {
-    icon: Banknote,
-    title: "Banking Services",
-    items: ["AEPS Cash Withdrawal", "Aadhaar Pay", "Money Transfer", "Micro ATM", "Open Bank Account"],
-    color: "#5b21b6",
-  },
-  {
-    icon: Receipt,
-    title: "Bill Payments",
-    items: ["Electricity Bills", "Water Bills", "Gas Bills", "Insurance Premium", "Loan EMI"],
-    color: "#1d4ed8",
-  },
-  {
-    icon: Plane,
-    title: "Travel Booking",
-    items: ["Flight Tickets", "Bus Booking", "Train Reservations", "Hotel Booking"],
-    color: "#0891b2",
-  },
-  {
-    icon: Smartphone,
-    title: "Recharge & DTH",
-    items: ["Mobile Recharge", "DTH Recharge", "Data Card Recharge", "Landline"],
-    color: "#ea580c",
-  },
-  {
-    icon: Tv,
-    title: "OTT & Subscriptions",
-    items: ["OTT Subscriptions", "Streaming Services", "Digital Subscriptions"],
-    color: "#6d28d9",
-  },
-  {
-    icon: MoreHorizontal,
-    title: "60+ More Services",
-    items: ["Insurance", "E-Governance", "Neo Banking", "PAN Card Services", "And more..."],
-    color: "#0f766e",
-  },
+  { icon: Banknote,      title: "Banking Services",      items: ["AEPS Cash Withdrawal", "Aadhaar Pay", "Money Transfer", "Micro ATM", "Open Bank Account"] },
+  { icon: Receipt,       title: "Bill Payments",         items: ["Electricity Bills", "Water Bills", "Gas Bills", "Insurance Premium", "Loan EMI"] },
+  { icon: Plane,         title: "Travel Booking",        items: ["Flight Tickets", "Bus Booking", "Train Reservations", "Hotel Booking"] },
+  { icon: Smartphone,    title: "Recharge & DTH",        items: ["Mobile Recharge", "DTH Recharge", "Data Card Recharge", "Landline"] },
+  { icon: Tv,            title: "OTT & Subscriptions",   items: ["OTT Subscriptions", "Streaming Services", "Digital Subscriptions"] },
+  { icon: MoreHorizontal,title: "60+ More Services",     items: ["Insurance", "E-Governance", "Neo Banking", "PAN Card Services", "And more..."] },
 ];
 
-// ─── Why become an agent — value props ───────────────────────────────────────
 const benefits = [
-  {
-    icon: Wallet,
-    title: "Minimum Investment",
-    desc: "Start with very low capital. Turn your existing shop into a full-service banking outlet — no separate setup needed.",
-  },
-  {
-    icon: Sparkles,
-    title: "60+ Services Ready",
-    desc: "One platform, multiple revenue streams. Serve your customers across banking, bills, travel, and recharge from one app.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Earn on Every Transaction",
-    desc: "Commission on every service you provide. Distributors earn up to 25% — and there's no cap on your monthly income.",
-  },
-  {
-    icon: Award,
-    title: "Trust & Credibility",
-    desc: "Part of India's largest agent network — 5 lakh+ agents already serving customers across 100+ districts.",
-  },
+  { icon: Wallet,    title: "Minimum Investment",   desc: "Start with very low capital. Turn your existing shop into a full-service banking outlet — no separate setup needed." },
+  { icon: Sparkles,  title: "60+ Services Ready",   desc: "One platform, multiple revenue streams. Serve customers across banking, bills, travel, and recharge from one app." },
+  { icon: TrendingUp,title: "Earn on Every Transaction", desc: "Commission on every service you provide. Distributors earn up to 25% — no cap on monthly income." },
+  { icon: Award,     title: "Trust & Credibility",  desc: "Part of India's largest agent network — 5 lakh+ agents already serving customers across 100+ districts." },
 ];
 
-// ─── Partner tiers ───────────────────────────────────────────────────────────
 const partnerTiers = [
   {
     tier: "Agent",
@@ -89,25 +39,15 @@ const partnerTiers = [
     earning: "₹50,000+",
     period: "per month",
     desc: "Become an EzeePay agent and offer all 60+ services to your customers. Earn commissions on every transaction.",
-    perks: [
-      "Low one-time investment",
-      "Commission on every service",
-      "Full training & support",
-      "Marketing materials provided",
-    ],
+    perks: ["Low one-time investment", "Commission on every service", "Full training & support", "Marketing materials provided"],
   },
   {
     tier: "Distributor",
     icon: Network,
     earning: "₹50,000+",
     period: "per month",
-    desc: "Build a network of agents. Earn up to 25% commission on the transactions of all the agents in your network.",
-    perks: [
-      "No physical store needed",
-      "25% commission rate",
-      "Telecom · Pharma · Retail · FMCG",
-      "10,000+ active distributors",
-    ],
+    desc: "Build a network of agents. Earn up to 25% commission on every transaction across your agent network.",
+    perks: ["No physical store needed", "25% commission rate", "Telecom · Pharma · Retail · FMCG", "10,000+ active distributors"],
   },
   {
     tier: "Master Distributor",
@@ -115,191 +55,123 @@ const partnerTiers = [
     earning: "₹1,50,000+",
     period: "per month",
     desc: "Set up a full distribution chain. Manage multiple distributors and agents under one banner.",
-    perks: [
-      "Highest commission tier",
-      "Multi-level network",
-      "Griha Udyog & Self Help Groups",
-      "Dedicated business support",
-    ],
+    perks: ["Highest commission tier", "Multi-level network", "Griha Udyog & Self Help Groups", "Dedicated business support"],
     highlight: true,
   },
 ];
 
-// ─── Official trust partners ─────────────────────────────────────────────────
 const trustPartners = [
-  { name: "Protean",              logo: "/partners/protean.png" },
-  { name: "Mantra",               logo: "/partners/mantra.png" },
-  { name: "Mentation Technologies", logo: "/partners/mentation.png" },
-  { name: "Noble Web Studio",     logo: "/partners/noble-web-studio.png" },
-  { name: "CredoPay",             logo: "/partners/credopay.png" },
-  { name: "Arthmate",             logo: "/partners/arthmate.png" },
+  { name: "Protean",               logo: "/partners/protean.png" },
+  { name: "Mantra",                logo: "/partners/mantra.png" },
+  { name: "Mentation Technologies",logo: "/partners/mentation.png" },
+  { name: "Noble Web Studio",      logo: "/partners/noble-web-studio.png" },
+  { name: "CredoPay",              logo: "/partners/credopay.png" },
+  { name: "Arthmate",              logo: "/partners/arthmate.png" },
 ];
 
 export default function EzeepayPage() {
   return (
     <main style={{ background: "var(--background)", minHeight: "100vh" }}>
 
-      {/* ── Breadcrumb ── */}
-      <div className="ezp-crumb-wrap">
-        <div className="ezp-crumb">
-          <Link href="/">Home</Link>
-          <span>/</span>
-          <Link href="/products">Products</Link>
-          <span>/</span>
-          <span className="ezp-crumb-current">EzeePay</span>
+      {/* ── Builder ribbon ── */}
+      <div className="ezp2-ribbon">
+        <div className="ezp2-ribbon-inner">
+          <span>Built by</span>
+          <Link href="/" className="ezp2-ribbon-brand">MJ Digital Services <ArrowUpRight size={12} /></Link>
+          <span className="ezp2-ribbon-sep" />
+          <span>A flagship fintech product</span>
         </div>
       </div>
 
       {/* ── Hero ── */}
-      <section className="ezp-hero">
-        <div className="ezp-hero-glow" />
-        <div className="ezp-hero-inner">
-          <div className="ezp-hero-left">
-            <div className="ezp-hero-badge">
-              <span className="ezp-hero-badge-dot" />
-              A Product of MJ Digital Services
+      <section className="ezp2-hero">
+        <div className="ezp2-hero-inner">
+
+          {/* Left */}
+          <div className="ezp2-hero-left">
+            <div className="ezp2-hero-logo">
+              <img src="/ezeepay-logo.png" alt="EzeePay" />
+              <span>EzeePay</span>
             </div>
 
-            <h1 className="ezp-hero-title">
-              Make Your Shop a{" "}
-              <span className="ezp-hero-title-accent">Mini ATM</span>{" "}
-              with EzeePay
+            <h1 className="ezp2-hero-title">
+              Make Your Shop a<br />
+              <span className="ezp2-hero-accent">Mini ATM</span>
             </h1>
 
-            <p className="ezp-hero-sub">
-              India&apos;s largest agent banking network. Offer 60+ digital
-              services from your shop — AEPS, money transfer, bill payments,
-              recharge, travel booking — and earn commissions on every
-              transaction.
+            <p className="ezp2-hero-sub">
+              India's largest agent banking network. Offer 60+ digital services — AEPS, money transfer, bill payments, recharge — and earn commissions on every transaction.
             </p>
 
-            {/* Trust line */}
-            <div className="ezp-hero-trust">
-              <span>Trusted by</span>
-              <strong>5,00,000+ agents</strong>
-              <span>across India</span>
+            <div className="ezp2-hero-trust">
+              <CheckCircle2 size={15} style={{ color: "var(--primary)", flexShrink: 0 }} />
+              Trusted by <strong>5,00,000+ agents</strong> across India
             </div>
 
-            {/* CTAs */}
-            <div className="ezp-hero-ctas">
-              <a
-                href="https://ezeepay.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ezp-btn-primary"
-              >
-                Visit EzeePay <ExternalLink size={15} />
+            <div className="ezp2-hero-ctas">
+              <a href="https://ezeepay.app" target="_blank" rel="noopener noreferrer" className="ezp2-btn-primary">
+                Visit EzeePay <ExternalLink size={14} />
               </a>
-              <a
-                href="https://ezeepay.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ezp-btn-outline"
-              >
-                <Download size={15} /> Download App
+              <a href="https://ezeepay.app" target="_blank" rel="noopener noreferrer" className="ezp2-btn-outline">
+                <Download size={14} /> Download App
               </a>
+            </div>
+
+            {/* Inline stats */}
+            <div className="ezp2-hero-stats">
+              {heroStats.map((s, i) => (
+                <div key={s.label} className="ezp2-hero-stat">
+                  <div className="ezp2-hero-stat-val">{s.value}</div>
+                  <div className="ezp2-hero-stat-label">{s.label}</div>
+                  {i < heroStats.length - 1 && <div className="ezp2-hero-stat-div" />}
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Right — product showcase mock */}
-          <div className="ezp-hero-right">
-            <div className="ezp-phone-mock">
-              <div className="ezp-phone-screen">
-                <div className="ezp-phone-header">
-                  <div className="ezp-phone-logo">
-                    <Wallet size={14} /> ezeepay
-                  </div>
-                  <div className="ezp-phone-bal">₹90.7</div>
-                </div>
-                <div className="ezp-phone-grid">
-                  {[
-                    { name: "AePS", icon: Banknote, color: "#5b21b6" },
-                    { name: "Micro ATM", icon: Smartphone, color: "#7c3aed" },
-                    { name: "UPI ATM", icon: Wallet, color: "#5b21b6" },
-                    { name: "Bank", icon: Building2, color: "#7c3aed" },
-                    { name: "Transfer", icon: Network, color: "#5b21b6" },
-                    { name: "Bills", icon: Receipt, color: "#7c3aed" },
-                    { name: "Recharge", icon: Smartphone, color: "#5b21b6" },
-                    { name: "Travel", icon: Plane, color: "#7c3aed" },
-                  ].map((s) => (
-                    <div key={s.name} className="ezp-phone-tile">
-                      <div
-                        className="ezp-phone-tile-icon"
-                        style={{ background: `${s.color}22`, color: s.color }}
-                      >
-                        <s.icon size={16} />
-                      </div>
-                      <span>{s.name}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="ezp-phone-bottom">
-                  <div className="ezp-phone-action ezp-phone-action-success">
-                    <CheckCircle2 size={14} /> Transaction Successful · ₹500
-                  </div>
-                </div>
-              </div>
+          {/* Right — real screenshot */}
+          <div className="ezp2-hero-right">
+            <div className="ezp2-screenshot-frame">
+              <img
+                src="/products/ezeepay-screenshot.png"
+                alt="EzeePay App"
+                className="ezp2-screenshot-img"
+              />
             </div>
-
-            {/* Floating stat badges */}
-            <div className="ezp-float ezp-float-1">
-              <div className="ezp-float-num">5L+</div>
-              <div className="ezp-float-label">Active Agents</div>
-            </div>
-            <div className="ezp-float ezp-float-2">
-              <div className="ezp-float-num">60+</div>
-              <div className="ezp-float-label">Services</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Live Stats Strip ── */}
-      <section className="ezp-stats">
-        <div className="ezp-stats-inner">
-          {heroStats.map((s) => (
-            <div key={s.label} className="ezp-stat">
-              <div className="ezp-stat-icon">
-                <s.icon size={18} />
-              </div>
+            {/* Floating badge */}
+            <div className="ezp2-float-badge ezp2-float-1">
+              <div className="ezp2-float-dot" />
               <div>
-                <div className="ezp-stat-value">{s.value}</div>
-                <div className="ezp-stat-label">{s.label}</div>
+                <div className="ezp2-float-val">60+</div>
+                <div className="ezp2-float-lbl">Services</div>
               </div>
             </div>
-          ))}
+            <div className="ezp2-float-badge ezp2-float-2">
+              <div className="ezp2-float-dot" />
+              <div>
+                <div className="ezp2-float-val">5L+</div>
+                <div className="ezp2-float-lbl">Agents</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── Services Overview ── */}
-      <section className="ezp-services">
-        <div className="ezp-section-header">
-          <div className="ezp-section-label">One App, Multiple Services</div>
-          <h2 className="ezp-section-title">
-            60+ digital services <br />
-            <span className="ezp-section-title-accent">from a single platform</span>
-          </h2>
-          <p className="ezp-section-sub">
-            From banking to bill payments, travel to entertainment — EzeePay
-            agents offer their customers everything they need, all from one app.
-          </p>
+      {/* ── Services grid ── */}
+      <section className="ezp2-section ezp2-section-surface">
+        <div className="ezp2-section-hd">
+          <div className="ezp2-label">One App · Multiple Services</div>
+          <h2 className="ezp2-title">60+ digital services<br /><span className="ezp2-title-accent">from a single platform</span></h2>
+          <p className="ezp2-desc">From banking to bill payments, travel to entertainment — EzeePay agents offer everything from one app.</p>
         </div>
-
-        <div className="ezp-services-grid">
+        <div className="ezp2-services-grid">
           {services.map((s) => (
-            <div key={s.title} className="ezp-service-card">
-              <div
-                className="ezp-service-icon"
-                style={{ background: `${s.color}15`, color: s.color }}
-              >
-                <s.icon size={22} />
-              </div>
-              <h3 className="ezp-service-title">{s.title}</h3>
-              <ul className="ezp-service-list">
+            <div key={s.title} className="ezp2-service-card">
+              <div className="ezp2-service-icon"><s.icon size={20} /></div>
+              <h3 className="ezp2-service-title">{s.title}</h3>
+              <ul className="ezp2-service-list">
                 {s.items.map((item) => (
-                  <li key={item}>
-                    <CheckCircle2 size={13} /> {item}
-                  </li>
+                  <li key={item}><CheckCircle2 size={12} />{item}</li>
                 ))}
               </ul>
             </div>
@@ -307,26 +179,16 @@ export default function EzeepayPage() {
         </div>
       </section>
 
-      {/* ── Why EzeePay (benefits) ── */}
-      <section className="ezp-benefits">
-        <div className="ezp-section-header">
-          <div className="ezp-section-label">Why EzeePay</div>
-          <h2 className="ezp-section-title">
-            The benefits of joining{" "}
-            <span className="ezp-section-title-accent">India&apos;s biggest network</span>
-          </h2>
-          <p className="ezp-section-sub">
-            Whether you&apos;re a kirana store, retail shop, or aspiring
-            entrepreneur — EzeePay gives you a tested, profitable way to grow.
-          </p>
+      {/* ── Why EzeePay ── */}
+      <section className="ezp2-section">
+        <div className="ezp2-section-hd">
+          <div className="ezp2-label">Why EzeePay</div>
+          <h2 className="ezp2-title">The benefits of joining<br /><span className="ezp2-title-accent">India's biggest network</span></h2>
         </div>
-
-        <div className="ezp-benefits-grid">
+        <div className="ezp2-benefits-grid">
           {benefits.map((b) => (
-            <div key={b.title} className="ezp-benefit-card">
-              <div className="ezp-benefit-icon">
-                <b.icon size={22} />
-              </div>
+            <div key={b.title} className="ezp2-benefit-card">
+              <div className="ezp2-benefit-icon"><b.icon size={20} /></div>
               <h3>{b.title}</h3>
               <p>{b.desc}</p>
             </div>
@@ -334,50 +196,30 @@ export default function EzeepayPage() {
         </div>
       </section>
 
-      {/* ── Partner Tiers ── */}
-      <section className="ezp-tiers">
-        <div className="ezp-section-header">
-          <div className="ezp-section-label">Become A Part Of Us</div>
-          <h2 className="ezp-section-title">
-            Three ways to earn with EzeePay
-          </h2>
-          <p className="ezp-section-sub">
-            Whether you want to run a single shop, build a distribution network,
-            or launch a full chain — we have a tier that fits.
-          </p>
+      {/* ── Partner tiers ── */}
+      <section className="ezp2-section ezp2-section-surface">
+        <div className="ezp2-section-hd">
+          <div className="ezp2-label">Become a Part of Us</div>
+          <h2 className="ezp2-title">Three ways to earn with EzeePay</h2>
+          <p className="ezp2-desc">Whether you want to run a single shop, build a distribution network, or launch a full chain.</p>
         </div>
-
-        <div className="ezp-tiers-grid">
+        <div className="ezp2-tiers-grid">
           {partnerTiers.map((t) => (
-            <div
-              key={t.tier}
-              className={`ezp-tier-card ${t.highlight ? "ezp-tier-highlight" : ""}`}
-            >
-              {t.highlight && (
-                <div className="ezp-tier-ribbon">Highest Earning</div>
-              )}
-              <div className="ezp-tier-icon">
-                <t.icon size={22} />
+            <div key={t.tier} className={`ezp2-tier-card${t.highlight ? " ezp2-tier-highlight" : ""}`}>
+              {t.highlight && <div className="ezp2-tier-ribbon">Highest Earning</div>}
+              <div className="ezp2-tier-icon"><t.icon size={20} /></div>
+              <div className="ezp2-tier-name">{t.tier}</div>
+              <div className="ezp2-tier-earning">
+                <span className="ezp2-tier-num">{t.earning}</span>
+                <span className="ezp2-tier-period">{t.period}</span>
               </div>
-              <div className="ezp-tier-name">{t.tier}</div>
-              <div className="ezp-tier-earning">
-                <span className="ezp-tier-earning-num">{t.earning}</span>
-                <span className="ezp-tier-earning-period">{t.period}</span>
-              </div>
-              <p className="ezp-tier-desc">{t.desc}</p>
-              <ul className="ezp-tier-perks">
+              <p className="ezp2-tier-desc">{t.desc}</p>
+              <ul className="ezp2-tier-perks">
                 {t.perks.map((p) => (
-                  <li key={p}>
-                    <CheckCircle2 size={13} /> {p}
-                  </li>
+                  <li key={p}><CheckCircle2 size={12} />{p}</li>
                 ))}
               </ul>
-              <a
-                href="https://ezeepay.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ezp-tier-cta"
-              >
+              <a href="https://ezeepay.app" target="_blank" rel="noopener noreferrer" className="ezp2-tier-cta">
                 Apply as {t.tier} <ArrowRight size={13} />
               </a>
             </div>
@@ -385,224 +227,169 @@ export default function EzeepayPage() {
         </div>
       </section>
 
-      {/* ── Trust Partners ── */}
-      <section className="ezp-partners">
-        <div className="ezp-section-header">
-          <div className="ezp-section-label">Trust & Partnerships</div>
-          <h2 className="ezp-section-title">
-            Backed by India&apos;s leading{" "}
-            <span className="ezp-section-title-accent">technology partners</span>
-          </h2>
+      {/* ── Trust partners ── */}
+      <section className="ezp2-section">
+        <div className="ezp2-section-hd">
+          <div className="ezp2-label">Trust & Partnerships</div>
+          <h2 className="ezp2-title">Backed by India's leading<br /><span className="ezp2-title-accent">technology partners</span></h2>
         </div>
-
-        <div className="ezp-partners-grid">
-            {trustPartners.map((p) => (
-                <div key={p.name} className="ezp-partner-card">
-                <img src={p.logo} alt={`${p.name} logo`} />
-                </div>
-            ))}
+        <div className="ezp2-partners-grid">
+          {trustPartners.map((p) => (
+            <div key={p.name} className="ezp2-partner-card">
+              <img src={p.logo} alt={`${p.name} logo`} />
+            </div>
+          ))}
         </div>
-
-        <div className="ezp-trust-strip">
-          <Shield size={18} />
-          <span>
-            Registered with <strong>Dun &amp; Bradstreet</strong> · Lending
-            partnership with <strong>Arthmate</strong> (Grievance:
-            statutory.compliance@arthmate.com)
-          </span>
+        <div className="ezp2-trust-strip">
+          <Shield size={15} />
+          Registered with <strong>Dun &amp; Bradstreet</strong> · Lending partnership with <strong>Arthmate</strong>
         </div>
       </section>
 
       {/* ── CTA ── */}
-      <section className="ezp-cta">
-        <div className="ezp-cta-glow" />
-        <div className="ezp-cta-inner">
-          <div className="ezp-cta-badge">Start Earning Today</div>
-          <h2 className="ezp-cta-title">
-            Ready to make your shop a <br />
-            <span className="ezp-cta-title-accent">Mini ATM?</span>
-          </h2>
-          <p className="ezp-cta-sub">
-            Join 5,00,000+ agents earning with EzeePay. Visit our dedicated
-            platform to sign up, download the app, and start serving customers
-            from day one.
-          </p>
-          <div className="ezp-cta-buttons">
-            <a
-              href="https://ezeepay.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ezp-btn-primary ezp-btn-primary-lg"
-            >
-              Visit EzeePay.app <ExternalLink size={15} />
+      <section className="ezp2-cta-section">
+        <div className="ezp2-cta-inner">
+          <div className="ezp2-label ezp2-label-light">Start Earning Today</div>
+          <h2 className="ezp2-cta-title">Ready to make your shop<br />a <span className="ezp2-cta-accent">Mini ATM?</span></h2>
+          <p className="ezp2-cta-sub">Join 5,00,000+ agents earning with EzeePay. Sign up, download the app, and start serving customers from day one.</p>
+          <div className="ezp2-cta-btns">
+            <a href="https://ezeepay.app" target="_blank" rel="noopener noreferrer" className="ezp2-cta-btn-primary">
+              Visit EzeePay.app <ExternalLink size={14} />
             </a>
-            <Link href="/contact" className="ezp-btn-outline ezp-btn-outline-lg">
-              Talk to MJ Digital
-            </Link>
+            <Link href="/contact" className="ezp2-cta-btn-outline">Talk to MJ Digital</Link>
           </div>
-          <div className="ezp-cta-note">
-            EzeePay is a product of MJ Digital Services Pvt. Ltd. · Building
-            digital products. Powering businesses.
+          <div className="ezp2-cta-note">
+            EzeePay is a product of <Link href="/" className="ezp2-cta-note-link">MJ Digital Services Pvt. Ltd.</Link>
           </div>
         </div>
       </section>
 
-      {/* ── Styles ── */}
       <style>{`
-        /* ============================================================
-           BREADCRUMB
-           ============================================================ */
-        .ezp-crumb-wrap {
+
+        /* ── RIBBON ── */
+        .ezp2-ribbon {
           background: var(--surface);
           border-bottom: 1px solid var(--border);
+          padding: 10px 24px;
         }
-        .ezp-crumb {
+        .ezp2-ribbon-inner {
           max-width: 1280px;
           margin: 0 auto;
-          padding: 14px 24px;
           display: flex;
           align-items: center;
-          gap: 10px;
-          font-size: 13px;
+          gap: 8px;
+          font-size: 12.5px;
           color: var(--text-muted);
           font-family: var(--font-sans);
         }
-        .ezp-crumb a {
-          color: var(--text-muted);
+        .ezp2-ribbon-brand {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          font-weight: 700;
+          color: var(--primary);
           text-decoration: none;
-          transition: color 0.2s;
+          transition: opacity 0.2s;
         }
-        .ezp-crumb a:hover { color: var(--primary); }
-        .ezp-crumb-current { color: var(--text-primary); font-weight: 600; }
-        .ezp-crumb span:not(.ezp-crumb-current) { opacity: 0.5; }
+        .ezp2-ribbon-brand:hover { opacity: 0.75; }
+        .ezp2-ribbon-sep {
+          width: 1px;
+          height: 12px;
+          background: var(--border);
+          margin: 0 4px;
+        }
 
-        /* ============================================================
-           HERO
-           ============================================================ */
-        .ezp-hero {
-          padding: 80px 24px 100px;
-          position: relative;
-          overflow: hidden;
-          background:
-            linear-gradient(180deg, var(--surface) 0%, var(--background) 100%);
+        /* ── HERO ── */
+        .ezp2-hero {
+          padding: 64px 24px 80px;
+          background: var(--background);
         }
-        .ezp-hero-glow {
-          position: absolute;
-          top: -160px;
-          right: -180px;
-          width: 700px;
-          height: 700px;
-          background: radial-gradient(circle, rgba(91,33,182,0.13) 0%, transparent 70%);
-          pointer-events: none;
-        }
-        .ezp-hero-inner {
-          position: relative;
-          z-index: 1;
+        .ezp2-hero-inner {
           max-width: 1280px;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: 1.05fr 0.95fr;
-          gap: 64px;
+          grid-template-columns: 1fr 1fr;
+          gap: 80px;
           align-items: center;
         }
-
-        .ezp-hero-badge {
-          display: inline-flex;
+        .ezp2-hero-logo {
+          display: flex;
           align-items: center;
           gap: 10px;
-          padding: 6px 14px;
-          border-radius: 100px;
-          background: rgba(91,33,182,0.08);
-          border: 1px solid rgba(91,33,182,0.2);
-          font-size: 12px;
-          font-weight: 600;
-          color: #5b21b6;
-          letter-spacing: 0.04em;
-          margin-bottom: 24px;
-          font-family: var(--font-sans);
+          margin-bottom: 28px;
         }
-        .ezp-hero-badge-dot {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background: #5b21b6;
-          animation: ezpPulse 2s ease-in-out infinite;
+        .ezp2-hero-logo img {
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+          object-fit: contain;
+          border: 1px solid var(--border);
+          background: #fff;
+          padding: 4px;
         }
-        @keyframes ezpPulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
-        }
-
-        .ezp-hero-title {
+        .ezp2-hero-logo span {
           font-family: var(--font-display);
-          font-size: clamp(32px, 4.8vw, 58px);
+          font-size: 20px;
           font-weight: 700;
           color: var(--text-primary);
-          letter-spacing: -0.02em;
-          line-height: 1.08;
-          margin-bottom: 22px;
         }
-        .ezp-hero-title-accent {
-          background: linear-gradient(135deg, #ea580c 0%, #f97316 50%, #fb923c 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+        .ezp2-hero-title {
+          font-family: var(--font-display);
+          font-size: clamp(38px, 5vw, 64px);
+          font-weight: 700;
+          color: var(--text-primary);
+          letter-spacing: -0.03em;
+          line-height: 1.05;
+          margin-bottom: 20px;
         }
-
-        .ezp-hero-sub {
-          font-size: clamp(15px, 1.6vw, 17px);
+        .ezp2-hero-accent {
+          color: var(--primary);
+        }
+        .ezp2-hero-sub {
+          font-size: 16px;
           color: var(--text-muted);
           line-height: 1.75;
-          margin-bottom: 24px;
-          max-width: 560px;
+          margin-bottom: 20px;
+          max-width: 500px;
         }
-
-        .ezp-hero-trust {
+        .ezp2-hero-trust {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
-          padding: 8px 16px;
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: 100px;
-          font-size: 13px;
+          gap: 8px;
+          font-size: 13.5px;
           color: var(--text-muted);
           font-family: var(--font-sans);
           margin-bottom: 32px;
         }
-        .ezp-hero-trust strong {
-          color: var(--text-primary);
-          font-weight: 700;
-        }
-
-        .ezp-hero-ctas {
+        .ezp2-hero-trust strong { color: var(--text-primary); font-weight: 700; }
+        .ezp2-hero-ctas {
           display: flex;
           gap: 12px;
           flex-wrap: wrap;
+          margin-bottom: 40px;
         }
 
-        /* Buttons (shared) */
-        .ezp-btn-primary {
+        /* Buttons */
+        .ezp2-btn-primary {
           display: inline-flex;
           align-items: center;
           gap: 8px;
           padding: 13px 26px;
-          background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+          background: var(--primary);
           color: #fff;
           border-radius: 100px;
           font-size: 14px;
           font-weight: 600;
           font-family: var(--font-sans);
           text-decoration: none;
-          transition: transform 0.2s, box-shadow 0.2s;
-          border: none;
-          cursor: pointer;
+          transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
         }
-        .ezp-btn-primary:hover {
+        .ezp2-btn-primary:hover {
+          background: var(--primary-dark);
           transform: translateY(-2px);
-          box-shadow: 0 10px 28px rgba(91,33,182,0.35);
+          box-shadow: 0 8px 24px var(--primary-glow);
         }
-        .ezp-btn-outline {
+        .ezp2-btn-outline {
           display: inline-flex;
           align-items: center;
           gap: 8px;
@@ -617,726 +404,552 @@ export default function EzeepayPage() {
           text-decoration: none;
           transition: all 0.2s;
         }
-        .ezp-btn-outline:hover {
-          border-color: #5b21b6;
-          color: #5b21b6;
+        .ezp2-btn-outline:hover {
+          border-color: var(--primary);
+          color: var(--primary);
           transform: translateY(-2px);
         }
-        .ezp-btn-primary-lg, .ezp-btn-outline-lg {
-          padding: 15px 32px;
-          font-size: 15px;
+
+        /* Hero stats */
+        .ezp2-hero-stats {
+          display: flex;
+          align-items: center;
+          padding-top: 32px;
+          border-top: 1px solid var(--border);
+        }
+        .ezp2-hero-stat {
+          position: relative;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+        .ezp2-hero-stat-val {
+          font-family: var(--font-display);
+          font-size: clamp(22px, 2.5vw, 30px);
+          font-weight: 800;
+          color: var(--text-primary);
+          letter-spacing: -0.02em;
+          line-height: 1;
+        }
+        .ezp2-hero-stat-label {
+          font-size: 12px;
+          color: var(--text-muted);
+          font-weight: 500;
+        }
+        .ezp2-hero-stat-div {
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1px;
+          height: 28px;
+          background: var(--border);
         }
 
-        /* ── Hero Right — Phone Mock ── */
-        .ezp-hero-right {
+        /* Hero right — screenshot */
+        .ezp2-hero-right {
           position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
         }
-
-        .ezp-phone-mock {
-          width: 280px;
-          aspect-ratio: 9 / 19;
-          background: #1f0a4a;
-          border-radius: 36px;
-          padding: 14px;
-          box-shadow:
-            0 30px 80px rgba(91,33,182,0.35),
-            0 0 0 1px rgba(255,255,255,0.05);
-          position: relative;
-        }
-        .ezp-phone-screen {
+        .ezp2-screenshot-frame {
           width: 100%;
-          height: 100%;
-          background: linear-gradient(180deg, #6d28d9 0%, #5b21b6 100%);
-          border-radius: 24px;
-          padding: 18px 14px;
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
+          max-width: 420px;
+          border-radius: 20px;
+          overflow: hidden;
+          border: 1px solid var(--border);
+          box-shadow: 0 32px 80px rgba(0,0,0,0.12), 0 0 0 1px var(--border);
+          background: var(--surface);
         }
-        .ezp-phone-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        .ezp-phone-logo {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          color: #fff;
-          font-size: 13px;
-          font-weight: 700;
-          background: rgba(255,255,255,0.12);
-          padding: 4px 10px;
-          border-radius: 100px;
-        }
-        .ezp-phone-bal {
-          color: #fbbf24;
-          font-size: 14px;
-          font-weight: 700;
-          font-family: monospace;
-        }
-        .ezp-phone-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 8px;
-        }
-        .ezp-phone-tile {
-          background: rgba(255,255,255,0.95);
-          border-radius: 12px;
-          padding: 10px 8px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 6px;
-        }
-        .ezp-phone-tile-icon {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .ezp-phone-tile span {
-          font-size: 10px;
-          font-weight: 600;
-          color: #1f0a4a;
-        }
-        .ezp-phone-bottom {
-          margin-top: auto;
-        }
-        .ezp-phone-action-success {
-          background: #22c55e;
-          color: #fff;
-          padding: 8px 12px;
-          border-radius: 8px;
-          font-size: 11px;
-          font-weight: 600;
-          display: flex;
-          align-items: center;
-          gap: 6px;
+        .ezp2-screenshot-img {
+          width: 100%;
+          height: auto;
+          display: block;
         }
 
         /* Floating badges */
-        .ezp-float {
+        .ezp2-float-badge {
           position: absolute;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 12px 16px;
           background: var(--background);
           border: 1px solid var(--border);
           border-radius: 14px;
-          padding: 14px 18px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+          box-shadow: 0 8px 24px rgba(0,0,0,0.08);
           z-index: 2;
         }
-        .ezp-float-1 {
-          top: 10%;
-          left: -10px;
+        .ezp2-float-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: var(--primary);
+          animation: ezp2Pulse 2s ease-in-out infinite;
+          flex-shrink: 0;
         }
-        .ezp-float-2 {
-          bottom: 12%;
-          right: -10px;
+        @keyframes ezp2Pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.3; }
         }
-        .ezp-float-num {
+        .ezp2-float-1 { top: 8%; right: -16px; }
+        .ezp2-float-2 { bottom: 10%; left: -16px; }
+        .ezp2-float-val {
           font-family: var(--font-display);
-          font-size: 22px;
+          font-size: 20px;
           font-weight: 800;
-          color: #5b21b6;
+          color: var(--primary);
           line-height: 1;
-          margin-bottom: 4px;
         }
-        .ezp-float-label {
+        .ezp2-float-lbl {
           font-size: 11px;
           color: var(--text-muted);
           font-weight: 600;
-          letter-spacing: 0.04em;
           text-transform: uppercase;
+          letter-spacing: 0.04em;
         }
 
-        /* ============================================================
-           STATS STRIP
-           ============================================================ */
-        .ezp-stats {
-          background: linear-gradient(135deg, #1f0a4a 0%, #5b21b6 100%);
-          padding: 36px 24px;
-          position: relative;
-          overflow: hidden;
+        /* ── SHARED SECTION ── */
+        .ezp2-section {
+          padding: 96px 24px;
+          background: var(--background);
         }
-        .ezp-stats::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px) 0 0 / 20px 20px;
-          pointer-events: none;
+        .ezp2-section-surface {
+          background: var(--surface);
         }
-        .ezp-stats-inner {
-          position: relative;
-          max-width: 1280px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 24px;
-        }
-        .ezp-stat {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          color: #fff;
-        }
-        .ezp-stat-icon {
-          width: 44px;
-          height: 44px;
-          border-radius: 12px;
-          background: rgba(251,191,36,0.15);
-          color: #fbbf24;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-        .ezp-stat-value {
-          font-family: var(--font-display);
-          font-size: clamp(20px, 2.4vw, 28px);
-          font-weight: 800;
-          line-height: 1;
-          margin-bottom: 4px;
-        }
-        .ezp-stat-label {
-          font-size: 12px;
-          color: rgba(255,255,255,0.65);
-          letter-spacing: 0.02em;
-        }
-
-        /* ============================================================
-           SHARED SECTION HEADERS
-           ============================================================ */
-        .ezp-section-header {
-          max-width: 720px;
+        .ezp2-section-hd {
+          max-width: 640px;
           margin: 0 auto 56px;
           text-align: center;
         }
-        .ezp-section-label {
+        .ezp2-label {
           display: inline-flex;
           align-items: center;
-          padding: 5px 14px;
+          padding: 4px 13px;
           border-radius: 100px;
-          background: rgba(91,33,182,0.08);
-          border: 1px solid rgba(91,33,182,0.18);
+          border: 1px solid rgba(229,24,42,0.2);
+          background: var(--primary-glow);
           font-size: 11px;
           font-weight: 700;
-          color: #5b21b6;
-          letter-spacing: 0.08em;
+          color: var(--primary);
+          letter-spacing: 0.07em;
           text-transform: uppercase;
           margin-bottom: 16px;
           font-family: var(--font-sans);
         }
-        .ezp-section-title {
+        .ezp2-label-light {
+          border-color: rgba(255,255,255,0.2);
+          background: rgba(255,255,255,0.1);
+          color: rgba(255,255,255,0.85);
+        }
+        .ezp2-title {
           font-family: var(--font-display);
-          font-size: clamp(26px, 3.4vw, 42px);
+          font-size: clamp(28px, 3.5vw, 44px);
           font-weight: 700;
           color: var(--text-primary);
           letter-spacing: -0.02em;
-          line-height: 1.15;
-          margin-bottom: 16px;
+          line-height: 1.12;
+          margin-bottom: 14px;
         }
-        .ezp-section-title-accent {
-          background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 50%, #a855f7 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        .ezp-section-sub {
+        .ezp2-title-accent { color: var(--primary); }
+        .ezp2-desc {
           font-size: 15.5px;
           color: var(--text-muted);
           line-height: 1.75;
         }
 
-        /* ============================================================
-           SERVICES
-           ============================================================ */
-        .ezp-services {
-          padding: 100px 24px;
-        }
-        .ezp-services-grid {
+        /* ── SERVICES ── */
+        .ezp2-services-grid {
           max-width: 1280px;
           margin: 0 auto;
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
-        }
-        .ezp-service-card {
-          background: var(--surface);
+          gap: 1px;
           border: 1px solid var(--border);
-          border-radius: 18px;
+          border-radius: 20px;
+          overflow: hidden;
+          background: var(--border);
+        }
+        .ezp2-service-card {
+          background: var(--background);
           padding: 28px 24px;
-          transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+          transition: background 0.2s;
         }
-        .ezp-service-card:hover {
-          border-color: rgba(91,33,182,0.4);
-          box-shadow: 0 12px 40px rgba(91,33,182,0.1);
-          transform: translateY(-3px);
-        }
-        .ezp-service-icon {
-          width: 50px;
-          height: 50px;
-          border-radius: 12px;
+        .ezp2-service-card:hover { background: var(--surface); }
+        .ezp2-service-icon {
+          width: 42px;
+          height: 42px;
+          border-radius: 10px;
+          background: var(--primary-glow);
+          color: var(--primary);
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 16px;
-        }
-        .ezp-service-title {
-          font-family: var(--font-display);
-          font-size: 19px;
-          font-weight: 700;
-          color: var(--text-primary);
-          letter-spacing: -0.01em;
           margin-bottom: 14px;
         }
-        .ezp-service-list {
+        .ezp2-service-title {
+          font-family: var(--font-display);
+          font-size: 17px;
+          font-weight: 700;
+          color: var(--text-primary);
+          margin-bottom: 12px;
+        }
+        .ezp2-service-list {
           list-style: none;
           padding: 0;
           margin: 0;
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 7px;
         }
-        .ezp-service-list li {
+        .ezp2-service-list li {
           display: flex;
           align-items: center;
-          gap: 8px;
-          font-size: 13.5px;
+          gap: 7px;
+          font-size: 13px;
           color: var(--text-muted);
           font-family: var(--font-sans);
         }
-        .ezp-service-list li svg {
-          color: #5b21b6;
-          flex-shrink: 0;
-        }
+        .ezp2-service-list li svg { color: var(--primary); flex-shrink: 0; }
 
-        /* ============================================================
-           BENEFITS
-           ============================================================ */
-        .ezp-benefits {
-          padding: 100px 24px;
-          background: var(--surface);
-        }
-        .ezp-benefits-grid {
+        /* ── BENEFITS ── */
+        .ezp2-benefits-grid {
           max-width: 1200px;
           margin: 0 auto;
           display: grid;
           grid-template-columns: repeat(4, 1fr);
           gap: 20px;
         }
-        .ezp-benefit-card {
-          background: var(--background);
+        .ezp2-benefit-card {
+          background: var(--surface);
           border: 1px solid var(--border);
           border-radius: 18px;
-          padding: 28px 24px;
-          transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+          padding: 28px 22px;
+          transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
         }
-        .ezp-benefit-card:hover {
-          border-color: rgba(91,33,182,0.4);
+        .ezp2-benefit-card:hover {
+          border-color: var(--primary);
           transform: translateY(-3px);
-          box-shadow: 0 10px 30px rgba(91,33,182,0.1);
+          box-shadow: 0 10px 30px var(--primary-glow);
         }
-        .ezp-benefit-icon {
-          width: 48px;
-          height: 48px;
-          border-radius: 12px;
-          background: linear-gradient(135deg, rgba(91,33,182,0.15) 0%, rgba(124,58,237,0.1) 100%);
-          color: #5b21b6;
+        .ezp2-benefit-icon {
+          width: 44px;
+          height: 44px;
+          border-radius: 10px;
+          background: var(--primary-glow);
+          color: var(--primary);
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 18px;
+          margin-bottom: 16px;
         }
-        .ezp-benefit-card h3 {
+        .ezp2-benefit-card h3 {
           font-family: var(--font-display);
-          font-size: 17px;
+          font-size: 16px;
           font-weight: 700;
           color: var(--text-primary);
-          margin-bottom: 10px;
-          letter-spacing: -0.01em;
+          margin-bottom: 8px;
         }
-        .ezp-benefit-card p {
-          font-size: 14px;
+        .ezp2-benefit-card p {
+          font-size: 13.5px;
           color: var(--text-muted);
           line-height: 1.7;
         }
 
-        /* ============================================================
-           TIERS
-           ============================================================ */
-        .ezp-tiers {
-          padding: 100px 24px;
-        }
-        .ezp-tiers-grid {
-          max-width: 1200px;
+        /* ── TIERS ── */
+        .ezp2-tiers-grid {
+          max-width: 1100px;
           margin: 0 auto;
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
+          gap: 20px;
         }
-        .ezp-tier-card {
-          background: var(--surface);
+        .ezp2-tier-card {
+          background: var(--background);
           border: 1px solid var(--border);
           border-radius: 20px;
-          padding: 32px 28px;
+          padding: 28px 24px;
           position: relative;
           display: flex;
           flex-direction: column;
-          transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+          transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
         }
-        .ezp-tier-card:hover {
-          border-color: rgba(91,33,182,0.4);
-          transform: translateY(-4px);
-          box-shadow: 0 16px 50px rgba(91,33,182,0.12);
+        .ezp2-tier-card:hover {
+          border-color: var(--primary);
+          transform: translateY(-3px);
+          box-shadow: 0 12px 36px var(--primary-glow);
         }
-        .ezp-tier-highlight {
-          background: linear-gradient(180deg, var(--background) 0%, rgba(91,33,182,0.04) 100%);
-          border: 2px solid #5b21b6;
-          box-shadow: 0 16px 50px rgba(91,33,182,0.15);
+        .ezp2-tier-highlight {
+          border: 2px solid var(--primary);
+          box-shadow: 0 12px 40px var(--primary-glow);
         }
-        .ezp-tier-ribbon {
+        .ezp2-tier-ribbon {
           position: absolute;
           top: -12px;
           right: 20px;
-          background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+          background: var(--primary);
           color: #fff;
           font-size: 11px;
           font-weight: 700;
-          letter-spacing: 0.05em;
-          padding: 5px 14px;
+          padding: 4px 14px;
           border-radius: 100px;
-          box-shadow: 0 4px 12px rgba(91,33,182,0.3);
+          letter-spacing: 0.04em;
         }
-        .ezp-tier-icon {
-          width: 52px;
-          height: 52px;
-          border-radius: 12px;
-          background: rgba(91,33,182,0.1);
-          color: #5b21b6;
+        .ezp2-tier-icon {
+          width: 46px;
+          height: 46px;
+          border-radius: 10px;
+          background: var(--primary-glow);
+          color: var(--primary);
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 18px;
+          margin-bottom: 16px;
         }
-        .ezp-tier-name {
+        .ezp2-tier-name {
           font-family: var(--font-display);
-          font-size: 22px;
+          font-size: 21px;
           font-weight: 700;
           color: var(--text-primary);
-          letter-spacing: -0.01em;
-          margin-bottom: 10px;
+          margin-bottom: 8px;
         }
-        .ezp-tier-earning {
+        .ezp2-tier-earning {
           display: flex;
           align-items: baseline;
           gap: 6px;
-          margin-bottom: 16px;
           padding-bottom: 16px;
+          margin-bottom: 14px;
           border-bottom: 1px dashed var(--border);
         }
-        .ezp-tier-earning-num {
+        .ezp2-tier-num {
           font-family: var(--font-display);
-          font-size: 28px;
+          font-size: 26px;
           font-weight: 800;
-          color: #5b21b6;
+          color: var(--primary);
           letter-spacing: -0.02em;
         }
-        .ezp-tier-earning-period {
-          font-size: 13px;
-          color: var(--text-muted);
-        }
-        .ezp-tier-desc {
-          font-size: 14px;
+        .ezp2-tier-period { font-size: 13px; color: var(--text-muted); }
+        .ezp2-tier-desc {
+          font-size: 13.5px;
           color: var(--text-muted);
           line-height: 1.7;
-          margin-bottom: 20px;
+          margin-bottom: 18px;
         }
-        .ezp-tier-perks {
+        .ezp2-tier-perks {
           list-style: none;
           padding: 0;
-          margin: 0 0 24px;
+          margin: 0 0 20px;
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 9px;
+          flex: 1;
         }
-        .ezp-tier-perks li {
+        .ezp2-tier-perks li {
           display: flex;
           align-items: center;
           gap: 8px;
-          font-size: 13.5px;
+          font-size: 13px;
           color: var(--text-primary);
           font-family: var(--font-sans);
         }
-        .ezp-tier-perks li svg {
-          color: #5b21b6;
-          flex-shrink: 0;
-        }
-        .ezp-tier-cta {
+        .ezp2-tier-perks li svg { color: var(--primary); flex-shrink: 0; }
+        .ezp2-tier-cta {
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 6px;
-          padding: 12px 20px;
+          padding: 11px 18px;
           background: var(--text-primary);
           color: var(--background);
           border-radius: 100px;
-          font-size: 13.5px;
+          font-size: 13px;
           font-weight: 600;
           font-family: var(--font-sans);
           text-decoration: none;
           margin-top: auto;
-          transition: background 0.2s, transform 0.2s;
+          transition: background 0.2s;
         }
-        .ezp-tier-cta:hover {
-          background: #5b21b6;
-          transform: translateY(-1px);
-        }
-        .ezp-tier-highlight .ezp-tier-cta {
-          background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+        .ezp2-tier-cta:hover { background: var(--primary); }
+        .ezp2-tier-highlight .ezp2-tier-cta {
+          background: var(--primary);
           color: #fff;
         }
+        .ezp2-tier-highlight .ezp2-tier-cta:hover { background: var(--primary-dark); }
 
-        /* ============================================================
-           PARTNERS
-           ============================================================ */
-        .ezp-partners {
-          padding: 100px 24px;
-          background: var(--surface);
-        }
-        .ezp-partners-grid {
-          max-width: 1200px;
+        /* ── PARTNERS ── */
+        .ezp2-partners-grid {
+          max-width: 1100px;
           margin: 0 auto;
           display: grid;
           grid-template-columns: repeat(6, 1fr);
-          gap: 16px;
+          gap: 14px;
         }
-        .ezp-partner-card {
-            background: var(--background);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 90px;
-            transition: border-color 0.2s, transform 0.2s;
-            }
-            .ezp-partner-card:hover {
-            border-color: rgba(91,33,182,0.4);
-            transform: translateY(-2px);
-            }
-            .ezp-partner-card img {
-            max-width: 100%;
-            max-height: 44px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            filter: grayscale(100%) opacity(0.6);
-            transition: filter 0.25s;
-            }
-            .ezp-partner-card:hover img {
-            filter: grayscale(0%) opacity(1);
-        }
-
-        .ezp-trust-strip {
-          max-width: 1200px;
-          margin: 36px auto 0;
-          padding: 16px 22px;
-          background: rgba(91,33,182,0.05);
-          border: 1px solid rgba(91,33,182,0.15);
+        .ezp2-partner-card {
+          background: var(--surface);
+          border: 1px solid var(--border);
           border-radius: 12px;
+          padding: 22px 16px;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 12px;
-          font-size: 13.5px;
+          min-height: 80px;
+          transition: border-color 0.2s, transform 0.2s;
+        }
+        .ezp2-partner-card:hover {
+          border-color: var(--primary);
+          transform: translateY(-2px);
+        }
+        .ezp2-partner-card img {
+          max-width: 100%;
+          max-height: 40px;
+          object-fit: contain;
+          filter: grayscale(100%) opacity(0.55);
+          transition: filter 0.2s;
+        }
+        .ezp2-partner-card:hover img { filter: grayscale(0%) opacity(1); }
+        .ezp2-trust-strip {
+          max-width: 1100px;
+          margin: 28px auto 0;
+          padding: 14px 20px;
+          background: var(--primary-glow);
+          border: 1px solid rgba(229,24,42,0.15);
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          font-size: 13px;
           color: var(--text-muted);
           font-family: var(--font-sans);
           text-align: center;
         }
-        .ezp-trust-strip svg {
-          color: #5b21b6;
-          flex-shrink: 0;
-        }
-        .ezp-trust-strip strong {
-          color: var(--text-primary);
-          font-weight: 700;
-        }
+        .ezp2-trust-strip svg { color: var(--primary); flex-shrink: 0; }
+        .ezp2-trust-strip strong { color: var(--text-primary); }
 
-        /* ============================================================
-           CTA
-           ============================================================ */
-        .ezp-cta {
-          background: linear-gradient(135deg, #1f0a4a 0%, #5b21b6 100%);
-          padding: 100px 24px;
+        /* ── CTA ── */
+        .ezp2-cta-section {
+          background: var(--primary);
+          padding: 96px 24px;
+          text-align: center;
           position: relative;
           overflow: hidden;
-          text-align: center;
         }
-        .ezp-cta-glow {
+        .ezp2-cta-section::before {
+          content: "";
           position: absolute;
-          top: -120px;
-          left: 50%;
+          top: -80px; left: 50%;
           transform: translateX(-50%);
-          width: 700px;
-          height: 400px;
-          background: radial-gradient(ellipse, rgba(251,191,36,0.15) 0%, transparent 70%);
+          width: 600px; height: 300px;
+          background: radial-gradient(ellipse, rgba(255,255,255,0.12) 0%, transparent 70%);
           pointer-events: none;
         }
-        .ezp-cta-inner {
+        .ezp2-cta-inner {
           position: relative;
           z-index: 1;
-          max-width: 720px;
+          max-width: 640px;
           margin: 0 auto;
         }
-        .ezp-cta-badge {
-          display: inline-flex;
-          padding: 6px 14px;
-          border-radius: 100px;
-          background: rgba(251,191,36,0.15);
-          border: 1px solid rgba(251,191,36,0.3);
-          font-size: 11px;
-          font-weight: 700;
-          color: #fbbf24;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          margin-bottom: 24px;
-        }
-        .ezp-cta-title {
+        .ezp2-cta-title {
           font-family: var(--font-display);
-          font-size: clamp(30px, 4vw, 52px);
+          font-size: clamp(30px, 4vw, 50px);
           font-weight: 700;
-          color: #ffffff;
+          color: #fff;
           letter-spacing: -0.02em;
-          line-height: 1.15;
-          margin-bottom: 18px;
+          line-height: 1.12;
+          margin-bottom: 16px;
         }
-        .ezp-cta-title-accent {
-          background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #ea580c 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+        .ezp2-cta-accent {
+          color: rgba(255,255,255,0.75);
         }
-        .ezp-cta-sub {
-          font-size: 16px;
-          color: rgba(255,255,255,0.65);
+        .ezp2-cta-sub {
+          font-size: 15.5px;
+          color: rgba(255,255,255,0.72);
           line-height: 1.75;
-          margin-bottom: 40px;
+          margin-bottom: 36px;
         }
-        .ezp-cta-buttons {
+        .ezp2-cta-btns {
           display: flex;
           gap: 12px;
           justify-content: center;
           flex-wrap: wrap;
-          margin-bottom: 32px;
+          margin-bottom: 28px;
         }
-        .ezp-cta .ezp-btn-primary {
-          background: linear-gradient(135deg, #fbbf24 0%, #ea580c 100%);
-          color: #1f0a4a;
+        .ezp2-cta-btn-primary {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 14px 30px;
+          background: #fff;
+          color: var(--primary);
+          border-radius: 100px;
+          font-size: 14px;
+          font-weight: 700;
+          font-family: var(--font-sans);
+          text-decoration: none;
+          transition: transform 0.2s, box-shadow 0.2s;
         }
-        .ezp-cta .ezp-btn-primary:hover {
-          box-shadow: 0 10px 30px rgba(251,191,36,0.4);
+        .ezp2-cta-btn-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 28px rgba(0,0,0,0.15);
         }
-        .ezp-cta .ezp-btn-outline {
-          color: rgba(255,255,255,0.85);
-          border-color: rgba(255,255,255,0.2);
-        }
-        .ezp-cta .ezp-btn-outline:hover {
-          border-color: #fff;
+        .ezp2-cta-btn-outline {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 14px 30px;
+          background: transparent;
           color: #fff;
+          border: 1.5px solid rgba(255,255,255,0.35);
+          border-radius: 100px;
+          font-size: 14px;
+          font-weight: 600;
+          font-family: var(--font-sans);
+          text-decoration: none;
+          transition: border-color 0.2s, transform 0.2s;
         }
-        .ezp-cta-note {
+        .ezp2-cta-btn-outline:hover {
+          border-color: #fff;
+          transform: translateY(-2px);
+        }
+        .ezp2-cta-note {
           font-size: 12px;
-          color: rgba(255,255,255,0.4);
-          letter-spacing: 0.02em;
+          color: rgba(255,255,255,0.5);
         }
+        .ezp2-cta-note-link {
+          color: rgba(255,255,255,0.75);
+          text-decoration: underline;
+          transition: color 0.2s;
+        }
+        .ezp2-cta-note-link:hover { color: #fff; }
 
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
+        /* ── RESPONSIVE ── */
         @media (max-width: 1100px) {
-          .ezp-hero-inner {
-            grid-template-columns: 1fr;
-            gap: 48px;
-          }
-          .ezp-hero-right { order: -1; }
-          .ezp-services-grid,
-          .ezp-tiers-grid {
-            grid-template-columns: 1fr 1fr;
-          }
-          .ezp-benefits-grid {
-            grid-template-columns: 1fr 1fr;
-          }
-          .ezp-partners-grid {
-            grid-template-columns: repeat(3, 1fr);
-          }
+          .ezp2-hero-inner { grid-template-columns: 1fr; gap: 48px; }
+          .ezp2-hero-right { order: -1; }
+          .ezp2-screenshot-frame { max-width: 360px; }
+          .ezp2-services-grid { grid-template-columns: repeat(2, 1fr); }
+          .ezp2-benefits-grid { grid-template-columns: repeat(2, 1fr); }
+          .ezp2-tiers-grid { grid-template-columns: repeat(2, 1fr); }
+          .ezp2-partners-grid { grid-template-columns: repeat(3, 1fr); }
         }
-
         @media (max-width: 768px) {
-          .ezp-crumb { padding: 12px 20px; font-size: 12px; }
-          .ezp-hero {
-            padding: 56px 20px 80px;
-          }
-          .ezp-stats {
-            padding: 28px 20px;
-          }
-          .ezp-stats-inner {
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-          }
-          .ezp-services,
-          .ezp-benefits,
-          .ezp-tiers,
-          .ezp-partners,
-          .ezp-cta {
-            padding: 64px 20px;
-          }
-          .ezp-section-header { margin-bottom: 40px; }
-          .ezp-services-grid,
-          .ezp-tiers-grid,
-          .ezp-benefits-grid {
-            grid-template-columns: 1fr;
-          }
-          .ezp-partners-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-          .ezp-phone-mock { width: 240px; }
-          .ezp-float-1 { left: -5px; top: 5%; }
-          .ezp-float-2 { right: -5px; bottom: 8%; }
-          .ezp-float-num { font-size: 18px; }
-          .ezp-trust-strip {
-            flex-direction: column;
-            gap: 8px;
-            text-align: center;
-            font-size: 12.5px;
-          }
+          .ezp2-hero { padding: 48px 20px 64px; }
+          .ezp2-section { padding: 64px 20px; }
+          .ezp2-cta-section { padding: 64px 20px; }
+          .ezp2-float-1 { right: -8px; }
+          .ezp2-float-2 { left: -8px; }
         }
-
-        @media (max-width: 480px) {
-          .ezp-hero { padding: 48px 16px 64px; }
-          .ezp-hero-ctas { flex-direction: column; }
-          .ezp-btn-primary, .ezp-btn-outline {
-            width: 100%;
-            justify-content: center;
-          }
-          .ezp-stats-inner { grid-template-columns: 1fr; }
-          .ezp-services,
-          .ezp-benefits,
-          .ezp-tiers,
-          .ezp-partners,
-          .ezp-cta {
-            padding: 56px 16px;
-          }
-          .ezp-cta-buttons { flex-direction: column; width: 100%; }
-          .ezp-cta-buttons .ezp-btn-primary,
-          .ezp-cta-buttons .ezp-btn-outline { width: 100%; }
-          .ezp-partners-grid { grid-template-columns: 1fr; }
-          .ezp-phone-mock { width: 220px; }
+        @media (max-width: 640px) {
+          .ezp2-services-grid { grid-template-columns: 1fr; border-radius: 14px; }
+          .ezp2-benefits-grid { grid-template-columns: 1fr; }
+          .ezp2-tiers-grid { grid-template-columns: 1fr; }
+          .ezp2-partners-grid { grid-template-columns: repeat(2, 1fr); }
+          .ezp2-hero-ctas { flex-direction: column; }
+          .ezp2-btn-primary, .ezp2-btn-outline { width: 100%; justify-content: center; }
+          .ezp2-cta-btns { flex-direction: column; }
+          .ezp2-cta-btn-primary, .ezp2-cta-btn-outline { width: 100%; justify-content: center; }
         }
       `}</style>
     </main>
