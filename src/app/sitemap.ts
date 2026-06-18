@@ -1,90 +1,69 @@
 import type { MetadataRoute } from "next";
+import { getBlogs } from "@/lib/blogApi";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+const BASE_URL = "https://mjdigitalservices.com";
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Static pages that actually exist
+  const staticPages: MetadataRoute.Sitemap = [
     {
-      url: "https://mjdigitalservices.com",
+      url: BASE_URL,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: "https://mjdigitalservices.com/about",
+      url: `${BASE_URL}/about`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://mjdigitalservices.com/contact",
+      url: `${BASE_URL}/contact`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://mjdigitalservices.com/products/ezeepay",
+      url: `${BASE_URL}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/products/ezeepay`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: "https://mjdigitalservices.com/products/zoki",
+      url: `${BASE_URL}/products/zoki`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: "https://mjdigitalservices.com/products/mobilocker",
+      url: `${BASE_URL}/products/mobilocker`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
-    },
-    {
-      url: "https://mjdigitalservices.com/services/api-solutions",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: "https://mjdigitalservices.com/services/cpaas",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: "https://mjdigitalservices.com/services/web-development",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: "https://mjdigitalservices.com/services/mobile-apps",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: "https://mjdigitalservices.com/services/white-label-fintech",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: "https://mjdigitalservices.com/services/ai-solutions",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: "https://mjdigitalservices.com/services/crm-erp",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: "https://mjdigitalservices.com/services/cloud-devops",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
     },
   ];
+
+  // Dynamic blog pages
+  let blogPages: MetadataRoute.Sitemap = [];
+  try {
+    const data = await getBlogs({ limit: "1000" });
+    const blogs = data?.blogs ?? data ?? [];
+    blogPages = blogs.map((blog: { slug: string; updatedAt?: string }) => ({
+      url: `${BASE_URL}/blog/${blog.slug}`,
+      lastModified: blog.updatedAt ? new Date(blog.updatedAt) : new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.75,
+    }));
+  } catch {
+    // Blog API unavailable at build time — skip blog entries gracefully
+  }
+
+  return [...staticPages, ...blogPages];
 }
