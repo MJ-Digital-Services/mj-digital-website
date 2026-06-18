@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
-import ContactPage from "@/components/contact/ContactPage";
+import ContactHero from "@/components/contact/ContactHero";
+import ContactInfo from "@/components/contact/ContactInfo";
+import ContactForm from "@/components/contact/ContactForm";
+import ContactMap from "@/components/contact/ContactMap";
 
 export const metadata: Metadata = {
   title: "Contact Us | MJ Digital Services",
@@ -45,7 +48,14 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
       />
-      <ContactPage />
+      <ContactHero />
+      <section className="contact-main">
+        <div className="contact-grid">
+          <ContactInfo />
+          <ContactForm />
+        </div>
+      </section>
+      <ContactMap />
     </>
   );
 }

@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import AboutPage from "@/components/about/AboutPage";
+import AboutHero from "@/components/about/AboutHero";
+import AboutStory from "@/components/about/AboutStory";
+import AboutPillars from "@/components/about/AboutPillars";
+import AboutFounder from "@/components/about/AboutFounder";
+import AboutValues from "@/components/about/AboutValues";
 
 export const metadata: Metadata = {
   title: "About Us | MJ Digital Services",
@@ -52,7 +56,11 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
-      <AboutPage />
+      <AboutHero />
+      <AboutStory />
+      <AboutPillars />
+      <AboutFounder />
+      <AboutValues />
     </>
   );
 }
