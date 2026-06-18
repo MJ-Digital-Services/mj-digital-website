@@ -72,7 +72,7 @@ export default async function BlogPage() {
       <section className="blog-listing-section">
         <div className="container">
           {grouped.length === 0 ? (
-            <p className="blog-empty">No blogs published yet.</p>
+            <p className="blog-empty">No blogs published yet</p>
           ) : (
             <div className="blog-groups">
               {grouped.map((group) => (
