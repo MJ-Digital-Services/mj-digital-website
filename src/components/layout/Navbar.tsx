@@ -4,15 +4,15 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import {
-  ChevronDown, Menu, X, Zap, MessageSquare,
-  Lock, Code2, Globe, Smartphone, Bot,
+  ChevronDown, Menu, X, MessageSquare,
+  Code2, Globe, Smartphone, Bot,
   LayoutDashboard, ArrowRight, Database, Cpu,
 } from "lucide-react";
 
 const products = [
-  { name: "EzeePay", description: "AEPS, Money Transfer, Utility & Recharge", href: "/products/ezeepay", icon: Zap },
-  { name: "Zoki", description: "WhatsApp Engagement & Marketing Automation", href: "/products/zoki", icon: MessageSquare },
-  { name: "Mobilocker", description: "Digital Storage & Secure Document Management", href: "/products/mobilocker", icon: Lock },
+  { name: "EzeePay", description: "AEPS, Money Transfer, Utility & Recharge", href: "/products/ezeepay", logo: "/ezeepay-logo.png" },
+  { name: "Zoki", description: "WhatsApp Engagement & Marketing Automation", href: "/products/zoki", logo: "/zoki-logo.jpg" },
+  { name: "Mobilocker", description: "Digital Storage & Secure Document Management", href: "/products/mobilocker", logo: "/mobilocker-logo.png" },
 ];
 
 const serviceGroups = [
@@ -193,7 +193,9 @@ export default function Navbar() {
                     <div className="dropdown-simple" onMouseEnter={() => keep("products")} onMouseLeave={close}>
                       {products.map((item) => (
                         <Link key={item.name} href={item.href} className="dropdown-simple-item" onClick={() => setActiveDropdown(null)}>
-                          <div className="dropdown-simple-icon"><item.icon size={17} /></div>
+                          <div className="dropdown-simple-icon">
+                            <img src={item.logo} alt={item.name} style={{ width: 20, height: 20, borderRadius: 4, objectFit: "contain", backgroundColor: "white" }} />
+                          </div>
                           <div>
                             <div className="dropdown-simple-name">{item.name}</div>
                             <div className="dropdown-simple-desc">{item.description}</div>
@@ -258,7 +260,7 @@ export default function Navbar() {
               <div className="mobile-dropdown-items">
                 {products.map((item) => (
                   <Link key={item.name} href={item.href} className="mobile-dropdown-item" onClick={() => setMobileOpen(false)}>
-                    <item.icon size={14} style={{ color: "var(--primary)", flexShrink: 0 }} />{item.name}
+                    <img src={item.logo} alt={item.name} style={{ width: 16, height: 16, borderRadius: 3, objectFit: "contain", backgroundColor: "white", flexShrink: 0 }} />{item.name}
                   </Link>
                 ))}
               </div>
