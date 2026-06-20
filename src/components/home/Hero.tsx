@@ -10,7 +10,8 @@ import AnimatedButton from "@/components/ui/AnimatedButton";
 const stats = [
   { number: "200+", label: "Businesses Served" },
   { number: "50+", label: "APIs Available" },
-  { number: "3", label: "Flagship Products" },
+  { number: "8+", label: "Years of Experience" },
+  { number: "4", label: "Flagship Products" },
   { number: "10+", label: "Industries" },
 ];
 
