@@ -1206,7 +1206,7 @@ img { max-width: 100%; display: block; }
   letter-spacing: 0.02em;
   white-space: nowrap;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.07);
+  -webkit-text-stroke: 1.25px rgba(255, 255, 255, 0.16);
   margin: 28px 0 -0.22em;
   user-select: none;
   pointer-events: none;
