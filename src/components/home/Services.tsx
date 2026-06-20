@@ -1,14 +1,9 @@
 "use client";
 
 import type { ElementType } from "react";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import {
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-} from "motion/react";
+import { AnimatePresence, motion, useInView } from "motion/react";
 import {
   ArrowRight,
   Bot,
@@ -21,6 +16,8 @@ import {
   MessageSquare,
   Smartphone,
 } from "lucide-react";
+
+const SLIDE_DURATION = 5000; // ms each service stays on screen
 
 const services = [
   {
@@ -38,7 +35,7 @@ const services = [
       "Bank Account Verification",
     ],
     href: "/services/api-solutions",
-    image: "/api-solution.png",
+    image: "/svg/api-solutions.svg",
   },
   {
     id: "cpaas",
@@ -55,7 +52,7 @@ const services = [
       "Campaign Analytics",
     ],
     href: "/services/cpaas",
-    image: "/cpass-solution.png",
+    image: "/svg/cpass-solution.svg",
   },
   {
     id: "web-dev",
@@ -72,7 +69,7 @@ const services = [
       "SEO Optimised",
     ],
     href: "/services/web-development",
-    image: "/web-development.png",
+    image: "/svg/web-development.svg",
   },
   {
     id: "mobile-apps",
@@ -89,7 +86,7 @@ const services = [
       "Push Notifications",
     ],
     href: "/services/mobile-apps",
-    image: "/mobile-app-development.png",
+    image: "/svg/mobile-app-development.svg",
   },
   {
     id: "white-label",
@@ -106,7 +103,7 @@ const services = [
       "Multi-tenant Architecture",
     ],
     href: "/services/white-label-fintech",
-    image: "/white-label-fintech.png",
+    image: "/svg/white-label-fintech.svg",
   },
   {
     id: "ai",
@@ -123,7 +120,7 @@ const services = [
       "Custom LLM Integration",
     ],
     href: "/services/ai-solutions",
-    image: "/ai-chatbot-automation.png",
+    image: "/svg/ai-chatbot-automation.svg",
   },
   {
     id: "crm-erp",
@@ -140,7 +137,7 @@ const services = [
       "Role-based Access",
     ],
     href: "/services/crm-erp",
-    image: "/crm-platform.png",
+    image: "/svg/crm-platform.svg",
   },
   {
     id: "cloud",
@@ -157,7 +154,7 @@ const services = [
       "Auto Scaling",
     ],
     href: "/services/cloud-devops",
-    image: "/cloud-devops.png",
+    image: "/svg/cloud-devops.svg",
   },
 ];
 
@@ -170,172 +167,232 @@ function ServiceVisual({
   title: string;
   icon: ElementType;
 }) {
-  return (
-    <div className="svc-visual">
-      {image ? (
-        <img src={image} alt={title} className="svc-visual-img" />
-      ) : (
-        <div className="svc-visual-empty">
-          <Icon size={42} />
-          <span>{title}</span>
-        </div>
-      )}
+  return image ? (
+    <img src={image} alt={title} className="swb-img" />
+  ) : (
+    <div className="swb-img-empty">
+      <Icon size={42} />
+      <span>{title}</span>
     </div>
   );
 }
 
 export default function Services() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const inView = useInView(sectionRef, { amount: "some" });
+
   const [active, setActive] = useState(0);
+  const [progress, setProgress] = useState(0); // 0..100 for the live render
+  const [paused, setPaused] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  const progressRef = useRef(0); // mirrors progress without re-running the effect
+
   const activeService = services[active];
   const ActiveIcon = activeService.icon;
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
+  // Respect prefers-reduced-motion
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduceMotion(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
-  const stageY = useTransform(scrollYProgress, [0, 1], [26, -26]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [42, -42]);
-  const progressScale = useTransform(scrollYProgress, [0.12, 0.88], [0, 1]);
+  // Keep the latest flags readable by the loop without restarting it
+  const flags = useRef({ paused: false, inView: false, reduceMotion: false });
+  useEffect(() => {
+    flags.current = { paused, inView, reduceMotion };
+  }, [paused, inView, reduceMotion]);
 
-  const snapPoints = useMemo(
-    () => services.map((_, index) => index / Math.max(services.length - 1, 1)),
-    []
-  );
+  // One persistent autoplay loop — mounts once, never tears down
+  useEffect(() => {
+    let raf = 0;
+    let last = performance.now();
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const scrubbed = Math.min(0.9, Math.max(0.1, latest));
-    const localProgress = (scrubbed - 0.1) / 0.8;
-    const nextActive = Math.round(localProgress * (services.length - 1));
-    setActive(Math.min(services.length - 1, Math.max(0, nextActive)));
-  });
+    const tick = (now: number) => {
+      const dt = now - last;
+      last = now;
+
+      const { paused, inView, reduceMotion } = flags.current;
+      if (inView && !paused && !reduceMotion) {
+        let next = progressRef.current + (dt / SLIDE_DURATION) * 100;
+        if (next >= 100) {
+          next = 0;
+          setActive((a) => (a + 1) % services.length);
+        }
+        progressRef.current = next;
+        setProgress(next);
+      }
+
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const goTo = (index: number) => {
+    progressRef.current = 0;
+    setProgress(0);
+    setActive(index);
+  };
+
+  const fillWidth = (index: number) =>
+    active === index ? `${progress}%` : index < active ? "100%" : "0%";
 
   return (
-    <section ref={sectionRef} className="svc-section">
-      <div className="svc-pin">
-        <div className="svc-header">
-          <div className="svc-badge">What We Build</div>
-          <h2 className="svc-headline">Services That Drive Growth</h2>
-          <p className="svc-subtext">
+    <section ref={sectionRef} className="swb-section">
+      <div className="swb-inner">
+        <div className="swb-header">
+          <div className="swb-header-left">
+            <div className="swb-badge">What We Build</div>
+            <h2 className="swb-headline">Services That Drive Growth</h2>
+          </div>
+          <p className="swb-subtext">
             From fintech APIs to AI solutions — everything your business needs to
             scale in the digital economy.
           </p>
         </div>
 
-        <motion.div className="svc-stage" style={{ y: stageY }}>
-          <div className="svc-copy">
-            <div className="svc-progress" aria-hidden="true">
-              <motion.span style={{ scaleY: progressScale }} />
-            </div>
-
-            <div className="svc-index">
+        <div
+          className="swb-stage"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          {/* LEFT — index + copy */}
+          <div className="swb-copy">
+            <div className="swb-index">
               {services.map((service, index) => (
                 <button
                   key={service.id}
                   type="button"
-                  className={`svc-index-item${active === index ? " active" : ""}`}
-                  onClick={() => setActive(index)}
+                  className={`swb-index-item${active === index ? " active" : ""}`}
+                  onClick={() => goTo(index)}
                   aria-label={`Show ${service.title}`}
                 >
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <span>{service.title}</span>
+                  <span className="swb-index-num">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="swb-index-name">{service.title}</span>
+                  <span className="swb-index-track" aria-hidden="true">
+                    <span
+                      className="swb-index-fill"
+                      style={{ width: fillWidth(index) }}
+                    />
+                  </span>
                 </button>
               ))}
             </div>
 
-            <motion.div
-              key={activeService.id}
-              className="svc-content"
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-            >
-              <div className="svc-step-badge">
-                <ActiveIcon size={14} />
-                {activeService.label}
-              </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeService.id}
+                className="swb-content"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.32, ease: "easeOut" }}
+              >
+                <div className="swb-step-badge">
+                  <ActiveIcon size={14} />
+                  {activeService.label}
+                </div>
+                <h3 className="swb-step-title">{activeService.title}</h3>
+                <p className="swb-step-desc">{activeService.description}</p>
 
-              <h3 className="svc-step-title">{activeService.title}</h3>
-              <p className="svc-step-desc">{activeService.description}</p>
+                <div className="swb-features">
+                  {activeService.features.map((feature) => (
+                    <div key={feature} className="swb-feature">
+                      <CheckCircle2 size={13} />
+                      {feature}
+                    </div>
+                  ))}
+                </div>
 
-              <div className="svc-step-features">
-                {activeService.features.map((feature) => (
-                  <div key={feature} className="svc-step-feature">
-                    <CheckCircle2 size={13} />
-                    {feature}
-                  </div>
-                ))}
-              </div>
-
-              <Link href={activeService.href} className="svc-step-link">
-                Learn More <ArrowRight size={14} />
-              </Link>
-            </motion.div>
+                <Link href={activeService.href} className="swb-link">
+                  Learn More <ArrowRight size={14} />
+                </Link>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          <div className="svc-panel">
-            <motion.div
-              key={activeService.id}
-              className="svc-panel-inner"
-              style={{ y: imageY }}
-              initial={{ opacity: 0, scale: 0.965 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.42, ease: "easeOut" }}
-            >
-              <ServiceVisual
-                image={activeService.image}
-                title={activeService.title}
-                icon={activeService.icon}
-              />
-            </motion.div>
-
-            <div className="svc-panel-meta">
-              <span>
-                {String(active + 1).padStart(2, "0")} /{" "}
-                {String(services.length).padStart(2, "0")}
-              </span>
-              <div className="svc-panel-dots">
-                {snapPoints.map((_, index) => (
-                  <button
-                    key={services[index].id}
-                    type="button"
-                    className={`svc-dot${active === index ? " active" : ""}`}
-                    onClick={() => setActive(index)}
-                    aria-label={`Show ${services[index].title}`}
+          {/* RIGHT — panel */}
+          <div className="swb-panel">
+            <div className="swb-segments" aria-hidden="true">
+              {services.map((service, index) => (
+                <span key={service.id} className="swb-segment">
+                  <span
+                    className="swb-segment-fill"
+                    style={{ width: fillWidth(index) }}
                   />
-                ))}
-              </div>
+                </span>
+              ))}
+            </div>
+
+            <div className="swb-frame">
+              <AnimatePresence>
+                <motion.div
+                  key={activeService.id}
+                  className="swb-frame-slide"
+                  initial={{ opacity: 0, scale: reduceMotion ? 1 : 1.08 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{
+                    opacity: { duration: 0.6, ease: "easeInOut" },
+                    scale: {
+                      duration: reduceMotion ? 0 : SLIDE_DURATION / 1000,
+                      ease: "linear",
+                    },
+                  }}
+                >
+                  <ServiceVisual
+                    image={activeService.image}
+                    title={activeService.title}
+                    icon={activeService.icon}
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              <span
+                key={`shine-${active}`}
+                className="swb-shine"
+                aria-hidden="true"
+              />
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        <div className="svc-mobile-list">
+        {/* MOBILE — stacked cards (no autoplay) */}
+        <div className="swb-mobile-list">
           {services.map((service) => (
-            <article key={service.id} className="svc-mobile-card">
-              <ServiceVisual
-                image={service.image}
-                title={service.title}
-                icon={service.icon}
-              />
+            <article key={service.id} className="swb-mobile-card">
+              <div className="swb-frame">
+                <ServiceVisual
+                  image={service.image}
+                  title={service.title}
+                  icon={service.icon}
+                />
+              </div>
 
-              <div className="svc-step-badge">
+              <div className="swb-step-badge">
                 <service.icon size={14} />
                 {service.label}
               </div>
-              <h3 className="svc-step-title">{service.title}</h3>
-              <p className="svc-step-desc">{service.description}</p>
+              <h3 className="swb-step-title">{service.title}</h3>
+              <p className="swb-step-desc">{service.description}</p>
 
-              <div className="svc-step-features">
+              <div className="swb-features">
                 {service.features.map((feature) => (
-                  <div key={feature} className="svc-step-feature">
+                  <div key={feature} className="swb-feature">
                     <CheckCircle2 size={13} />
                     {feature}
                   </div>
                 ))}
               </div>
 
-              <Link href={service.href} className="svc-step-link">
+              <Link href={service.href} className="swb-link">
                 Learn More <ArrowRight size={14} />
               </Link>
             </article>
