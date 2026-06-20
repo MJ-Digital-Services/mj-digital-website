@@ -144,7 +144,9 @@ export default function Footer() {
         </span>
         <div className="footer-bottom-links">
           <Link href="/privacy-policy" className="footer-bottom-link">Privacy Policy</Link>
-          <Link href="/terms-of-service" className="footer-bottom-link">Terms of Service</Link>
+          <Link href="/terms-of-service" className="footer-bottom-link">Terms &amp; Conditions</Link>
+          <Link href="/refund-policy" className="footer-bottom-link">Refund Policy</Link>
+          <Link href="/grievance-redressal" className="footer-bottom-link">Grievance Redressal</Link>
           <a href="#" className="footer-bottom-link footer-totop">Back to top ↑</a>
         </div>
       </div>
