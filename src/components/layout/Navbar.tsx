@@ -171,10 +171,7 @@ export default function Navbar() {
           >
             {/* Logo */}
             <Link href="/" className="navbar-logo" ref={logoRef}>
-              <div className="navbar-logo-icon">MJ</div>
-              <span className="navbar-logo-text">
-                MJ Digital<span> Services</span>
-              </span>
+              <img src="/mj-logo.png" alt="MJ Digital Services" className="navbar-logo-img" />
             </Link>
 
             {/* Right side */}
