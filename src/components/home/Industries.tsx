@@ -95,7 +95,13 @@ export default function Industries() {
         </div>
 
         <div className="orbit-hub">
-          <div className="orbit-hub-core">MJ</div>
+          <div className="orbit-hub-core">
+            <img
+              src="/mj-icon.png"
+              alt="MJ Digital Services"
+              className="orbit-hub-logo"
+            />
+          </div>
         </div>
       </div>
 
