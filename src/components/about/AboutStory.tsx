@@ -33,11 +33,12 @@ export default function AboutStory() {
         </div>
         <div className="about-story-visual">
           <div className="about-story-image">
-            <div className="about-image-placeholder">
-              <Rocket size={36} />
-              <span>office-photo.jpg</span>
-              <small>Replace in /public/about-office.jpg</small>
-            </div>
+            <img
+              src="/about-office.jpeg"
+              alt="MJ Digital Services office"
+              className="about-story-img"
+              // style={{}}
+            />
           </div>
           <div className="about-story-floater">
             <div className="about-story-floater-num">17+</div>
