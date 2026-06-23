@@ -495,6 +495,84 @@ img { max-width: 100%; display: block; }
   line-height: 1.35;
 }
 
+.mega-item-expandable {
+  position: relative;
+  align-items: flex-start;
+}
+
+.mega-item-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.mega-item-tooltip {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 12px);
+  width: 260px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.14);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  pointer-events: none;
+  z-index: 300;
+}
+
+.mega-item-expandable:hover .mega-item-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.mega-item-tooltip-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  font-family: var(--font-sans);
+}
+
+.mega-item-tooltip-body {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-family: var(--font-sans);
+}
+
+/* Items near the right edge of the mega menu would push the tooltip
+   off-screen to the right — flip it to the left side instead */
+.mega-group:last-child .mega-item-tooltip {
+  left: auto;
+  right: calc(100% + 12px);
+  transform: translateX(6px);
+}
+.mega-group:last-child .mega-item-expandable:hover .mega-item-tooltip {
+  transform: translateX(0);
+}
+
+.mega-item-tooltip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mega-item-tooltip-row {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-family: var(--font-sans);
+}
+
+.mega-item-tooltip-term {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
 /* ── Mobile Toggle ── */
 .navbar-mobile-toggle {
   display: none;
