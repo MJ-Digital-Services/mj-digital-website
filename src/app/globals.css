@@ -858,10 +858,9 @@ img { max-width: 100%; display: block; }
 
 /* Product chips */
 .hero-chips {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
-  flex-wrap: wrap;
   justify-content: center;
   animation: heroFadeUp 0.7s ease 0.4s both;
 }
@@ -875,6 +874,7 @@ img { max-width: 100%; display: block; }
 .hero-chip {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 7px;
   padding: 6px 12px 6px 8px;
   border-radius: 100px;
@@ -986,6 +986,8 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 480px) {
   .hero-chip-desc { display: none; }
+  .hero-chips { gap: 6px; }
+  .hero-chip { padding: 6px 10px 6px 6px; }
   .hero-ctas { flex-direction: column; width: 100%; }
   .hero-btn-primary, .hero-btn-outline { width: 100%; justify-content: center; }
 }

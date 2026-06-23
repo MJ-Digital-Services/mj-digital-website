@@ -18,7 +18,7 @@ export default function RefundPolicyPage() {
         {/* Title */}
         <h1 className="blog-post-title">Refund &amp; Cancellation Policy</h1>
         <div className="blog-post-meta">
-          <span className="blog-post-meta-item">Last Updated: [DD/MM/YYYY]</span>
+          <span className="blog-post-meta-item">Last Updated: 22/06/2026</span>
         </div>
 
         {/* Content */}
