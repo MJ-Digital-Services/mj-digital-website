@@ -9108,3 +9108,60 @@ img { max-width: 100%; display: block; }
     transition: none;
   }
 }
+
+.cert-section {
+  background: var(--background);
+  padding: 56px 24px 64px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.cert-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.cert-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.cert-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cert-logo {
+  height: 64px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  filter: grayscale(60%) opacity(0.75);
+  transition: filter 0.25s;
+}
+
+.cert-item:hover .cert-logo {
+  filter: grayscale(0%) opacity(1);
+}
+
+@media (max-width: 768px) {
+  .cert-grid { gap: 32px; justify-content: center; }
+  .cert-logo { height: 52px; max-width: 110px; }
+}
+
+@media (max-width: 480px) {
+  .cert-section { padding: 40px 20px 48px; }
+  .cert-grid { gap: 24px; }
+  .cert-logo { height: 44px; max-width: 90px; }
+}

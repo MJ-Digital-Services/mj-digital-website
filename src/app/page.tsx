@@ -8,6 +8,7 @@ import Testimonials from "@/components/home/Testimonials";
 import FAQs from "@/components/home/FAQs";
 import CTABanner from "@/components/home/CTABanner";
 import ProductShowcase from "@/components/home/ProductShowcase";
+import Certifications from "@/components/home/Certifications";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -132,6 +133,7 @@ export default function Home() {
         <TechStack />
         <FAQs />
         <CTABanner />
+        <Certifications />
       </main>
     </>
   );
