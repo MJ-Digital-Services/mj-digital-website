@@ -53,10 +53,10 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      name: "What is EzeePay and who is it for?",
+      name: "Who is MJ Digital Services and what makes you different?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "EzeePay is our flagship fintech platform designed for merchants, distributors, and retailers. It provides AEPS cash withdrawal, domestic money transfer, utility bill payments, mobile recharge, and Aadhaar-based services — all in one app.",
+        text: "MJ Digital Services is a technology company building fintech infrastructure, communication platforms, and custom software for businesses across India. What sets us apart is our combination of deep fintech and regulatory expertise with full-stack development capability.",
       },
     },
     {

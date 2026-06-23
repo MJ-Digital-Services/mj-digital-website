@@ -1,75 +1,45 @@
 const testimonials = [
   {
-    name: "Rajesh Sharma",
-    role: "CEO, FinEdge Solutions",
-    text: "MJ Digital Services transformed our fintech operations completely. Their AEPS API integration was seamless and the support team was available 24/7. Highly recommended.",
+    name: "Azmarq",
+    role: "Client",
+    text: "Working with MJ Digital Services has been a smooth experience from start to finish. Their team understood our requirements quickly and delivered a solution that fit our workflow perfectly.",
     color: "#e5182a",
   },
   {
-    name: "Priya Menon",
-    role: "CTO, PaySwift India",
-    text: "The white label platform they built for us went live in just 3 weeks. The quality of code and architecture is enterprise-grade. Our merchants love the dashboard.",
+    name: "EzeePay",
+    role: "Client",
+    text: "The integration process was straightforward and well documented. Their support team has been responsive whenever we've had questions or needed adjustments.",
     color: "#3b82f6",
   },
   {
-    name: "Amit Verma",
-    role: "Founder, RetailX",
-    text: "We integrated their WhatsApp Business API for customer engagement and our conversion rate went up by 40%. The automation workflows are incredibly powerful.",
+    name: "Cashlo",
+    role: "Client",
+    text: "MJ Digital Services brought a lot of technical depth to our project. The platform they built has held up well as our user base has grown.",
     color: "#22c55e",
   },
   {
-    name: "Sunita Patel",
-    role: "Director, GovTech Services",
-    text: "Their team understood our government compliance requirements from day one. The KYC and Aadhaar integration was flawless and passed all audits without issues.",
+    name: "Adkea",
+    role: "Client",
+    text: "Their development team was easy to collaborate with and stayed on top of deadlines throughout the project. We'd recommend them to other teams looking for reliable execution.",
     color: "#f97316",
   },
   {
-    name: "Vikram Singh",
-    role: "MD, NeoBank Ventures",
-    text: "We've worked with many tech vendors but MJ Digital stands out for their fintech expertise. They know the regulatory landscape and build accordingly.",
+    name: "Adycure",
+    role: "Client",
+    text: "We needed a partner who could move fast without cutting corners, and that's exactly what we got. The end result matched what we had envisioned.",
     color: "#a855f7",
   },
   {
-    name: "Deepa Krishnan",
-    role: "VP Technology, LogiTech Corp",
-    text: "The mobile app they built for our logistics platform handles 50,000+ daily transactions without a glitch. Flutter performance is outstanding.",
+    name: "Innovega",
+    role: "Client",
+    text: "From planning to deployment, the process felt organized and transparent. Their engineers asked the right questions early on, which saved us time later.",
     color: "#06b6d4",
   },
   {
-    name: "Rahul Gupta",
-    role: "Co-founder, EdPay",
-    text: "Their AI chatbot reduced our customer support tickets by 60% in the first month. The NLP accuracy is impressive and keeps getting better.",
+    name: "Vakilgiri",
+    role: "Client",
+    text: "MJ Digital Services handled our project with professionalism and attention to detail. We've continued working with them on follow-up improvements since launch.",
     color: "#eab308",
-  },
-  {
-    name: "Meera Joshi",
-    role: "Head of Digital, InsureCo",
-    text: "MJ Digital built our entire CRM from scratch. The role-based access, lead management, and reporting features are exactly what our sales team needed.",
-    color: "#e5182a",
-  },
-  {
-    name: "Arjun Nair",
-    role: "CEO, QuickMerchant",
-    text: "The DMT and BBPS APIs were integrated within days. The documentation is excellent and the sandbox environment made testing a breeze.",
-    color: "#3b82f6",
-  },
-  {
-    name: "Kavya Reddy",
-    role: "Product Lead, HealthPay",
-    text: "We needed a HIPAA-compliant document management system urgently. MJ Digital delivered Mobilocker integration in record time with zero security issues.",
-    color: "#22c55e",
-  },
-  {
-    name: "Sanjay Kapoor",
-    role: "Founder, TradeEasy",
-    text: "Their cloud infrastructure setup on AWS has given us 99.99% uptime. Auto-scaling during peak hours works perfectly. No downtime in 8 months.",
-    color: "#f97316",
-  },
-  {
-    name: "Nisha Agarwal",
-    role: "CMO, BrandReach",
-    text: "The RCS messaging campaigns they set up for us have 3x higher engagement than SMS. Their CPaaS solutions are truly next-generation.",
-    color: "#a855f7",
   },
 ];
 
@@ -110,9 +80,9 @@ function TestimonialColumn({ items, duration }: { items: typeof testimonials; du
 }
 
 export default function Testimonials() {
-  const col1 = testimonials.slice(0, 4);
-  const col2 = testimonials.slice(4, 8);
-  const col3 = testimonials.slice(8, 12);
+  const col1 = testimonials.slice(0, 3);
+  const col2 = testimonials.slice(3, 5);
+  const col3 = testimonials.slice(5, 7);
 
   return (
     <section className="testimonials-section">
@@ -127,9 +97,9 @@ export default function Testimonials() {
       </div>
 
       <div className="testimonials-grid">
-        <TestimonialColumn items={col1} duration="25s" />
-        <TestimonialColumn items={col2} duration="35s" />
-        <TestimonialColumn items={col3} duration="25s" />
+        <TestimonialColumn items={col1} duration="22s" />
+        <TestimonialColumn items={col2} duration="30s" />
+        <TestimonialColumn items={col3} duration="20s" />
       </div>
     </section>
   );

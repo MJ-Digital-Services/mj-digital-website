@@ -17,8 +17,8 @@ const faqs = [
     answer: "Yes. Our white label fintech platform lets you launch your own branded merchant portal, digital wallet, or payment aggregation platform in as little as 2 weeks. Everything is fully customizable — from branding and UI to feature sets and user roles.",
   },
   {
-    question: "What is EzeePay and who is it for?",
-    answer: "EzeePay is our flagship fintech platform designed for merchants, distributors, and retailers. It provides AEPS cash withdrawal, domestic money transfer, utility bill payments, mobile recharge, and Aadhaar-based services — all in one app. It is ideal for last-mile financial service providers across India.",
+    question: "Who is MJ Digital Services and what makes you different?",
+    answer: "MJ Digital Services is a technology company building fintech infrastructure, communication platforms, and custom software for businesses across India. What sets us apart is our combination of deep fintech and regulatory expertise with full-stack development capability — we don't just build software, we understand the compliance and operational realities of the industries we serve.",
   },
   {
     question: "Can you build a custom mobile app for my business?",
