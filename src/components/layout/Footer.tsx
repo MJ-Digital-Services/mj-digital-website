@@ -74,11 +74,8 @@ export default function Footer() {
       <div className="footer-top">
         {/* Brand column */}
         <div>
-          <Link href="/" className="navbar-logo" style={{ color: "#ffffff" }}>
-            <div className="navbar-logo-icon">MJ</div>
-            <span className="navbar-logo-text" style={{ color: "#ffffff" }}>
-              MJ Digital<span style={{ color: "var(--primary)" }}> Services</span>
-            </span>
+          <Link href="/" className="navbar-logo">
+            <img src="/mj-logo1.png" alt="MJ Digital Services" className="navbar-logo-img" />
           </Link>
           <p className="footer-brand-motto">
             Building Digital Products · Powering Businesses · Enabling Innovation
