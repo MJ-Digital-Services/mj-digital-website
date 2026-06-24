@@ -40,6 +40,14 @@ const productLinks = [
   { name: "Mobilocker", href: "/products/mobilocker" },
 ];
 
+const certifications = [
+  { name: "Business Correspondent Federation of India", logo: "/certifications/bcfi.jpeg" },
+  { name: "D-U-N-S Registered", logo: "/certifications/duns.png" },
+  { name: "Internet and Mobile Association of India", logo: "/certifications/iamai.png" },
+  { name: "ISO 27001 Certified", logo: "/certifications/iso-27001.png" },
+  { name: "ISO 9001:2015 Certified", logo: "/certifications/iso-9001.png" },
+];
+
 const serviceLinks = [
   { name: "API Solutions",       href: "/services/api-solutions" },
   { name: "CPaaS Solutions",     href: "/services/cpaas" },
@@ -80,6 +88,15 @@ export default function Footer() {
             infrastructure, APIs, mobile applications, and digital transformation for
             startups, enterprises, and government-focused organizations.
           </p>
+
+          <div className="footer-certs">
+            {certifications.map((c) => (
+              <div key={c.name} className="footer-cert-item" title={c.name}>
+                <img src={c.logo} alt={c.name} className="footer-cert-logo" />
+              </div>
+            ))}
+          </div>
+
           <div className="footer-socials">
             {socials.map((s) => (
               <a key={s.label} href={s.href} className="footer-social-btn" aria-label={s.label} target="_blank" rel="noopener noreferrer">

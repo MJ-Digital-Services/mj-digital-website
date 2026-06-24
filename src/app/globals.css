@@ -1323,6 +1323,37 @@ img { max-width: 100%; display: block; }
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2));
 }
 
+.footer-certs {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.footer-cert-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer-cert-logo {
+  height: 37px;
+  width: auto;
+  max-width: 80px;
+  object-fit: contain;
+}
+
+.footer-cert-item:hover .footer-cert-logo {
+  filter: grayscale(0%) brightness(1) opacity(1);
+}
+
+@media (max-width: 640px) {
+  .footer-certs { gap: 14px; }
+  .footer-cert-logo { height: 26px; max-width: 64px; }
+}
+
 @media (max-width: 1024px) {
   .footer-top {
     grid-template-columns: 1fr 1fr;
