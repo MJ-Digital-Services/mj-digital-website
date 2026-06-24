@@ -1343,10 +1343,11 @@ img { max-width: 100%; display: block; }
   width: auto;
   max-width: 80px;
   object-fit: contain;
+  transition: transform 0.2s ease;
 }
 
 .footer-cert-item:hover .footer-cert-logo {
-  filter: grayscale(0%) brightness(1) opacity(1);
+  transform: scale(1.6);
 }
 
 @media (max-width: 640px) {
