@@ -25,6 +25,13 @@ const products = [
     color: "#3b82f6",
     desc: "Secure Document Management & Verification",
   },
+  {
+    name: "Cashlo",
+    badge: "UPI Cashpoint",
+    src: "/products/cashlo-screenshot.png",
+    color: "#a3e635",
+    desc: "UPI Cashpoint Platform for Every Shopkeeper",
+  },
 ];
 
 export default function ProductShowcase() {
