@@ -2699,9 +2699,8 @@ img { max-width: 100%; display: block; }
 /* ============================================================
    TECH STACK
    ============================================================ */
-
 .techstack-section {
-  background: var(--background);
+  background: linear-gradient(135deg, #fff5f5 0%, #fef0f0 50%, #fdeeee 100%);
   padding: 100px 24px;
 }
 
@@ -2711,131 +2710,70 @@ img { max-width: 100%; display: block; }
   margin: 0 auto 64px;
 }
 
-.techstack-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px 14px;
-  border-radius: 100px;
-  border: 1px solid var(--border);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  font-family: var(--font-sans);
+.techstack-headline-accent {
+  color: var(--primary);
 }
 
-.techstack-headline {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 3vw, 42px);
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin-bottom: 16px;
-}
-
-.techstack-subtext {
-  font-size: 16px;
-  color: var(--text-muted);
-  line-height: 1.75;
-}
-
-.techstack-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto;
-  gap: 1px;
+.techstack-flat-grid {
   max-width: 1280px;
   margin: 0 auto;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  overflow: hidden;
-  background: var(--border);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
 }
 
-.techstack-category {
+.techstack-flat-card {
   background: var(--background);
-  padding: 32px 28px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 16px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 32px;
-  position: relative;
-  transition: background 0.2s, box-shadow 0.2s;
-  min-height: 260px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 2px 12px rgba(0,0,0,0.06);
+  align-items: center;
+  gap: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
-.techstack-category:hover {
-  background: var(--surface);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 8px 28px rgba(0,0,0,0.10);
+.techstack-flat-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px var(--primary-glow);
+  transform: translateY(-3px);
 }
 
-.techstack-category-top {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.techstack-category-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--primary);
-  font-family: var(--font-sans);
-}
-
-.techstack-category-desc {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.6;
-  font-family: var(--font-sans);
-}
-
-.techstack-logos {
+.techstack-flat-icon {
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.techstack-logo {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.techstack-logo img {
-  height: 24px;
-  width: auto;
+.techstack-flat-icon img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
-.techstack-logo-name {
-  font-size: 13px;
+.techstack-flat-name {
+  font-size: 14px;
   font-weight: 600;
   color: var(--text-primary);
   font-family: var(--font-sans);
-  white-space: nowrap;
+  text-align: center;
 }
 
 @media (max-width: 1024px) {
-  .techstack-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .techstack-flat-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
-@media (max-width: 640px) {
-  .techstack-grid {
-    grid-template-columns: 1fr;
-  }
-  .techstack-section { padding: 64px 20px; }
+@media (max-width: 768px) {
+  .techstack-flat-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .techstack-flat-card { padding: 20px 12px; }
 }
 
+@media (max-width: 480px) {
+  .techstack-flat-grid { grid-template-columns: repeat(2, 1fr); }
+}
 /* ============================================================
    TESTIMONIALS
    ============================================================ */
