@@ -858,10 +858,13 @@ img { max-width: 100%; display: block; }
 
 /* Product chips */
 .hero-chips {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+  width: max-content;
+  max-width: 100vw;
   animation: heroFadeUp 0.7s ease 0.4s both;
 }
 
@@ -966,6 +969,21 @@ img { max-width: 100%; display: block; }
   width: 1px;
   height: 32px;
   background: rgba(255,255,255,0.1);
+}
+
+@media (max-width: 425px) {
+  .hero-chips {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    flex-wrap: unset;
+    width: auto;
+    max-width: 100%;
+    gap: 6px;
+  }
+
+  .hero-chip {
+    justify-content: center;
+  }
 }
 
 /* ── Animation ── */
