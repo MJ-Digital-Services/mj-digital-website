@@ -1,118 +1,11 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
-import {
-  ChevronDown, Menu, X, MessageSquare,
-  Code2, Globe, Smartphone, Bot,
-  LayoutDashboard, ArrowRight, Cpu,
-} from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import { serviceGroups, products } from "@/lib/site-data";
-
-// const products = [
-//   { name: "EzeePay", description: "AEPS, Money Transfer, Utility & Recharge", href: "/products/ezeepay", logo: "/ezeepay-logo.png" },
-//   { name: "Zoki", description: "Fastag Solution & Car Care Services", href: "/products/zoki", logo: "/zoki-logo.jpg" },
-//   { name: "Mobilocker", description: "Secure Device Protection & Insurance Services", href: "/products/mobilocker", logo: "/mobilocker-logo.png" },
-//   { name: "Cashlo", description: "UPI Cashpoint Platform for Every Shopkeeper", href: "https://cashlo.vercel.app/", logo: "/cashlo-logo.png" }
-// ];
-
-// const serviceGroups = [
-//   {
-//     label: "FINTECH & APIs",
-//     items: [
-//       {
-//         name: "API Solutions",
-//         description: "AEPS, DMT, BBPS, KYC APIs",
-//         fullName: "AEPS, DMT, BBPS & KYC APIs",
-//         tooltipItems: [
-//           { term: "AEPS", desc: "Aadhaar Enabled Payment System — cash withdrawal, balance inquiry, mini statement, and banking transactions using Aadhaar authentication." },
-//           { term: "DMT", desc: "Domestic Money Transfer — instant bank-to-bank transfers across India." },
-//           { term: "BBPS", desc: "Bharat Bill Payment System — unified utility bill payments." },
-//           { term: "KYC APIs", desc: "Know Your Customer APIs — digital identity verification and onboarding." },
-//         ],
-//         href: "/services/api-solutions",
-//         icon: Code2,
-//       },
-//       {
-//         name: "White Label Fintech",
-//         description: "Merchant & Wallet Platforms",
-//         fullName: "White Label Fintech Platforms",
-//         tooltip: "Fully branded merchant and digital wallet platforms you can launch under your own brand, built on our fintech infrastructure.",
-//         href: "/services/white-label-fintech",
-//         icon: LayoutDashboard,
-//       },
-//     ],
-//   },
-//   {
-//     label: "COMMUNICATION",
-//     items: [
-//       {
-//         name: "CPaaS Solutions",
-//         description: "WhatsApp, SMS, RCS & Voice",
-//         fullName: "WhatsApp Business API, SMS, RCS & Voice",
-//         tooltipItems: [
-//           { term: "WhatsApp Business API", desc: "Customer messaging and support over WhatsApp." },
-//           { term: "SMS", desc: "Short Message Service — bulk and transactional texts." },
-//           { term: "RCS", desc: "Rich Communication Services — branded interactive messaging." },
-//           { term: "Voice", desc: "Voice Communication Solutions — calls and IVR." },
-//         ],
-//         href: "/services/cpaas",
-//         icon: MessageSquare,
-//       },
-//     ],
-//   },
-//   {
-//     label: "DEVELOPMENT",
-//     items: [
-//       {
-//         name: "Web Development",
-//         description: "Corporate, Ecommerce & Portals",
-//         fullName: "Corporate, Ecommerce & Portal Websites",
-//         tooltip: "Custom-built corporate websites, ecommerce stores, and customer/admin portals tailored to your business needs.",
-//         href: "/services/web-development",
-//         icon: Globe,
-//       },
-//       {
-//         name: "Mobile App Development",
-//         description: "Android, iOS & Flutter",
-//         fullName: "Android, iOS & Flutter Apps",
-//         tooltip: "Native Android and iOS apps, or cross-platform apps built with Flutter for faster delivery across both platforms.",
-//         href: "/services/mobile-apps",
-//         icon: Smartphone,
-//       },
-//       {
-//         name: "CRM / ERP Development",
-//         description: "Custom enterprise software",
-//         fullName: "CRM & ERP Software",
-//         tooltip: "CRM (Customer Relationship Management) for sales and support pipelines, and ERP (Enterprise Resource Planning) for unified operations, inventory, and finance management.",
-//         href: "/services/crm-erp",
-//         icon: LayoutDashboard,
-//       },
-//     ],
-//   },
-//   {
-//     label: "EMERGING TECH",
-//     items: [
-//       {
-//         name: "AI Solutions",
-//         description: "Chatbots, Voice AI & Automation",
-//         fullName: "AI Chatbots, Voice AI & Automation",
-//         tooltip: "AI Chatbots for customer support, Voice AI Assistants for call handling, and Business Process Automation to cut manual work.",
-//         href: "/services/ai-solutions",
-//         icon: Bot,
-//       },
-//       {
-//         name: "Cloud & DevOps",
-//         description: "AWS, Azure, CI/CD pipelines",
-//         fullName: "AWS, Azure & CI/CD Pipelines",
-//         tooltip: "Amazon Web Services (AWS) and Microsoft Azure infrastructure, with CI/CD (Continuous Integration & Continuous Deployment) pipelines for reliable, automated releases.",
-//         href: "/services/cloud-devops",
-//         icon: Cpu,
-//       },
-//     ],
-//   },
-// ];
 
 const staticLinks = [
   { name: "Developers", href: "/services/api-solutions" },
@@ -120,15 +13,25 @@ const staticLinks = [
   { name: "Blog", href: "/blog" },
 ];
 
+// Flattened sub-groups (used by the mega menu detail panel)
+const flatSubs = serviceGroups.flatMap((group) =>
+  group.items.map((sub) => ({
+    category: group.label,
+    sub,
+    slug: sub.href.replace("/services/", ""),
+  }))
+);
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [mobileServiceCat, setMobileServiceCat] = useState<string | null>(null);
+  const [hoveredSub, setHoveredSub] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { scrollY } = useScroll();
-  // const [expandedPad, setExpandedPad] = useState(64);
   const logoRef = useRef<HTMLAnchorElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -152,14 +55,6 @@ export default function Navbar() {
 
   const expandedPad = Math.min(150, Math.max(24, vw * 0.104));
 
-  // useEffect(() => {
-  //   const update = () =>
-  //     setExpandedPad(Math.min(150, Math.max(24, window.innerWidth * 0.104)));
-  //   update();
-  //   window.addEventListener("resize", update);
-  //   return () => window.removeEventListener("resize", update);
-  // }, []);
-
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 60);
   });
@@ -179,6 +74,15 @@ export default function Navbar() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setActiveDropdown(name);
   };
+  const openServices = () => {
+    open("services");
+    setHoveredSub(null);
+  };
+
+  // Resolve which sub-group the detail panel shows (defaults to the first)
+  const activeSubSlug = hoveredSub ?? flatSubs[0]?.slug;
+  const activeSub =
+    flatSubs.find((s) => s.slug === activeSubSlug) ?? flatSubs[0];
 
   return (
     <>
@@ -197,11 +101,6 @@ export default function Navbar() {
         opacity: mounted ? 1 : 0,
         transition: "opacity 0.15s ease",
       }}>
-        {/* 
-          This is the only animated element.
-          It sits centered, and we animate its width + top margin.
-          Content layout never changes — no reflow, no flying elements.
-        */}
         <motion.div
           animate={{
             marginTop: scrolled ? 12 : 0,
@@ -218,8 +117,8 @@ export default function Navbar() {
             WebkitBackdropFilter: "blur(16px)",
             overflow: "visible",
             pointerEvents: "auto",
-            minWidth: scrolled ? "unset" : "unset",   // remove minWidth entirely
-            maxWidth: "95vw",                          // ADD this — never wider than viewport
+            minWidth: scrolled ? "unset" : "unset",
+            maxWidth: "95vw",
           }}
         >
           {/* Inner row — height animates separately for smoothness */}
@@ -269,51 +168,12 @@ export default function Navbar() {
                   )}
                 </div>
 
-                {/* Services */}
-                <div className="nav-dropdown" onMouseEnter={() => open("services")} onMouseLeave={close}>
+                {/* Services — trigger only; panel is portalled below */}
+                <div className="nav-dropdown" onMouseEnter={openServices} onMouseLeave={close}>
                   <button className={`nav-link${activeDropdown === "services" ? " active" : ""}`}>
                     Services
                     <ChevronDown size={13} className={`nav-chevron${activeDropdown === "services" ? " open" : ""}`} />
                   </button>
-                  {activeDropdown === "services" && (
-                    <div className="dropdown-mega" onMouseEnter={() => keep("services")} onMouseLeave={close}>
-                      {serviceGroups.map((group) => (
-                        <div key={group.label} className="mega-group">
-                          <div className="mega-group-label">{group.label}</div>
-                          {group.items.map((item) => (
-                            <Link
-                              key={item.name}
-                              href={item.href}
-                              className="mega-item mega-item-expandable"
-                              onClick={() => setActiveDropdown(null)}
-                            >
-                              <div className="mega-item-icon"><item.icon size={16} /></div>
-                              <div className="mega-item-text">
-                                <div className="mega-item-name">{item.name}</div>
-                                <div className="mega-item-desc">{item.description}</div>
-                              </div>
-                              <div className="mega-item-tooltip">
-                                <div className="mega-item-tooltip-title">{item.fullName}</div>
-                                {item.tooltipItems ? (
-                                  <div className="mega-item-tooltip-list">
-                                    {item.tooltipItems.map((t) => (
-                                      <p key={t.term} className="mega-item-tooltip-row">
-                                        <span className="mega-item-tooltip-term">{t.term}</span>
-                                        {" — "}
-                                        {t.desc}
-                                      </p>
-                                    ))}
-                                  </div>
-                                ) : (
-                                  <div className="mega-item-tooltip-body">{item.tooltip}</div>
-                                )}
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      ))}
-                    </div>
-                  )}
                 </div>
 
                 {staticLinks.map((link) => (
@@ -349,19 +209,39 @@ export default function Navbar() {
                 ))}
               </div>
             )}
+
             <button className="mobile-nav-link" onClick={() => setMobileExpanded(mobileExpanded === "services" ? null : "services")}>
               Services
               <ChevronDown size={16} style={{ color: "var(--text-muted)", transform: mobileExpanded === "services" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }} />
             </button>
             {mobileExpanded === "services" && (
               <div className="mobile-dropdown-items">
-                {serviceGroups.map((group) => group.items.map((item) => (
-                  <Link key={item.name} href={item.href} className="mobile-dropdown-item" onClick={() => setMobileOpen(false)}>
-                    <item.icon size={14} style={{ color: "var(--primary)", flexShrink: 0 }} />{item.name}
-                  </Link>
-                )))}
+                {serviceGroups.map((group) => {
+                  const catOpen = mobileServiceCat === group.label;
+                  return (
+                    <div key={group.label} className="mobile-svc-group">
+                      <button
+                        className="mobile-svc-cat"
+                        onClick={() => setMobileServiceCat(catOpen ? null : group.label)}
+                      >
+                        {group.label}
+                        <ChevronDown size={14} style={{ color: "var(--text-muted)", transform: catOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s", flexShrink: 0 }} />
+                      </button>
+                      {catOpen && (
+                        <div className="mobile-svc-subs">
+                          {group.items.map((item) => (
+                            <Link key={item.name} href={item.href} className="mobile-dropdown-item" onClick={() => setMobileOpen(false)}>
+                              <item.icon size={14} style={{ color: "var(--primary)", flexShrink: 0 }} />{item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             )}
+
             {staticLinks.map((link) => (
               <Link key={link.name} href={link.href} className="mobile-nav-link" onClick={() => setMobileOpen(false)}>{link.name}</Link>
             ))}
@@ -375,6 +255,87 @@ export default function Navbar() {
       </div>
 
       <div className="navbar-spacer" />
+
+      {/* ── Services mega menu — full-viewport portal ── */}
+      {mounted && activeDropdown === "services" &&
+        createPortal(
+          <div
+            className="mm-portal"
+            style={{ top: scrolled ? 70 : 72 }}
+            onMouseEnter={() => keep("services")}
+            onMouseLeave={close}
+          >
+            <div className="mm-panel">
+              <div className="mm-inner">
+                {/* Categories + sub-group links */}
+                <div className="mm-cats">
+                  {serviceGroups.map((group) => (
+                    <div className="mm-cat" key={group.label}>
+                      <div className="mm-cat-label">{group.label}</div>
+                      <div className="mm-cat-subs">
+                        {group.items.map((item) => {
+                          const slug = item.href.replace("/services/", "");
+                          const isActive = activeSub?.slug === slug;
+                          return (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              className={`mm-sub${isActive ? " active" : ""}`}
+                              onMouseEnter={() => setHoveredSub(slug)}
+                              onFocus={() => setHoveredSub(slug)}
+                              onClick={() => setActiveDropdown(null)}
+                            >
+                              <span className="mm-sub-icon"><item.icon size={15} /></span>
+                              <span className="mm-sub-name">{item.name}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Detail panel (hovered sub-group's tooltipItems) */}
+                {activeSub && (() => {
+                  const detailItems = activeSub.sub.tooltipItems ?? [];
+                  const detailFallback = (activeSub.sub as { tooltip?: string }).tooltip;
+                  return (
+                    <div className="mm-detail" key={activeSub.slug}>
+                      <div className="mm-detail-cat">{activeSub.category}</div>
+                      <div className="mm-detail-title">
+                        <span className="mm-detail-icon"><activeSub.sub.icon size={20} /></span>
+                        {activeSub.sub.fullName ?? activeSub.sub.name}
+                      </div>
+                      <p className="mm-detail-desc">{activeSub.sub.description}</p>
+
+                      {detailItems.length > 0 ? (
+                        <div className="mm-detail-list">
+                          {detailItems.map((t) => (
+                            <p className="mm-detail-row" key={t.term}>
+                              <span className="mm-detail-term">{t.term}</span>
+                              {t.desc}
+                            </p>
+                          ))}
+                        </div>
+                      ) : detailFallback ? (
+                        <p className="mm-detail-desc" style={{ marginBottom: 18 }}>{detailFallback}</p>
+                      ) : null}
+
+                      <Link
+                        href={activeSub.sub.href}
+                        className="mm-detail-cta"
+                        onClick={() => setActiveDropdown(null)}
+                      >
+                        View {activeSub.sub.name} <ArrowRight size={14} />
+                      </Link>
+                    </div>
+                  );
+                })()}
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
     </>
   );
 }

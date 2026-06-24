@@ -41,11 +41,11 @@ const productLinks = [
 ];
 
 const certifications = [
-  { name: "Business Correspondent Federation of India", logo: "/certifications/bcfi.jpeg" },
-  { name: "D-U-N-S Registered", logo: "/certifications/duns.png" },
-  { name: "Internet and Mobile Association of India", logo: "/certifications/iamai.png" },
-  { name: "ISO 27001 Certified", logo: "/certifications/iso-27001.png" },
-  { name: "ISO 9001:2015 Certified", logo: "/certifications/iso-9001.png" },
+  { name: "Business Correspondent Federation of India", logo: "/certifications/bcfi1.png" },
+  { name: "D-U-N-S Registered", logo: "/certifications/duns1.png" },
+  { name: "Internet and Mobile Association of India", logo: "/certifications/iamai1.png" },
+  { name: "ISO 27001 Certified", logo: "/certifications/iso-270011.png" },
+  { name: "ISO 9001:2015 Certified", logo: "/certifications/iso-90011.png" },
 ];
 
 const serviceLinks = [
