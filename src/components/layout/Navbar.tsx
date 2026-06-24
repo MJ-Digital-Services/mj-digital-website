@@ -257,7 +257,7 @@ export default function Navbar() {
                       {products.map((item) => (
                         <Link key={item.name} href={item.href} className="dropdown-simple-item" onClick={() => setActiveDropdown(null)}>
                           <div className="dropdown-simple-icon">
-                            <img src={item.logo} alt={item.name} style={{ width: 20, height: 20, borderRadius: 4, objectFit: "contain", backgroundColor: "white" }} />
+                            <img src={item.logo} alt={item.name} style={{ width: 36, height: 36, borderRadius: 8, objectFit: "contain", backgroundColor: "white" }} />
                           </div>
                           <div>
                             <div className="dropdown-simple-name">{item.name}</div>
