@@ -6,10 +6,7 @@ export default function AboutFounder() {
       <div className="about-founder-inner">
         <div className="about-founder-photo-wrap">
           <div className="about-founder-photo">
-            <div className="about-image-placeholder">
-              <span>founder-photo.jpg</span>
-              <small>Replace in /public/about-founder.jpg</small>
-            </div>
+            <img src="/founder.png" alt="Founder of MJ Digital Services" className="about-story-img" />
           </div>
           <div className="about-founder-accent" />
         </div>
