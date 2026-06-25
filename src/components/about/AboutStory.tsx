@@ -11,11 +11,9 @@ export default function AboutStory() {
           </h2>
           <div className="about-story-body">
             <p>
-              MJ Digital Services started in <strong>2007</strong> with a simple
-              belief — that technology should make business easier, not harder.
-              Today, we&apos;re the parent company behind three flagship digital
-              products: <strong>EzeePay</strong>, <strong>Zoki</strong>, and{" "}
-              <strong>Mobilocker</strong>.
+              MJ Digital Services started in <strong>2018</strong> with a simple belief — that technology
+              should make business easier, not harder. Today, we're the parent company
+              behind four flagship digital products: <strong>EzeePay</strong>, <strong>Zoki</strong>, <strong>Mobilocker</strong>, and <strong>Cashlo</strong>.
             </p>
             <p>
               What started as a small team of engineers has grown into a
