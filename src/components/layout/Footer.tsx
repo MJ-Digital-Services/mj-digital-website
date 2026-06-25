@@ -77,7 +77,9 @@ export default function Footer() {
         <div>
           <Link href="/" className="footer-logo">
             <img src="/mj-icon.png" alt="" className="footer-logo-icon" />
-            <span className="footer-logo-text">MJ Digital Services</span>
+            <span className="footer-logo-text">
+              MJ Digital<br />Services
+            </span>
           </Link>
           <p className="footer-brand-motto">
             Building Digital Products · Powering Businesses · Enabling Innovation
