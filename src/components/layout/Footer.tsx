@@ -75,8 +75,9 @@ export default function Footer() {
       <div className="footer-top">
         {/* Brand column */}
         <div>
-          <Link href="/" className="navbar-logo">
-            <img src="/mj-logo1.png" alt="MJ Digital Services" className="navbar-logo-img" />
+          <Link href="/" className="footer-logo">
+            <img src="/mj-icon.png" alt="" className="footer-logo-icon" />
+            <span className="footer-logo-text">MJ Digital Services</span>
           </Link>
           <p className="footer-brand-motto">
             Building Digital Products · Powering Businesses · Enabling Innovation
