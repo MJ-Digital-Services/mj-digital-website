@@ -2,7 +2,7 @@ import { Users, Network, Building2, CheckCircle2, ArrowRight } from "lucide-reac
 
 const tiers = [
   {
-    tier: "Agent", icon: Users, earning: "₹50,000+", period: "per month",
+    tier: "Agent", icon: Users, earning: "₹30,000+", period: "per month",
     desc: "Become an EzeePay agent and offer all 60+ services. Earn commissions on every transaction.",
     perks: ["Low one-time investment", "Commission on every service", "Full training & support", "Marketing materials provided"],
   },
@@ -12,7 +12,7 @@ const tiers = [
     perks: ["No physical store needed", "25% commission rate", "Telecom · Pharma · Retail · FMCG", "10,000+ active distributors"],
   },
   {
-    tier: "Master Distributor", icon: Building2, earning: "₹1,50,000+", period: "per month",
+    tier: "Master Distributor", icon: Building2, earning: "₹1,00,000+", period: "per month",
     desc: "Set up a full distribution chain. Manage multiple distributors and agents under one banner.",
     perks: ["Highest commission tier", "Multi-level network", "Griha Udyog & Self Help Groups", "Dedicated business support"],
     highlight: true,
