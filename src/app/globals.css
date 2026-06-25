@@ -4493,31 +4493,43 @@ img { max-width: 100%; display: block; }
   font-family: var(--font-sans);
 }
 .mlk-compare-vals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.mlk-compare-before {
+  grid-column: 1;
   display: flex;
   align-items: center;
-  gap: 12px;
-}
-.mlk-compare-before {
+  border-right: 1px solid var(--border);
+  padding-right: 16px;
   font-size: 15px;
   font-weight: 600;
   color: var(--text-muted);
   text-decoration: line-through;
   font-family: var(--font-sans);
 }
-.mlk-compare-arrow {
-  color: var(--border);
-  font-size: 14px;
-}
+
 .mlk-compare-after {
-  display: inline-flex;
+  grid-column: 2;
+  display: flex;
   align-items: center;
   gap: 5px;
+  padding-left: 16px;
   font-size: 15px;
   font-weight: 700;
   color: var(--primary);
   font-family: var(--font-sans);
 }
-.mlk-compare-after svg { flex-shrink: 0; }
+
+.mlk-compare-after svg {
+  flex-shrink: 0;
+}
+.mlk-compare-arrow {
+  color: var(--border);
+  font-size: 14px;
+}
 
 /* ── CTA ── */
 .mlk-cta-section {

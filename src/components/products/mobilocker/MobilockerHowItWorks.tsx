@@ -67,7 +67,6 @@ export default function MobilockerHowItWorks() {
                 <div className="mlk-compare-metric">{c.label}</div>
                 <div className="mlk-compare-vals">
                   <span className="mlk-compare-before">{c.before}</span>
-                  <span className="mlk-compare-arrow">→</span>
                   <span className="mlk-compare-after">
                     <CheckCircle2 size={12} />{c.after}
                   </span>
