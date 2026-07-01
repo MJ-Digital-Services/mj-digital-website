@@ -9482,3 +9482,10 @@ img { max-width: 100%; display: block; }
   .showcase-img-desktop { display: block; }
   .showcase-img-mobile  { display: none; }
 }
+
+.bg-box-cell {
+  transition: background-color 0s;
+}
+.bg-box-cell:hover {
+  background-color: var(--hover-color);
+}

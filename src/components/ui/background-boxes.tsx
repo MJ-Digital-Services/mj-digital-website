@@ -1,23 +1,38 @@
 "use client";
-import React from "react";
-import { motion } from "motion/react";
+import React, { useMemo } from "react";
+
+const COLORS = [
+  "#93c5fd", "#f9a8d4", "#86efac", "#fde047",
+  "#fca5a5", "#d8b4fe", "#a5b4fc", "#c4b5fd",
+];
 
 export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
-  const rows = new Array(150).fill(1);
-  const cols = new Array(100).fill(1);
-  const colors = [
-    "#93c5fd", "#f9a8d4", "#86efac", "#fde047",
-    "#fca5a5", "#d8b4fe", "#a5b4fc", "#c4b5fd",
-  ];
-  const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];
+  // 40x24 = 960 cells instead of 150x100 = 15,000 — still visually dense given
+  // the skew/scale transform, but ~94% fewer DOM nodes and zero JS-driven
+  // per-cell motion instances.
+  const rows = 50;
+  const cols = 60;
+
+  // Precompute each cell's hover color ONCE per mount, not per render/hover.
+  const cellColors = useMemo(() => {
+    const grid: string[][] = [];
+    for (let i = 0; i < rows; i++) {
+      const row: string[] = [];
+      for (let j = 0; j < cols; j++) {
+        row.push(COLORS[Math.floor(Math.random() * COLORS.length)]);
+      }
+      grid.push(row);
+    }
+    return grid;
+  }, []);
 
   return (
     <div
       style={{
         transform: `translate(-40%,-60%) skewX(-48deg) skewY(14deg) scale(0.675) rotate(0deg) translateZ(0)`,
         position: "absolute",
-        top: "-25%",
-        left: "25%",
+        top: "-20%",
+        left: "55%",
         zIndex: 0,
         display: "flex",
         height: "100%",
@@ -26,7 +41,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
       }}
       {...rest}
     >
-      {rows.map((_, i) => (
+      {Array.from({ length: rows }).map((_, i) => (
         <div
           key={"row" + i}
           style={{
@@ -37,21 +52,18 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
             flexShrink: 0,
           }}
         >
-          {cols.map((_, j) => (
-            <motion.div
-              whileHover={{
-                backgroundColor: getRandomColor(),
-                transition: { duration: 0 },
-              }}
-              animate={{ transition: { duration: 2 } }}
+          {Array.from({ length: cols }).map((_, j) => (
+            <div
               key={"col" + j}
+              className="bg-box-cell"
               style={{
+                "--hover-color": cellColors[i][j],
                 position: "relative",
                 height: "32px",
                 width: "64px",
                 borderTop: "1px solid rgb(51 65 85)",
                 borderRight: "1px solid rgb(51 65 85)",
-              }}
+              } as React.CSSProperties}
             >
               {j % 2 === 0 && i % 2 === 0 ? (
                 <svg
@@ -74,7 +86,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
                 </svg>
               ) : null}
-            </motion.div>
+            </div>
           ))}
         </div>
       ))}
