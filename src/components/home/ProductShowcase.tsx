@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 const products = [
@@ -41,7 +42,6 @@ const products = [
 export default function ProductShowcase() {
   const [active, setActive] = useState(0);
 
-  // Auto slideshow every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setActive((prev) => (prev + 1) % products.length);
@@ -54,7 +54,6 @@ export default function ProductShowcase() {
       <ContainerScroll
         titleComponent={
           <div style={{ textAlign: "center" }}>
-            {/* Badge */}
             <div style={{
               display: "inline-flex",
               alignItems: "center",
@@ -73,7 +72,6 @@ export default function ProductShowcase() {
               Our Products
             </div>
 
-            {/* Headline */}
             <h2 style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(28px, 3.5vw, 46px)",
@@ -97,7 +95,6 @@ export default function ProductShowcase() {
               Three powerful platforms — each solving a distinct problem in fintech, communication, and digital infrastructure.
             </p>
 
-            {/* Tab indicators */}
             <div style={{
               display: "inline-flex",
               alignItems: "center",
@@ -130,7 +127,6 @@ export default function ProductShowcase() {
               ))}
             </div>
 
-            {/* Product desc */}
             <p style={{
               fontSize: 13,
               color: "rgba(255,255,255,0.35)",
@@ -140,7 +136,6 @@ export default function ProductShowcase() {
               {products[active].desc}
             </p>
 
-            {/* Progress dots */}
             <div style={{ display: "flex", justifyContent: "center", gap: 6, marginTop: 16 }}>
               {products.map((_, i) => (
                 <div
@@ -160,46 +155,71 @@ export default function ProductShowcase() {
           </div>
         }
       >
-        {/* Screenshot with crossfade */}
         <div style={{ position: "relative", width: "100%", height: "100%" }}>
-          {products.map((p, i) => (
-            <React.Fragment key={p.name}>
-              {/* Desktop screenshot */}
-              <img
-                src={p.src}
-                alt={p.name}
-                className="showcase-img-desktop"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  objectPosition: "left top",
-                  borderRadius: 16,
-                  opacity: active === i ? 1 : 0,
-                  transition: "opacity 0.6s ease",
-                }}
-              />
-              {/* Mobile screenshot */}
-              <img
-                src={p.mobileSrc}
-                alt={p.name}
-                className="showcase-img-mobile"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  objectPosition: "top center",
-                  borderRadius: 16,
-                  opacity: active === i ? 1 : 0,
-                  transition: "opacity 0.6s ease",
-                }}
-              />
-            </React.Fragment>
-          ))}
+          {products.map((p, i) => {
+            // Only mount images that are active, or adjacent to active (next/prev in the
+            // auto-rotation), so we're never downloading all 8 assets on page load.
+            const isNear =
+              i === active ||
+              i === (active + 1) % products.length ||
+              i === (active - 1 + products.length) % products.length;
+
+            if (!isNear) return null;
+
+            return (
+              <React.Fragment key={p.name}>
+                {/* Desktop */}
+                <div
+                  className="hidden md:block"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    opacity: active === i ? 1 : 0,
+                    transition: "opacity 0.6s ease",
+                  }}
+                >
+                  <Image
+                    src={p.src}
+                    alt={`${p.name} — ${p.desc}`}
+                    fill
+                    priority={i === 0}
+                    sizes="(min-width: 768px) 1200px, 100vw"
+                    quality={80}
+                    style={{
+                      objectFit: "cover",
+                      objectPosition: "left top",
+                      borderRadius: 16,
+                    }}
+                  />
+                </div>
+
+                {/* Mobile */}
+                <div
+                  className="block md:hidden"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    opacity: active === i ? 1 : 0,
+                    transition: "opacity 0.6s ease",
+                  }}
+                >
+                  <Image
+                    src={p.mobileSrc}
+                    alt={`${p.name} — ${p.desc}`}
+                    fill
+                    priority={i === 0}
+                    sizes="100vw"
+                    quality={80}
+                    style={{
+                      objectFit: "cover",
+                      objectPosition: "top center",
+                      borderRadius: 16,
+                    }}
+                  />
+                </div>
+              </React.Fragment>
+            );
+          })}
         </div>
       </ContainerScroll>
     </section>
