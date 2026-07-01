@@ -49,7 +49,7 @@ export const metadata: Metadata = {
       "Software solutions, fintech infrastructure, APIs, mobile applications, and digital transformation services for startups, enterprises, and government-focused organizations.",
     images: [
       {
-        url: "/og-image.png",
+        url: new URL("/og-image.png", "https://mj-digital-website-nine.vercel.app").toString(),
         width: 1200,
         height: 630,
         alt: "MJ Digital Services",
