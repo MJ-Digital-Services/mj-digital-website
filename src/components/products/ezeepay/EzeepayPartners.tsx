@@ -1,12 +1,12 @@
 import { Shield } from "lucide-react";
 
 const partners = [
-  { name: "Protean",                logo: "/partners/protean.png" },
-  { name: "Mantra",                 logo: "/partners/mantra.png" },
-  { name: "Mentation Technologies", logo: "/partners/mentation.png" },
-  { name: "Noble Web Studio",       logo: "/partners/noble-web-studio.png" },
-  { name: "CredoPay",               logo: "/partners/credopay.png" },
-  { name: "Arthmate",               logo: "/partners/arthmate.png" },
+  { name: "Protean",                logo: "/partners/protean.webp" },
+  { name: "Mantra",                 logo: "/partners/mantra.webp" },
+  { name: "Mentation Technologies", logo: "/partners/mentation.webp" },
+  { name: "Noble Web Studio",       logo: "/partners/noble-web-studio.webp" },
+  { name: "CredoPay",               logo: "/partners/credopay.webp" },
+  { name: "Arthmate",               logo: "/partners/arthmate.webp" },
 ];
 
 export default function EzeepayPartners() {

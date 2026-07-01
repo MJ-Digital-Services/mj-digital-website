@@ -6,7 +6,7 @@ export default function AboutFounder() {
       <div className="about-founder-inner">
         <div className="about-founder-photo-wrap">
           <div className="about-founder-photo">
-            <img src="/founder.png" alt="Founder of MJ Digital Services" className="about-story-img" />
+            <img src="/founder.webp" alt="Founder of MJ Digital Services" className="about-story-img" />
           </div>
           <div className="about-founder-accent" />
         </div>

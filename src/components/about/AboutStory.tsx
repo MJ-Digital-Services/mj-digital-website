@@ -32,7 +32,7 @@ export default function AboutStory() {
         <div className="about-story-visual">
           <div className="about-story-image">
             <img
-              src="/about-office.jpeg"
+              src="/about-office.webp"
               alt="MJ Digital Services office"
               className="about-story-img"
               // style={{}}

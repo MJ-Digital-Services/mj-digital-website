@@ -16,7 +16,7 @@ const stats = [
 ];
 
 const products = [
-  { name: "EzeePay", logo: "/ezeepay-logo.jpeg", desc: "Fintech Platform", url: "https://ezeepay.app", isStatic: false },
+  { name: "EzeePay", logo: "/ezeepay-logo-jpeg.webp", desc: "Fintech Platform", url: "https://ezeepay.app", isStatic: false },
   { name: "Zoki", logo: "/zoki-logo.jpg", desc: "CPaaS Solution", url: "https://zoki-website.vercel.app/", isStatic: false },
   { name: "Mobilocker", logo: "/mobilocker-logo.png", desc: "Secure Storage", url: "https://mobilocker.app", isStatic: false },
   { name: "Cashlo", logo: "/cashlo-icon.svg", desc: "UPI Cashpoint", url: "https://cashlo-final-fxmt.vercel.app/", isStatic: false },
