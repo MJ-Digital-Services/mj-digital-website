@@ -8,6 +8,7 @@ const products = [
     name: "EzeePay",
     badge: "Fintech Platform",
     src: "/products/ezeepay-screenshot.png",
+    mobileSrc: "/products/ezeepay-mobile-screenshot.png",
     color: "#f97316",
     desc: "AEPS, Money Transfer & Utility Payments",
   },
@@ -15,6 +16,7 @@ const products = [
     name: "Zoki",
     badge: "CPaaS Platform",
     src: "/products/zoki-screenshot.png",
+    mobileSrc: "/products/zoki-mobile-screenshot.png",
     color: "#22c55e",
     desc: "WhatsApp Engagement & Marketing Automation",
   },
@@ -22,6 +24,7 @@ const products = [
     name: "Mobilocker",
     badge: "Digital Storage",
     src: "/products/mobilocker-screenshot.png",
+    mobileSrc: "/products/mobilocker-mobile-screenshot.png",
     color: "#3b82f6",
     desc: "Secure Document Management & Verification",
   },
@@ -29,6 +32,7 @@ const products = [
     name: "Cashlo",
     badge: "UPI Cashpoint",
     src: "/products/cashlo-screenshot.png",
+    mobileSrc: "/products/cashlo-mobile-screenshot.png",
     color: "#a3e635",
     desc: "UPI Cashpoint Platform for Every Shopkeeper",
   },
@@ -159,22 +163,42 @@ export default function ProductShowcase() {
         {/* Screenshot with crossfade */}
         <div style={{ position: "relative", width: "100%", height: "100%" }}>
           {products.map((p, i) => (
-            <img
-              key={p.name}
-              src={p.src}
-              alt={p.name}
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "left top",
-                borderRadius: 16,
-                opacity: active === i ? 1 : 0,
-                transition: "opacity 0.6s ease",
-              }}
-            />
+            <React.Fragment key={p.name}>
+              {/* Desktop screenshot */}
+              <img
+                src={p.src}
+                alt={p.name}
+                className="showcase-img-desktop"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "left top",
+                  borderRadius: 16,
+                  opacity: active === i ? 1 : 0,
+                  transition: "opacity 0.6s ease",
+                }}
+              />
+              {/* Mobile screenshot */}
+              <img
+                src={p.mobileSrc}
+                alt={p.name}
+                className="showcase-img-mobile"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "top center",
+                  borderRadius: 16,
+                  opacity: active === i ? 1 : 0,
+                  transition: "opacity 0.6s ease",
+                }}
+              />
+            </React.Fragment>
           ))}
         </div>
       </ContainerScroll>

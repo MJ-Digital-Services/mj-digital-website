@@ -9471,3 +9471,14 @@ img { max-width: 100%; display: block; }
 .mobile-svc-subs .mobile-dropdown-item {
   padding-left: 52px;
 }
+
+/* ============================================================
+   PRODUCT SHOWCASE — responsive image swap
+   ============================================================ */
+.showcase-img-desktop { display: none; }
+.showcase-img-mobile  { display: block; }
+
+@media (min-width: 768px) {
+  .showcase-img-desktop { display: block; }
+  .showcase-img-mobile  { display: none; }
+}
