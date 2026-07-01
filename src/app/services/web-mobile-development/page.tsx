@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Web & Mobile Development — Websites, Apps & SaaS | MJ Digital Services",
   description: "Website development, mobile apps, Flutter, Android, iOS, custom software, SaaS products, and progressive web apps. Built by MJ Digital Services.",
   keywords: ["website development", "mobile app development", "Flutter app development", "Android app development", "iOS app development", "custom software development", "SaaS product development", "PWA"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/web-mobile-development" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/web-mobile-development" },
   openGraph: {
     title: "Web & Mobile Development | MJ Digital Services",
     description: "Websites, mobile apps, custom software & SaaS products built to scale.",
-    url: "https://mjdigitalservices.com/services/web-mobile-development",
+    url: "https://www.mjdigitalservices.com/services/web-mobile-development",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

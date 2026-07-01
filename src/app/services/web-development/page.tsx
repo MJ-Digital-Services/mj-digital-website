@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Web Development Services — Corporate, Ecommerce & Custom Web Apps | MJ Digital Services",
   description: "Professional web development services for corporate websites, ecommerce platforms, business portals, and custom web applications. Built with Next.js, React, and Node.js.",
   keywords: ["web development India", "corporate website development", "ecommerce website India", "custom web application", "Next.js development", "React development India", "MJ Digital web development"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/web-development" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/web-development" },
   openGraph: {
     title: "Web Development Services | MJ Digital Services",
     description: "Corporate websites, ecommerce platforms, business portals, and custom web applications.",
-    url: "https://mjdigitalservices.com/services/web-development",
+    url: "https://www.mjdigitalservices.com/services/web-development",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

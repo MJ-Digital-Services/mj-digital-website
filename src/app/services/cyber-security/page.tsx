@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Cyber Security Services — VAPT, Audits & Cloud Security | MJ Digital Services",
   description: "Vulnerability assessment and penetration testing (VAPT), security audits, compliance solutions, and cloud security. Protect your business with MJ Digital Services.",
   keywords: ["VAPT services", "security audit", "penetration testing India", "compliance solutions", "cloud security", "cyber security services India"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/cyber-security" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/cyber-security" },
   openGraph: {
     title: "Cyber Security Services | MJ Digital Services",
     description: "VAPT, security audits, compliance & cloud security.",
-    url: "https://mjdigitalservices.com/services/cyber-security",
+    url: "https://www.mjdigitalservices.com/services/cyber-security",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

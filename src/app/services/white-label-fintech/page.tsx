@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "White Label Fintech Solutions — Merchant Platforms & Digital Wallets | MJ Digital Services",
   description: "Launch your own branded fintech platform. White label merchant management systems, digital wallets, and agent banking portals — powered by MJ Digital Services.",
   keywords: ["white label fintech India", "merchant management system", "digital wallet solution", "white label payment platform", "agent banking portal", "branded fintech platform", "MJ Digital fintech"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/white-label-fintech" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/white-label-fintech" },
   openGraph: {
     title: "White Label Fintech Solutions | MJ Digital Services",
     description: "Launch your own branded fintech platform — merchant portals, digital wallets, agent banking.",
-    url: "https://mjdigitalservices.com/services/white-label-fintech",
+    url: "https://www.mjdigitalservices.com/services/white-label-fintech",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

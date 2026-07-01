@@ -11,19 +11,19 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Zoki — Recharge, Pay Bills, Earn Rewards & Grow Your Income",
     description: "Pay, earn & grow with every transaction. Recharges, bills, loans, insurance & bookings — with cashback and ZOKI Coins on everything.",
-    url: "https://mjdigitalservices.com/products/zoki",
+    url: "https://www.mjdigitalservices.com/products/zoki",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Zoki — India's Smart Rewards App",
     description: "50+ services in one app. Earn cashback and ZOKI Coins on every transaction.",
-    images: ["https://mjdigitalservices.com/og-image.png"],
+    images: ["https://www.mjdigitalservices.com/og-image.png"],
   },
   alternates: {
-    canonical: "https://mjdigitalservices.com/products/zoki",
+    canonical: "https://www.mjdigitalservices.com/products/zoki",
   },
 };
 
@@ -34,11 +34,11 @@ const productSchema = {
   applicationCategory: "FinanceApplication",
   operatingSystem: "Android, iOS",
   description: "Zoki is India's all-in-one rewards app for recharges, bill payments, loans, insurance, and bookings with cashback on every transaction.",
-  url: "https://mjdigitalservices.com/products/zoki",
+  url: "https://www.mjdigitalservices.com/products/zoki",
   publisher: {
     "@type": "Organization",
     name: "MJ Digital Services",
-    url: "https://mjdigitalservices.com",
+    url: "https://www.mjdigitalservices.com",
   },
   offers: {
     "@type": "Offer",

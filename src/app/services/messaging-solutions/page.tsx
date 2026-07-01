@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "CPaaS Messaging Solutions — WhatsApp, SMS, RCS & Chatbots | MJ Digital Services",
   description: "WhatsApp Business API, bulk SMS, RCS messaging, OTP, email marketing, omnichannel communication, chatbots, and conversational AI. Built by MJ Digital Services.",
   keywords: ["WhatsApp Business API", "bulk SMS platform", "RCS messaging", "OTP SMS", "email marketing platform", "omnichannel communication", "chatbot development", "conversational AI"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/messaging-solutions" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/messaging-solutions" },
   openGraph: {
     title: "CPaaS Messaging Solutions | MJ Digital Services",
     description: "WhatsApp API, SMS, RCS, OTP, email & chatbots across every channel.",
-    url: "https://mjdigitalservices.com/services/messaging-solutions",
+    url: "https://www.mjdigitalservices.com/services/messaging-solutions",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

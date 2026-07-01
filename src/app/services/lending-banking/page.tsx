@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Lending & Banking Software — LOS, NBFC & Microfinance | MJ Digital Services",
   description: "Loan management, digital lending, NBFC software, loan origination (LOS), collections, and microfinance platforms. RBI-aligned lending software by MJ Digital Services.",
   keywords: ["loan management software", "digital lending platform", "NBFC software", "loan origination system", "LOS", "collection management system", "microfinance software India"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/lending-banking" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/lending-banking" },
   openGraph: {
     title: "Lending & Banking Software | MJ Digital Services",
     description: "Loan management, digital lending, NBFC, LOS, collections & microfinance software.",
-    url: "https://mjdigitalservices.com/services/lending-banking",
+    url: "https://www.mjdigitalservices.com/services/lending-banking",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Travel Booking Platforms — Flights, Hotels, Buses & Trains | MJ Digital Services",
   description: "Flight, bus, hotel, and train booking portals, holiday packages, travel agent portals, B2B travel software, and travel CRM. Built by MJ Digital Services.",
   keywords: ["flight booking portal", "bus booking software", "hotel booking engine", "train booking solution", "B2B travel software", "travel agent portal", "travel CRM"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/booking-platforms" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/booking-platforms" },
   openGraph: {
     title: "Travel Booking Platforms | MJ Digital Services",
     description: "Flight, bus, hotel & train booking portals, plus B2B travel software & CRM.",
-    url: "https://mjdigitalservices.com/services/booking-platforms",
+    url: "https://www.mjdigitalservices.com/services/booking-platforms",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

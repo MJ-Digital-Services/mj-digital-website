@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Cloud & DevOps Services — AWS, Azure, GCP & CI/CD | MJ Digital Services",
   description: "Cloud infrastructure on AWS, Azure, and Google Cloud, plus DevOps implementation and CI/CD automation. Reliable, scalable cloud delivery by MJ Digital Services.",
   keywords: ["AWS solutions", "Azure solutions", "Google Cloud solutions", "DevOps implementation", "CI/CD automation", "cloud infrastructure India", "DevOps services"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/cloud-devops" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/cloud-devops" },
   openGraph: {
     title: "Cloud & DevOps Services | MJ Digital Services",
     description: "AWS, Azure, GCP infrastructure, DevOps & CI/CD automation.",
-    url: "https://mjdigitalservices.com/services/cloud-devops",
+    url: "https://www.mjdigitalservices.com/services/cloud-devops",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Customer Management Software — CRM, Helpdesk & Call Center | MJ Digital Services",
   description: "Lead management CRM, sales automation, customer support CRM, ticketing & helpdesk, and call center management software. Built by MJ Digital Services.",
   keywords: ["lead management CRM", "sales automation CRM", "customer support CRM", "ticketing helpdesk software", "call center management software", "CRM India"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/customer-management" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/customer-management" },
   openGraph: {
     title: "Customer Management Software | MJ Digital Services",
     description: "Lead, sales & support CRMs, helpdesk, and call center software.",
-    url: "https://mjdigitalservices.com/services/customer-management",
+    url: "https://www.mjdigitalservices.com/services/customer-management",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

@@ -11,19 +11,19 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Mobilocker — Mobile EMI Locker for Retailers",
     description: "Sell smartphones on EMI safely. Auto-lock on missed payments, auto-unlock when paid. Trusted by mobile retailers across India.",
-    url: "https://mjdigitalservices.com/products/mobilocker",
+    url: "https://www.mjdigitalservices.com/products/mobilocker",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Mobilocker — Mobile EMI Locker for Retailers",
     description: "Improve EMI recovery from 60% to 95%. Auto-lock devices on missed payments.",
-    images: ["https://mjdigitalservices.com/og-image.png"],
+    images: ["https://www.mjdigitalservices.com/og-image.png"],
   },
   alternates: {
-    canonical: "https://mjdigitalservices.com/products/mobilocker",
+    canonical: "https://www.mjdigitalservices.com/products/mobilocker",
   },
 };
 
@@ -34,11 +34,11 @@ const productSchema = {
   applicationCategory: "BusinessApplication",
   operatingSystem: "Android",
   description: "Mobilocker helps mobile retailers sell smartphones on EMI safely with auto-lock on missed payments and auto-unlock when EMI is paid.",
-  url: "https://mjdigitalservices.com/products/mobilocker",
+  url: "https://www.mjdigitalservices.com/products/mobilocker",
   publisher: {
     "@type": "Organization",
     name: "MJ Digital Services",
-    url: "https://mjdigitalservices.com",
+    url: "https://www.mjdigitalservices.com",
   },
   offers: {
     "@type": "Offer",

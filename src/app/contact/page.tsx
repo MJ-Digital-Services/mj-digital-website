@@ -11,19 +11,19 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact Us | MJ Digital Services",
     description: "Reach out to MJ Digital Services for fintech APIs, software development, mobile apps, and cloud solutions.",
-    url: "https://mjdigitalservices.com/contact",
+    url: "https://www.mjdigitalservices.com/contact",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Contact Us | MJ Digital Services",
     description: "Reach out to MJ Digital Services for fintech APIs, software development, mobile apps, and cloud solutions.",
-    images: ["https://mjdigitalservices.com/og-image.png"],
+    images: ["https://www.mjdigitalservices.com/og-image.png"],
   },
   alternates: {
-    canonical: "https://mjdigitalservices.com/contact",
+    canonical: "https://www.mjdigitalservices.com/contact",
   },
 };
 
@@ -31,12 +31,12 @@ const contactSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   name: "Contact MJ Digital Services",
-  url: "https://mjdigitalservices.com/contact",
+  url: "https://www.mjdigitalservices.com/contact",
   description: "Get in touch with MJ Digital Services for fintech APIs, software development, mobile apps, and cloud solutions.",
   publisher: {
     "@type": "Organization",
     name: "MJ Digital Services",
-    url: "https://mjdigitalservices.com",
+    url: "https://www.mjdigitalservices.com",
     email: "business@mjdigitalservices.com",
   },
 };

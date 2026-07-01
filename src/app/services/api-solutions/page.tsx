@@ -12,19 +12,19 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Fintech API Solutions — AEPS, DMT, BBPS, KYC APIs | MJ Digital Services",
     description: "Production-ready fintech APIs for AEPS, DMT, BBPS, KYC verification, recharge, and FASTag. Go live in 2–5 days.",
-    url: "https://mjdigitalservices.com/services/api-solutions",
+    url: "https://www.mjdigitalservices.com/services/api-solutions",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Fintech API Solutions | MJ Digital Services",
     description: "AEPS, DMT, BBPS, KYC APIs. RBI compliant. Go live in 2–5 days.",
-    images: ["https://mjdigitalservices.com/og-image.png"],
+    images: ["https://www.mjdigitalservices.com/og-image.png"],
   },
   alternates: {
-    canonical: "https://mjdigitalservices.com/services/api-solutions",
+    canonical: "https://www.mjdigitalservices.com/services/api-solutions",
   },
 };
 
@@ -36,7 +36,7 @@ const serviceSchema = {
   provider: {
     "@type": "Organization",
     name: "MJ Digital Services",
-    url: "https://mjdigitalservices.com",
+    url: "https://www.mjdigitalservices.com",
   },
   areaServed: "IN",
   serviceType: "Fintech API Integration",

@@ -13,8 +13,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "MJ Digital Services",
-  url: "https://mjdigitalservices.com",
-  logo: "https://mjdigitalservices.com/og-image.png",
+  url: "https://www.mjdigitalservices.com",
+  logo: "https://www.mjdigitalservices.com/og-image.png",
   contactPoint: {
     "@type": "ContactPoint",
     email: "business@mjdigitalservices.com",
@@ -98,10 +98,10 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "MJ Digital Services",
-  url: "https://mjdigitalservices.com",
+  url: "https://www.mjdigitalservices.com",
   potentialAction: {
     "@type": "SearchAction",
-    target: "https://mjdigitalservices.com/blog?q={search_term_string}",
+    target: "https://www.mjdigitalservices.com/blog?q={search_term_string}",
     "query-input": "required name=search_term_string",
   },
 };

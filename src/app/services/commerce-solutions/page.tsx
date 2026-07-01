@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "E-commerce & Marketplace Development — D2C, B2B & Delivery | MJ Digital Services",
   description: "Custom ecommerce websites, multi-vendor marketplaces, B2B and D2C stores, grocery, pharmacy, and hyperlocal delivery platforms. Built by MJ Digital Services.",
   keywords: ["ecommerce website development", "multi vendor marketplace", "B2B ecommerce portal", "D2C ecommerce store", "grocery delivery platform", "pharmacy ecommerce", "hyperlocal delivery"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/commerce-solutions" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/commerce-solutions" },
   openGraph: {
     title: "E-commerce & Marketplace Platforms | MJ Digital Services",
     description: "Custom ecommerce, marketplaces, D2C/B2B stores, and delivery platforms.",
-    url: "https://mjdigitalservices.com/services/commerce-solutions",
+    url: "https://www.mjdigitalservices.com/services/commerce-solutions",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

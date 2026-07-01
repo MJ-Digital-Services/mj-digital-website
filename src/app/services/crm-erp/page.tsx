@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "CRM & ERP Development — Custom Enterprise Software | MJ Digital Services",
   description: "Custom CRM, ERP, and HRMS development for Indian businesses. SaaS product development, sales automation, inventory management, and HR systems built by MJ Digital Services.",
   keywords: ["CRM development India", "ERP development India", "custom CRM software", "HRMS development", "SaaS product development", "enterprise software India", "MJ Digital CRM ERP"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/crm-erp" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/crm-erp" },
   openGraph: {
     title: "CRM & ERP Development | MJ Digital Services",
     description: "Custom CRM, ERP, HRMS, and SaaS products for Indian businesses.",
-    url: "https://mjdigitalservices.com/services/crm-erp",
+    url: "https://www.mjdigitalservices.com/services/crm-erp",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

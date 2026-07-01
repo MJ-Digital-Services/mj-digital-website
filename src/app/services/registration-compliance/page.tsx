@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Tax & Compliance Services — GST, PAN, ITR & e-Signatures | MJ Digital Services",
   description: "GST registration, tax filing software, GST API integration, PAN services, ITR filing, business registration, and digital signatures. Built by MJ Digital Services.",
   keywords: ["GST registration", "tax filing software", "GST API integration", "PAN card services", "ITR filing platform", "business registration", "digital signature services"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/registration-compliance" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/registration-compliance" },
   openGraph: {
     title: "Tax & Compliance Services | MJ Digital Services",
     description: "GST, PAN, ITR, business registration & digital signature solutions.",
-    url: "https://mjdigitalservices.com/services/registration-compliance",
+    url: "https://www.mjdigitalservices.com/services/registration-compliance",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

@@ -17,7 +17,7 @@ const poppins = Poppins({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mjdigitalservices.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.mjdigitalservices.com";
 
 export const metadata: Metadata = {
   title: {

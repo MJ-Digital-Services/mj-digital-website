@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Retail Management Software — POS, Inventory & Warehouse | MJ Digital Services",
   description: "POS billing, inventory management, warehouse management, and order management software for retail businesses. Built by MJ Digital Services.",
   keywords: ["POS billing software", "inventory management system", "warehouse management software", "order management system", "retail software India"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/retail-solutions" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/retail-solutions" },
   openGraph: {
     title: "Retail Management Software | MJ Digital Services",
     description: "POS billing, inventory, warehouse & order management software.",
-    url: "https://mjdigitalservices.com/services/retail-solutions",
+    url: "https://www.mjdigitalservices.com/services/retail-solutions",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

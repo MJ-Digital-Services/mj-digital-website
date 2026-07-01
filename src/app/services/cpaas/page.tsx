@@ -11,19 +11,19 @@ export const metadata: Metadata = {
   openGraph: {
     title: "CPaaS Solutions — WhatsApp, SMS, RCS & Voice APIs | MJ Digital Services",
     description: "Reach customers on WhatsApp, SMS, RCS, and Voice. One platform, four channels.",
-    url: "https://mjdigitalservices.com/services/cpaas",
+    url: "https://www.mjdigitalservices.com/services/cpaas",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "CPaaS Solutions | MJ Digital Services",
     description: "WhatsApp Business API, SMS, RCS & Voice. One platform, four channels.",
-    images: ["https://mjdigitalservices.com/og-image.png"],
+    images: ["https://www.mjdigitalservices.com/og-image.png"],
   },
   alternates: {
-    canonical: "https://mjdigitalservices.com/services/cpaas",
+    canonical: "https://www.mjdigitalservices.com/services/cpaas",
   },
 };
 
@@ -35,7 +35,7 @@ const serviceSchema = {
   provider: {
     "@type": "Organization",
     name: "MJ Digital Services",
-    url: "https://mjdigitalservices.com",
+    url: "https://www.mjdigitalservices.com",
   },
   areaServed: "IN",
   serviceType: "Communication Platform as a Service",

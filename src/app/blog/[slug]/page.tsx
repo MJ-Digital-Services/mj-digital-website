@@ -26,10 +26,10 @@ export async function generateMetadata({
     const blog = await getBlogBySlug(slug);
     const title = blog.metaTitle || `${blog.title} | MJ Digital Services`;
     const description = blog.metaDescription || blog.excerpt;
-    const canonical = `https://mjdigitalservices.com/blog/${slug}`;
+    const canonical = `https://www.mjdigitalservices.com/blog/${slug}`;
     const ogImage = blog.coverImage
       ? blog.coverImage
-      : "https://mjdigitalservices.com/og-image.png";
+      : "https://www.mjdigitalservices.com/og-image.png";
 
     return {
       title,
@@ -110,7 +110,7 @@ export default async function BlogDetailPage({
     "@type": "Article",
     headline: blog.title,
     description: blog.excerpt,
-    image: blog.coverImage ?? "https://mjdigitalservices.com/og-image.png",
+    image: blog.coverImage ?? "https://www.mjdigitalservices.com/og-image.png",
     author: {
       "@type": "Person",
       name: blog.createdBy?.name ?? "MJ Digital Team",
@@ -120,14 +120,14 @@ export default async function BlogDetailPage({
       name: "MJ Digital Services",
       logo: {
         "@type": "ImageObject",
-        url: "https://mjdigitalservices.com/og-image.png",
+        url: "https://www.mjdigitalservices.com/og-image.png",
       },
     },
     datePublished: blog.publishedAt ?? undefined,
     dateModified: blog.updatedAt ?? blog.publishedAt ?? undefined,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://mjdigitalservices.com/blog/${blog.slug}`,
+      "@id": `https://www.mjdigitalservices.com/blog/${blog.slug}`,
     },
   };
 
@@ -139,19 +139,19 @@ export default async function BlogDetailPage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://mjdigitalservices.com",
+        item: "https://www.mjdigitalservices.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Blog",
-        item: "https://mjdigitalservices.com/blog",
+        item: "https://www.mjdigitalservices.com/blog",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: blog.title,
-        item: `https://mjdigitalservices.com/blog/${blog.slug}`,
+        item: `https://www.mjdigitalservices.com/blog/${blog.slug}`,
       },
     ],
   };

@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "AI Solutions — Chatbots, Voice AI & Automation | MJ Digital Services",
   description: "AI-powered chatbots, voice AI agents, customer support automation, and business process automation. Built for Indian businesses by MJ Digital Services.",
   keywords: ["AI chatbot India", "voice AI agent", "customer support AI", "business automation India", "WhatsApp chatbot", "AI solutions India", "MJ Digital AI"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/ai-solutions" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/ai-solutions" },
   openGraph: {
     title: "AI Solutions | MJ Digital Services",
     description: "AI chatbots, voice AI, and automation solutions for Indian businesses.",
-    url: "https://mjdigitalservices.com/services/ai-solutions",
+    url: "https://www.mjdigitalservices.com/services/ai-solutions",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

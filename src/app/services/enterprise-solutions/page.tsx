@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Enterprise Software — CRM, ERP, HRMS & Payroll | MJ Digital Services",
   description: "CRM, ERP, HRMS, payroll, attendance, workforce tracking, and visitor management software for growing businesses. Unified enterprise solutions by MJ Digital Services.",
   keywords: ["CRM software India", "ERP software", "HRMS software", "payroll management system", "attendance management", "field force tracking", "visitor management system"],
-  alternates: { canonical: "https://mjdigitalservices.com/services/enterprise-solutions" },
+  alternates: { canonical: "https://www.mjdigitalservices.com/services/enterprise-solutions" },
   openGraph: {
     title: "Enterprise Software Solutions | MJ Digital Services",
     description: "CRM, ERP, HRMS, payroll, attendance & workforce tracking for growing businesses.",
-    url: "https://mjdigitalservices.com/services/enterprise-solutions",
+    url: "https://www.mjdigitalservices.com/services/enterprise-solutions",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
 };

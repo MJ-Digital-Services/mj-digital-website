@@ -8,18 +8,18 @@ export const metadata: Metadata = {
   description:
     "Insights on fintech, digital payments, APIs, and technology from the MJ Digital Services team.",
   alternates: {
-    canonical: "https://mjdigitalservices.com/blog",
+    canonical: "https://www.mjdigitalservices.com/blog",
   },
   openGraph: {
     title: "Blog | MJ Digital Services",
     description:
       "Insights on fintech, digital payments, APIs, and technology from the MJ Digital Services team.",
-    url: "https://mjdigitalservices.com/blog",
+    url: "https://www.mjdigitalservices.com/blog",
     siteName: "MJ Digital Services",
     type: "website",
     images: [
       {
-        url: "https://mjdigitalservices.com/og-image.png",
+        url: "https://www.mjdigitalservices.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "MJ Digital Services Blog",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Blog | MJ Digital Services",
     description:
       "Insights on fintech, digital payments, APIs, and technology from the MJ Digital Services team.",
-    images: ["https://mjdigitalservices.com/og-image.png"],
+    images: ["https://www.mjdigitalservices.com/og-image.png"],
   },
 };
 

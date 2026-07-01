@@ -12,19 +12,19 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About MJ Digital Services | Building Technology That Powers Businesses",
     description: "Technology and innovation company delivering software solutions, fintech APIs, and digital products. Trusted by 50+ clients across India.",
-    url: "https://mjdigitalservices.com/about",
+    url: "https://www.mjdigitalservices.com/about",
     siteName: "MJ Digital Services",
-    images: [{ url: "https://mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.mjdigitalservices.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "About MJ Digital Services",
     description: "Building fintech infrastructure, software, and digital products that power businesses.",
-    images: ["https://mjdigitalservices.com/og-image.png"],
+    images: ["https://www.mjdigitalservices.com/og-image.png"],
   },
   alternates: {
-    canonical: "https://mjdigitalservices.com/about",
+    canonical: "https://www.mjdigitalservices.com/about",
   },
 };
 
@@ -32,8 +32,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "MJ Digital Services",
-  url: "https://mjdigitalservices.com",
-  logo: "https://mjdigitalservices.com/og-image.png",
+  url: "https://www.mjdigitalservices.com",
+  logo: "https://www.mjdigitalservices.com/og-image.png",
   foundingDate: "2007",
   address: {
     "@type": "PostalAddress",
