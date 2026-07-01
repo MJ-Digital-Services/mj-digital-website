@@ -17,6 +17,8 @@ const poppins = Poppins({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mjdigitalservices.com";
+
 export const metadata: Metadata = {
   title: {
     default: "MJ Digital Services | Technology That Powers Businesses",
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "MJ Digital Services" }],
   creator: "MJ Digital Services",
-  metadataBase: new URL("https://mjdigitalservices.com"),
+  metadataBase: new URL(siteUrl),
   icons: {
     icon: "/mj-icon.png",
     shortcut: "/mj-icon.png",
@@ -47,14 +49,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://mjdigitalservices.com",
+    url: siteUrl,
     siteName: "MJ Digital Services",
     title: "MJ Digital Services | Technology That Powers Businesses",
     description:
       "Software solutions, fintech infrastructure, APIs, mobile applications, and digital transformation services for startups, enterprises, and government-focused organizations.",
     images: [
       {
-        url: new URL("/og-image.png", "https://mj-digital-website-nine.vercel.app").toString(),
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "MJ Digital Services",
