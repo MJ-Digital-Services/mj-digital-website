@@ -138,7 +138,7 @@ export default function Navbar() {
           >
             {/* Logo */}
             <Link href="/" className="navbar-logo" ref={logoRef}>
-              <img src="/mj-logo1.webp" alt="MJ Digital Services" className="navbar-logo-img" />
+              <img src="/mj-logo1.webp" alt="MJ Digital Services" className="navbar-logo-img" fetchPriority="high" />
             </Link>
 
             {/* Right side */}

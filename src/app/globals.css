@@ -9489,3 +9489,36 @@ img { max-width: 100%; display: block; }
 .bg-box-cell:hover {
   background-color: var(--hover-color);
 }
+
+/* ============================================================
+   PERFORMANCE — DEFER OFFSCREEN SECTION RENDERING
+   content-visibility: auto skips layout/style/paint work for
+   these sections until they're near the viewport. Heights below
+   are measured real values (via offsetHeight in DevTools), not
+   estimates — accurate heights prevent layout jump on scroll.
+   ============================================================ */
+
+.why-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 1300px;
+}
+
+.testimonials-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 1200px;
+}
+
+.ind2-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 1100px;
+}
+
+.techstack-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 1000px;
+}
+
+.faqs-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 1350px;
+}
