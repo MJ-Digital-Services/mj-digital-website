@@ -39,6 +39,11 @@ export const metadata: Metadata = {
   authors: [{ name: "MJ Digital Services" }],
   creator: "MJ Digital Services",
   metadataBase: new URL("https://mjdigitalservices.com"),
+  icons: {
+    icon: "/mj-icon.png",
+    shortcut: "/mj-icon.png",
+    apple: "/mj-icon.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
