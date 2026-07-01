@@ -267,5 +267,5 @@ export const products = [
   { name: "EzeePay", description: "AEPS, Money Transfer, Utility & Recharge", href: "/products/ezeepay", logo: "/ezeepay-logo.jpeg" },
   { name: "Zoki", description: "Fastag Solution & Car Care Services", href: "/products/zoki", logo: "/zoki-logo.jpg" },
   { name: "Mobilocker", description: "Secure Device Protection & Insurance Services", href: "/products/mobilocker", logo: "/mobilocker-logo.png" },
-  { name: "Cashlo", description: "UPI Cashpoint Platform for Every Shopkeeper", href: "https://cashlo.vercel.app/", logo: "/cashlo-icon.svg" },
+  { name: "Cashlo", description: "UPI Cashpoint Platform for Every Shopkeeper", href: "https://cashlo-final-fxmt.vercel.app/", logo: "/cashlo-icon.svg" },
 ];

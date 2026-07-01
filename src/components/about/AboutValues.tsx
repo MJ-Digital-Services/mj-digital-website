@@ -12,7 +12,7 @@ const products = [
   { name: "EzeePay",    tag: "Fintech",   desc: "AEPS, money transfer, bill payments, and Aadhaar services — a complete fintech merchant platform.",                              href: "/products/ezeepay",    color: "#22c55e" },
   { name: "Zoki",       tag: "FASTag",    desc: "WhatsApp engagement, customer communication, marketing automation, and lead management — in one inbox.",                         href: "/products/zoki",       color: "#3b82f6" },
   { name: "Mobilocker", tag: "Security",  desc: "Digital document storage, secure verification, and data protection for businesses that take privacy seriously.",                 href: "/products/mobilocker", color: "#a855f7" },
-  { name: "Cashlo",     tag: "Fintech",   desc: "UPI Sound Box, QuickServices, and merchant tools built for rural and semi-urban retailers across India.",                        href: "https://cashlo.vercel.app", color: "#E5182A" },
+  { name: "Cashlo",     tag: "Fintech",   desc: "UPI Sound Box, QuickServices, and merchant tools built for rural and semi-urban retailers across India.",                        href: "https://cashlo-final-fxmt.vercel.app/", color: "#E5182A" },
 ];
 
 export default function AboutValues() {

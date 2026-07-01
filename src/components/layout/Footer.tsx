@@ -38,7 +38,7 @@ const productLinks = [
   { name: "EzeePay",    href: "/products/ezeepay" },
   { name: "Zoki",       href: "/products/zoki" },
   { name: "Mobilocker", href: "/products/mobilocker" },
-  { name: "Cashlo", href: "https://cashlo.vercel.app" },
+  { name: "Cashlo", href: "https://cashlo-final-fxmt.vercel.app/" },
 ];
 
 const certifications = [
