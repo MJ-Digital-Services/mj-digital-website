@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getBlogs } from "@/lib/blogApi";
 
-const BASE_URL = "https://mjdigitalservices.com";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mjdigitalservices.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages that actually exist
