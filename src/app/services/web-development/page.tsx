@@ -58,7 +58,7 @@ export default function Page() {
           { val: "2–6", label: "Weeks to Launch" },
           { val: "100%", label: "Custom Built" },
         ]}
-        heroImage="/services/web-development-hero.png"
+        heroImage="/services/web-development-hero.webp"
         heroImageAlt="Web Development Services"
         primaryCTA="Start Your Project"
       />

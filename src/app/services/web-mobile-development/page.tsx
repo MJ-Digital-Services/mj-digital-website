@@ -60,7 +60,7 @@ export default function Page() {
           { val: "API-First", label: "Builds" },
           { val: "Scalable", label: "Architecture" },
         ]}
-        heroImage="/services/web-development-hero.png"
+        heroImage="/services/web-development-hero.webp"
         heroImageAlt="Web & Mobile Development"
         primaryCTA="Start Your Project"
       />

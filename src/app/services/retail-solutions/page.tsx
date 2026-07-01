@@ -56,7 +56,7 @@ export default function Page() {
           { val: "Multi-Store", label: "Ready" },
           { val: "GST", label: "Compliant" },
         ]}
-        heroImage="/services/retail-solutions-hero.png"
+        heroImage="/services/retail-solutions-hero.webp"
         heroImageAlt="Retail Management Software"
         primaryCTA="Get a Demo"
       />

@@ -60,7 +60,7 @@ export default function Page() {
           { val: "Real-Time", label: "Availability" },
           { val: "Agent", label: "Networks" },
         ]}
-        heroImage="/services/booking-platforms-hero.png"
+        heroImage="/services/booking-platforms-hero.webp"
         heroImageAlt="Travel Booking Platforms"
         primaryCTA="Build Your Portal"
       />

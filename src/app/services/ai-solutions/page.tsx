@@ -58,7 +58,7 @@ export default function Page() {
           { val: "<1s", label: "Response Time" },
           { val: "10+", label: "Languages Supported" },
         ]}
-        heroImage="/services/ai-solutions-hero.png"
+        heroImage="/services/ai-solutions-hero.webp"
         heroImageAlt="AI Solutions"
         primaryCTA="Explore AI Solutions"
       />

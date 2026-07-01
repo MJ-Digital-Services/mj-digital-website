@@ -58,7 +58,7 @@ export default function Page() {
           { val: "RBI", label: "Aligned" },
           { val: "Multi-Branch", label: "Ready" },
         ]}
-        heroImage="/services/lending-banking-hero.png"
+        heroImage="/services/lending-banking-hero.webp"
         heroImageAlt="Lending & Banking Software"
         primaryCTA="Book a Demo"
       />

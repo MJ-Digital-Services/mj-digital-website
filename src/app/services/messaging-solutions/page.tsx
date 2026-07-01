@@ -60,7 +60,7 @@ export default function Page() {
           { val: "DLT", label: "Compliant" },
           { val: "AI", label: "Chatbots" },
         ]}
-        heroImage="/services/messaging-solutions-hero.png"
+        heroImage="/services/messaging-solutions-hero.webp"
         heroImageAlt="CPaaS Messaging Solutions"
         primaryCTA="Start Messaging"
       />

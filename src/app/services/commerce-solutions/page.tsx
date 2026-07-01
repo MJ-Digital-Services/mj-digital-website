@@ -59,7 +59,7 @@ export default function Page() {
           { val: "Delivery", label: "Logistics" },
           { val: "Mobile-First", label: "Design" },
         ]}
-        heroImage="/services/commerce-solutions-hero.png"
+        heroImage="/services/commerce-solutions-hero.webp"
         heroImageAlt="E-commerce & Marketplace Platforms"
         primaryCTA="Start Selling Online"
       />

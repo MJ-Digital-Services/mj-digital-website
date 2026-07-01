@@ -58,7 +58,7 @@ export default function Page() {
           { val: "Cloud", label: "Native Architecture" },
           { val: "50+", label: "Clients Served" },
         ]}
-        heroImage="/services/crm-erp-hero.png"
+        heroImage="/services/crm-erp-hero.webp"
         heroImageAlt="CRM and ERP Development"
         primaryCTA="Build Your System"
       />

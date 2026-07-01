@@ -57,7 +57,7 @@ export default function Page() {
           { val: "SLA", label: "Tracking" },
           { val: "Inbound+", label: "Outbound" },
         ]}
-        heroImage="/services/customer-management-hero.png"
+        heroImage="/services/customer-management-hero.webp"
         heroImageAlt="Customer Management Software"
         primaryCTA="Get a Demo"
       />

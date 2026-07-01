@@ -59,7 +59,7 @@ export default function Page() {
           { val: "DSC", label: "Class 3" },
           { val: "End-to-End", label: "Compliance" },
         ]}
-        heroImage="/services/registration-compliance-hero.png"
+        heroImage="/services/registration-compliance-hero.webp"
         heroImageAlt="Tax & Compliance Services"
         primaryCTA="Get Started"
       />

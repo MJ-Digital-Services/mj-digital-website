@@ -58,7 +58,7 @@ export default function Page() {
           { val: "4–12", label: "Weeks to Launch" },
           { val: "100%", label: "Custom Built" },
         ]}
-        heroImage="/services/mobile-apps-hero.png"
+        heroImage="/services/mobile-apps-hero.webp"
         heroImageAlt="Mobile App Development Services"
         primaryCTA="Build Your App"
       />

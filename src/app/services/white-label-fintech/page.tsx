@@ -58,7 +58,7 @@ export default function Page() {
           { val: "60+", label: "Services Built-in" },
           { val: "RBI", label: "Compliant" },
         ]}
-        heroImage="/services/white-label-hero.png"
+        heroImage="/services/white-label-hero.webp"
         heroImageAlt="White Label Fintech Platform"
         primaryCTA="Launch Your Platform"
       />

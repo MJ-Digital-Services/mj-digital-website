@@ -58,7 +58,7 @@ export default function Page() {
           { val: "Cloud", label: "or On-Prem" },
           { val: "Role-Based", label: "Access" },
         ]}
-        heroImage="/services/enterprise-solutions-hero.png"
+        heroImage="/services/enterprise-solutions-hero.webp"
         heroImageAlt="Enterprise Software Solutions"
         primaryCTA="Get a Demo"
       />

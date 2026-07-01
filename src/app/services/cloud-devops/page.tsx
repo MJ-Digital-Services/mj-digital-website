@@ -57,7 +57,7 @@ export default function Page() {
           { val: "CI/CD", label: "Pipelines" },
           { val: "Zero-DT", label: "Deploys" },
         ]}
-        heroImage="/services/cloud-devops-hero.png"
+        heroImage="/services/cloud-devops-hero.webp"
         heroImageAlt="Cloud & DevOps Services"
         primaryCTA="Talk to an Engineer"
       />

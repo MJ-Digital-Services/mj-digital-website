@@ -56,7 +56,7 @@ export default function Page() {
           { val: "Cloud", label: "Hardening" },
           { val: "Actionable", label: "Reports" },
         ]}
-        heroImage="/services/cyber-security-hero.png"
+        heroImage="/services/cyber-security-hero.webp"
         heroImageAlt="Cyber Security Services"
         primaryCTA="Request an Assessment"
       />

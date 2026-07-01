@@ -58,7 +58,7 @@ export default function Page() {
           { val: "Multi-Tier", label: "Distribution" },
           { val: "24×7", label: "Support" },
         ]}
-        heroImage="/services/white-label-hero.png"
+        heroImage="/services/white-label-hero.webp"
         heroImageAlt="White Label Fintech Solutions"
         primaryCTA="Launch Your Platform"
       />
