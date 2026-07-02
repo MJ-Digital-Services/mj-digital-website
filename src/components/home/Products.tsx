@@ -75,7 +75,7 @@ export default function Products() {
                 ))}
               </div>
 
-              <Link href={product.href} className="product-card-link">
+              <Link href={product.href} className="product-card-link" aria-label={`Learn more about ${product.title}`}>
                 Learn More <ArrowRight size={13} />
               </Link>
             </div>
