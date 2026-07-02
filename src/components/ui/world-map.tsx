@@ -2,20 +2,12 @@
 
 import { useRef, useMemo } from "react";
 import { motion } from "motion/react";
-import DottedMap from "dotted-map";
 
-// Computed ONCE at module load, shared across every WorldMap instance —
-// not per-render, not per-mount. This was previously being regenerated
-// synchronously on every render of every instance, which is a real
-// CPU cost (dotted-map builds thousands of coordinates + an SVG string).
-const map = new DottedMap({ height: 100, grid: "diagonal" });
-const STATIC_SVG_MAP = map.getSVG({
-  radius: 0.22,
-  color: "#ffffff35",
-  shape: "circle",
-  backgroundColor: "transparent",
-});
-const STATIC_SVG_DATA_URI = `data:image/svg+xml;utf8,${encodeURIComponent(STATIC_SVG_MAP)}`;
+// Pre-generated once and saved as a static asset — the background dot pattern
+// is deterministic (same fixed params every time), so there's no reason to
+// ship the `dotted-map` + `proj4` libraries (~289 KB) to the client just to
+// regenerate an SVG that never changes. This is now a plain cached static file.
+const STATIC_SVG_PATH = "/world-map-bg.svg";
 
 interface MapProps {
   dots?: Array<{
@@ -55,7 +47,7 @@ export function WorldMap({ dots = [], lineColor = "#e5182a" }: MapProps) {
   return (
     <div style={{ width: "100%", aspectRatio: "2/1", position: "relative" }}>
       <img
-        src={STATIC_SVG_DATA_URI}
+        src={STATIC_SVG_PATH}
         style={{
           height: "100%",
           width: "100%",
