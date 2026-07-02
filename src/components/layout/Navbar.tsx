@@ -40,17 +40,23 @@ export default function Navbar() {
   const [shrunkWidth, setShrunkWidth] = useState<number | null>(null);
 
   useEffect(() => {
+    let rafId: number;
     const update = () => {
       setVw(window.innerWidth);
-      const content =
-        (logoRef.current?.offsetWidth ?? 0) +
-        (rightRef.current?.offsetWidth ?? 0) +
-        (toggleRef.current?.offsetWidth ?? 0);
-      setShrunkWidth(content + 24 /* row gap */ + 56 /* 2 × 28px scrolled padding */);
+      rafId = requestAnimationFrame(() => {
+        const content =
+          (logoRef.current?.offsetWidth ?? 0) +
+          (rightRef.current?.offsetWidth ?? 0) +
+          (toggleRef.current?.offsetWidth ?? 0);
+        setShrunkWidth(content + 24 /* row gap */ + 56 /* 2 × 28px scrolled padding */);
+      });
     };
     update();
     window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
+    return () => {
+      window.removeEventListener("resize", update);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const expandedPad = Math.min(150, Math.max(24, vw * 0.104));

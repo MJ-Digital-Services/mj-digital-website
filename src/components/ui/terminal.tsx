@@ -406,9 +406,13 @@ export function Terminal({
   }, []);
 
   useEffect(() => {
-    if (contentRef.current) {
-      contentRef.current.scrollTop = contentRef.current.scrollHeight;
-    }
+    if (!contentRef.current) return;
+    const raf = requestAnimationFrame(() => {
+      if (contentRef.current) {
+        contentRef.current.scrollTop = contentRef.current.scrollHeight;
+      }
+    });
+    return () => cancelAnimationFrame(raf);
   }, [lines, phase]);
 
   const prompt = (
