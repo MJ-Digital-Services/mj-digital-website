@@ -1,3 +1,4 @@
+import "./service-shared.css";
 import { CheckCircle2, LucideIcon } from "lucide-react";
 
 interface ServiceItem {

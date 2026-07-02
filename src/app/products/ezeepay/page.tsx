@@ -1,3 +1,4 @@
+import "./ezeepay.css";
 import type { Metadata } from "next";
 import EzeepayHero from "@/components/products/ezeepay/EzeepayHero";
 import EzeepayServices from "@/components/products/ezeepay/EzeepayServices";

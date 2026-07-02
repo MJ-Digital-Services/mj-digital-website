@@ -1,3 +1,4 @@
+import "./service-shared.css";
 import { LucideIcon } from "lucide-react";
 
 interface UseCase {

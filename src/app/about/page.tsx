@@ -1,3 +1,4 @@
+import "./about.css";
 import type { Metadata } from "next";
 import AboutHero from "@/components/about/AboutHero";
 import AboutStory from "@/components/about/AboutStory";

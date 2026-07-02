@@ -1,3 +1,4 @@
+import "./zoki.css";
 import type { Metadata } from "next";
 import ZokiHero from "@/components/products/zoki/ZokiHero";
 import ZokiServices from "@/components/products/zoki/ZokiServices";

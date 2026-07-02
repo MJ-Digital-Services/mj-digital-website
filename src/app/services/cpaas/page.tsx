@@ -1,3 +1,4 @@
+import "./cpaas.css";
 import type { Metadata } from "next";
 import CPaaSHero from "@/components/services/cpaas/CPaaSHero";
 import CPaaSChannels from "@/components/services/cpaas/CPaaSChannels";

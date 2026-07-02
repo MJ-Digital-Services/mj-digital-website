@@ -1,3 +1,4 @@
+import "./mobilocker.css";
 import type { Metadata } from "next";
 import MobilockerHero from "@/components/products/mobilocker/MobilockerHero";
 import MobilockerFeatures from "@/components/products/mobilocker/MobilockerFeatures";

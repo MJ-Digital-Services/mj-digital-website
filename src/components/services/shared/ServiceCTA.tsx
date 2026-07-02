@@ -1,3 +1,4 @@
+import "./service-shared.css";
 import Link from "next/link";
 import { ArrowRight, MessageSquare } from "lucide-react";
 

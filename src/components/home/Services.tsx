@@ -1,4 +1,5 @@
 "use client";
+import "./services-showcase.css";
 
 import type { ElementType } from "react";
 import { useEffect, useRef, useState } from "react";

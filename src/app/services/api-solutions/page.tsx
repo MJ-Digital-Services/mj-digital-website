@@ -1,3 +1,4 @@
+import "./api-solutions.css";
 import type { Metadata } from "next";
 import ApiSolutionsHero from "@/components/services/api-solutions/ApiSolutionsHero";
 import ApiCategories from "@/components/services/api-solutions/ApiCategories";

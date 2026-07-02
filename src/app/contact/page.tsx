@@ -1,3 +1,4 @@
+import "./contact.css";
 import type { Metadata } from "next";
 import ContactHero from "@/components/contact/ContactHero";
 import ContactInfo from "@/components/contact/ContactInfo";
