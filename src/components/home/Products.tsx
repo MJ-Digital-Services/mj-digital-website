@@ -76,7 +76,7 @@ export default function Products() {
               </div>
 
               <Link href={product.href} className="product-card-link" aria-label={`View ${product.title} details`}>
-                Learn More <ArrowRight size={13} />
+                Learn More <span className="sr-only"> about {product.title}</span> <ArrowRight size={13} />
               </Link>
             </div>
 

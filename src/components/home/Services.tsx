@@ -313,7 +313,7 @@ export default function Services() {
                 </div>
 
                 <Link href={activeService.href} className="swb-link" aria-label={`View ${activeService.title} details`}>
-                  Learn More <ArrowRight size={14} />
+                  Learn More <span className="sr-only"> about {activeService.title}</span> <ArrowRight size={14} />
                 </Link>
               </motion.div>
             </AnimatePresence>
@@ -394,7 +394,7 @@ export default function Services() {
               </div>
 
               <Link href={service.href} className="swb-link" aria-label={`View ${service.title} details`}>
-                Learn More <ArrowRight size={14} />
+                Learn More <span className="sr-only"> about {service.title}</span> <ArrowRight size={14} />
               </Link>
             </article>
           ))}
