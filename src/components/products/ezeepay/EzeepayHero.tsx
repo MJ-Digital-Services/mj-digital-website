@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ExternalLink, CheckCircle2, ArrowUpRight, Download } from "lucide-react";
+import Image from "next/image";
 
 const stats = [
   { val: "5L+",   label: "Active Agents" },
@@ -61,7 +62,16 @@ export default function EzeepayHero() {
 
           <div className="ezp2-hero-right">
             <div className="ezp2-screenshot-frame">
-              <img src="/products/ezeepay-screenshot.png" alt="EzeePay App" className="ezp2-screenshot-img" />
+              <Image
+                src="/products/ezeepay-screenshot.png"
+                alt="EzeePay App"
+                className="ezp2-screenshot-img"
+                width={1600}
+                height={885}
+                style={{ width: "100%", height: "auto" }}
+                priority
+                quality={80}
+              />
             </div>
             <div className="ezp2-float-badge ezp2-float-1">
               <div className="ezp2-float-dot" />

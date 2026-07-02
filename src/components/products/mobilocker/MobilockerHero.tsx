@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ExternalLink, CheckCircle2, ArrowUpRight, Lock, TrendingUp, Smartphone } from "lucide-react";
+import Image from "next/image";
 
 export default function MobilockerHero() {
   return (
@@ -81,10 +82,15 @@ export default function MobilockerHero() {
         {/* Right — screenshot */}
         <div className="mlk-hero-right">
           <div className="mlk-screenshot-frame">
-            <img
+            <Image
               src="/products/mobilocker-screenshot.png"
               alt="Mobilocker App"
               className="mlk-screenshot-img"
+              width={1600}
+              height={895}
+              style={{ width: "100%", height: "auto" }}
+              priority
+              quality={80}
             />
           </div>
           <div className="mlk-float-badge mlk-float-1">

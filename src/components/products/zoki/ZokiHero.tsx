@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ExternalLink, CheckCircle2, ArrowUpRight, Coins, Zap, Gift } from "lucide-react";
+import Image from "next/image";
 
 export default function ZokiHero() {
   return (
@@ -67,7 +68,16 @@ export default function ZokiHero() {
           {/* Right */}
           <div className="zki-hero-right">
             <div className="zki-screenshot-frame">
-              <img src="/products/zoki-screenshot.png" alt="Zoki App" className="zki-screenshot-img" />
+              <Image
+                src="/products/zoki-screenshot.png"
+                alt="Zoki App"
+                className="zki-screenshot-img"
+                width={1600}
+                height={895}
+                style={{ width: "100%", height: "auto" }}
+                priority
+                quality={80}
+              />
             </div>
             <div className="zki-float-badge zki-float-1">
               <div className="zki-float-dot" />
