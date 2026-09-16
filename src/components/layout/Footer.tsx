@@ -38,7 +38,7 @@ const productLinks = [
   { name: "EzeePay",    href: "https://ezeepay.app/" },
   { name: "Zoki",       href: "https://zoki-website.vercel.app/" },
   { name: "Mobilocker", href: "https://mobilocker.app/" },
-  { name: "Cashlo",     href: "https://cashlo-final-fxmt.vercel.app/" },
+  { name: "Cashlo",     href: "https://cashlo.app/" },
   { name: "Skylist",    href: null },
   { name: "Adkea",      href: "https://adkea.co/" },
   { name: "Creditlo",   href: null },
