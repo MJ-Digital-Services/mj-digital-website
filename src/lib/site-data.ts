@@ -318,7 +318,7 @@ export const serviceGroups = [
 
 export const products = [
   { name: "EzeePay", description: "AEPS, Money Transfer, Utility & Recharge", href: "https://ezeepay.app/", logo: "/ezeepay-logo-jpeg.webp" },
-  { name: "Cashlo", description: "UPI Cashpoint Platform for Every Shopkeeper", href: "https://cashlo-final-fxmt.vercel.app/", logo: "/cashlo-icon.svg" },
+  { name: "Cashlo", description: "UPI Cashpoint Platform for Every Shopkeeper", href: "https://cashlo.app/", logo: "/cashlo-icon.svg" },
   { name: "Mobilocker", description: "Secure Device Protection & Insurance Services", href: "https://mobilocker.app/", logo: "/mobilocker-icon.webp" },
   { name: "Zoki", description: "Fastag Solution & Car Care Services", href: "https://zoki-website.vercel.app/", logo: "/zoki-icon.webp" },
   { name: "Creditlo", description: "Coming soon", href: null, logo: "/creditlo-logo.webp" },
