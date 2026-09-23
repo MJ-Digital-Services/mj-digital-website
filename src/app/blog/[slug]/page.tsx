@@ -1,6 +1,9 @@
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import BlogPostContent from '@/components/blog/BlogPostContent';
-import { getBlogBySlug, getBlogs } from '@/lib/blogApi';
+import BlogTOC from '@/components/blog/BlogTOC';
+import BlogAuthorCard from '@/components/blog/BlogAuthorCard';
+import { getBlogBySlug, getBlogs, getRedirectTarget } from '@/lib/blogApi';
+import { htmlToPlainText } from '@/lib/html';
 import Link from 'next/link';
 import { User, Calendar, Clock, ChevronRight, ArrowLeft, ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -26,10 +29,8 @@ export async function generateMetadata({
     const blog = await getBlogBySlug(slug);
     const title = blog.metaTitle || `${blog.title} | MJ Digital Services`;
     const description = blog.metaDescription || blog.excerpt;
-    const canonical = `https://www.mjdigitalservices.com/blog/${slug}`;
-    const ogImage = blog.coverImage
-      ? blog.coverImage
-      : "https://www.mjdigitalservices.com/og-image.png";
+    const canonical = blog.canonicalUrlOverride || `https://www.mjdigitalservices.com/blog/${slug}`;
+    const ogImage = blog.ogImage || "https://www.mjdigitalservices.com/og-image.png";
 
     return {
       title,
@@ -37,6 +38,7 @@ export async function generateMetadata({
       alternates: {
         canonical,
       },
+      robots: blog.robots || "index,follow",
       openGraph: {
         title,
         description,
@@ -76,6 +78,8 @@ export default async function BlogDetailPage({
   try {
     blog = await getBlogBySlug(slug);
   } catch {
+    const target = await getRedirectTarget(slug).catch(() => null);
+    if (target) permanentRedirect(target);
     notFound();
   }
 
@@ -98,7 +102,7 @@ export default async function BlogDetailPage({
       relatedPosts = recent.blogs
         .filter((p: any) => p.slug !== slug)
         .slice(0, 3)
-        .map((p: any) => ({ slug: p.slug, title: p.title, coverImage: p.coverImage }));
+        .map((p: any) => ({ slug: p.slug, title: p.title, coverImage: p.coverImage, coverImageThumbnail: p.coverImageThumbnail }));
     } catch {}
   }
 
@@ -110,10 +114,12 @@ export default async function BlogDetailPage({
     "@type": "Article",
     headline: blog.title,
     description: blog.excerpt,
-    image: blog.coverImage ?? "https://www.mjdigitalservices.com/og-image.png",
+    image: blog.ogImage ?? "https://www.mjdigitalservices.com/og-image.png",
     author: {
       "@type": "Person",
       name: blog.createdBy?.name ?? "MJ Digital Team",
+      ...(blog.createdBy?.jobTitle ? { jobTitle: blog.createdBy.jobTitle } : {}),
+      ...(blog.createdBy?.linkedinUrl ? { sameAs: [blog.createdBy.linkedinUrl] } : {}),
     },
     publisher: {
       "@type": "Organization",
@@ -156,6 +162,24 @@ export default async function BlogDetailPage({
     ],
   };
 
+  // Google's FAQPage guidance wants plain-text answers, not the rich HTML
+  // rendered on the page — strip tags here rather than reusing the same
+  // answer HTML the page body renders.
+  const faqSchema =
+    faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((faq: { question: string; answer: string }) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: { "@type": "Answer", text: htmlToPlainText(faq.answer) },
+          })),
+        }
+      : null;
+
+  const hasToc = (blog.toc?.length ?? 0) > 0;
+
   return (
     <>
       <script
@@ -166,7 +190,14 @@ export default async function BlogDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <main className="blog-post-main blog-post-main-no-cover">
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+
+      <main className="blog-post-main">
         <div className="blog-post-container">
 
           {/* Breadcrumb */}
@@ -217,10 +248,27 @@ export default async function BlogDetailPage({
             ))}
           </div>
 
-          {/* ── Two-column layout: article + sidebar ── */}
-          <div className="blog-post-layout">
+          {/* Hero cover image — same width as the grid below, never full-bleed */}
+          {blog.coverImageHero && (
+            <div className="blog-post-cover">
+              <picture>
+                {blog.coverImageHeroAvif && <source srcSet={blog.coverImageHeroAvif} type="image/avif" />}
+                <img src={blog.coverImageHero} alt={blog.title} className="blog-post-cover-img" />
+              </picture>
+            </div>
+          )}
 
-            {/* LEFT — article body */}
+          {/* ── Layout: TOC (optional) + article + sidebar ── */}
+          <div className={`blog-post-layout ${hasToc ? 'blog-post-layout-with-toc' : ''}`}>
+
+            {/* LEFT — table of contents */}
+            {hasToc && (
+              <div className="blog-post-toc-col">
+                <BlogTOC items={blog.toc} />
+              </div>
+            )}
+
+            {/* MIDDLE — article body */}
             <div className="blog-post-body">
               <BlogPostContent content={blog.content ?? ''} />
 
@@ -228,6 +276,9 @@ export default async function BlogDetailPage({
               {faqs.length > 0 && (
                 <BlogFAQs faqs={faqs} title={faqsTitle} />
               )}
+
+              {/* Author */}
+              {blog.createdBy && <BlogAuthorCard author={blog.createdBy} />}
 
               {/* Back */}
               <Link href="/blog" className="blog-post-back">
@@ -251,7 +302,7 @@ export default async function BlogDetailPage({
                       >
                         <div className="blog-aside-related-thumb">
                           {post.coverImage ? (
-                            <img src={post.coverImage} alt={post.title} />
+                            <img src={post.coverImageThumbnail ?? post.coverImage} alt={post.title} />
                           ) : (
                             <span className="blog-aside-related-thumb-empty">MJ</span>
                           )}

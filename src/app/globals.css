@@ -3346,11 +3346,15 @@ img { max-width: 100%; display: block; }
 }
 
 /* ── Blog Post ── */
+/* Sits inside .blog-post-container (after the meta row), so it's always the
+   same width as the article grid below it — never full page width. */
 .blog-post-cover {
   width: 100%;
-  height: 420px;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  margin-top: 68px;
+  border-radius: 20px;
+  background: var(--surface-2);
+  margin: 32px 0 40px;
 }
 
 .blog-post-cover-img {
@@ -3362,16 +3366,12 @@ img { max-width: 100%; display: block; }
 
 .blog-post-main {
   background: var(--background);
-  padding: 48px 24px 100px;
-}
-
-.blog-post-main-no-cover {
-  margin-top: 68px;
-  padding-top: 64px;
+  margin-top: 68px;            /* clears the fixed navbar */
+  padding: 64px 24px 100px;
 }
 
 .blog-post-container {
-  max-width: 1280px;
+  max-width: 1520px;
   margin: 0 auto;
 }
 
@@ -3504,9 +3504,7 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 640px) {
-  .blog-post-cover { height: 240px; }
-  .blog-post-main { padding: 32px 20px 64px; }
-  .blog-post-main-no-cover { padding-top: 48px; }
+  .blog-post-main { padding: 48px 20px 64px; }
   .blog-post-title { font-size: 26px; }
 }
 
@@ -3754,9 +3752,171 @@ img { max-width: 100%; display: block; }
   align-items: start;            /* REQUIRED for the sticky sidebar to work */
 }
 
+/* Used instead of the base 2-column grid whenever the post has a TOC —
+   adds a narrow left rail without disturbing the body/sidebar widths. */
+.blog-post-layout-with-toc {
+  grid-template-columns: 240px minmax(0, 1fr) 320px;
+}
+
 /* min-width:0 stops long code blocks / tables from blowing out the grid */
 .blog-post-body {
   min-width: 0;
+}
+
+/* ── Table of contents column ── */
+.blog-post-toc-col {
+  position: sticky;
+  top: 96px;
+}
+
+.blog-toc {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.blog-toc-title {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.blog-toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.blog-toc-list li {
+  list-style: none;
+}
+
+.blog-toc-link {
+  display: block;
+  line-height: 1.4;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 13px;
+  transition: color 0.15s ease;
+}
+
+.blog-toc-link:hover {
+  color: var(--primary);
+}
+
+.blog-toc-link-active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.blog-toc-link-level-1 { font-size: 13px; font-weight: 700; }
+.blog-toc-link-level-2 { font-size: 13px; font-weight: 600; }
+.blog-toc-link-level-3 { font-size: 12.5px; }
+.blog-toc-link-level-4 { font-size: 12.5px; }
+
+@media (max-width: 1200px) {
+  .blog-post-layout-with-toc {
+    grid-template-columns: minmax(0, 1fr) 320px;
+  }
+  .blog-post-toc-col {
+    display: none;
+  }
+}
+
+/* ── Author card ── */
+.blog-author-card {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.blog-author-eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.blog-author-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.blog-author-avatar {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-author-avatar-placeholder {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.blog-author-info {
+  min-width: 0;
+}
+
+.blog-author-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.blog-author-jobtitle {
+  margin-top: 2px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+.blog-author-bio {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.blog-author-linkedin {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.blog-author-linkedin:hover {
+  color: var(--primary-dark);
 }
 
 /* ── Sticky sidebar column ── */
