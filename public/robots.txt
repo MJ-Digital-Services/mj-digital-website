@@ -1,2 +1,2 @@
-User-agent: *
-Allow: /
+# Removed in favor of src/app/robots.ts
+# This file is intentionally left blank to avoid overriding the Next.js robots route.
